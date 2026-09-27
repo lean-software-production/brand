@@ -17,4 +17,4 @@ Titles use black marker capitals in Luckiest Guy on a pale-yellow highlighter sw
 
 ## Use the brand in another project
 
-Copy the [brand skill](skill/lean-software-production-brand/SKILL.md) to `.claude/skills/lean-software-production-brand/SKILL.md` in your project. To make it available in all your projects, put it under `~/.claude/skills/` instead. For agents without skills, give them the linked file directly.
+Copy the [brand skill](skill/lean-software-production-brand/SKILL.md) to `.claude/skills/lean-software-production-brand/SKILL.md` in your project.
