@@ -14,7 +14,7 @@
   html, body, .reveal-viewport { background: var(--sk-paper); }
   .reveal-viewport { background-image: none; }
   .reveal { font-family: var(--sk-font-body); color: var(--sk-ink); }
-  .reveal .slides section { font-size: 26px; text-align: left; height: 100%; box-sizing: border-box; padding: 30px 10px 20px; display: flex !important; flex-direction: column; }
+  .reveal .slides section { font-size: 26px; text-align: left; height: 100%; box-sizing: border-box; padding: 30px 10px 45px; display: flex !important; flex-direction: column; }
   .reveal .slides section.mid { justify-content: center; }
   .reveal .sk-bubble::before { border-width: 5px; }
   .reveal .sk-bubble::after { border-right-width: 5px; border-bottom-width: 5px; }
@@ -23,6 +23,8 @@
   .reveal .progress { color: var(--sk-mustard); height: 5px; }
   .reveal .controls { color: var(--sk-deep-teal); }
   .reveal .slide-number { background: transparent; color: var(--sk-deep-teal); font-family: var(--sk-font-label); font-size: 20px; }
+  .deck-footer { position: absolute; left: 10px; bottom: 8px; font-family: var(--sk-font-label); font-size: 22px; }
+  .deck-footer a { color: var(--sk-deep-teal); text-decoration: underline; text-underline-offset: 3px; }
 
   .kicker { font-family: var(--sk-font-label); color: var(--sk-rust); font-size: 1.5em; margin: 0 0 .2em; }
   .lede { font-size: 1.7em; line-height: 1.3; color: var(--sk-body-text); max-width: 28em; margin: .4em 0; }
@@ -58,6 +60,7 @@
     <p class="kicker">Brand guidelines</p>
     <h1 class="sk-title" style="font-size:5em"><span class="sk-burst"><span class="sk-hl">Warm, whimsical,</span><br><span class="sk-hl">wise</span></span></h1>
     <p class="lede" style="text-align:center">How we look, sound and explain things, on slides, the website, courses and everything else we make.</p>
+    <footer class="deck-footer"><a href="https://github.com/lean-software-production/brand" target="_blank" rel="noopener noreferrer">GitHub repository</a></footer>
   </section>
 
   <!-- 2 · The three words -->
@@ -80,6 +83,7 @@
         <p>Simple and clear, so hard topics feel easy.</p>
       </div>
     </div>
+    <footer class="deck-footer"><a href="https://github.com/lean-software-production/brand" target="_blank" rel="noopener noreferrer">GitHub repository</a></footer>
   </section>
 
   <!-- 3 · Warm -->
@@ -96,6 +100,7 @@
       </div>
       <img src="kit/characters/learner.svg" alt="The learner character, reading with headphones on">
     </div>
+    <footer class="deck-footer"><a href="https://github.com/lean-software-production/brand" target="_blank" rel="noopener noreferrer">GitHub repository</a></footer>
   </section>
 
   <!-- 4 · Whimsical -->
@@ -108,6 +113,7 @@
       </div>
       <img src="kit/characters/explainer.svg" alt="The explainer character, pointing upward with an idea">
     </div>
+    <footer class="deck-footer"><a href="https://github.com/lean-software-production/brand" target="_blank" rel="noopener noreferrer">GitHub repository</a></footer>
   </section>
 
   <!-- 5 · Wise -->
@@ -123,6 +129,7 @@
       <svg class="sk-arrow" viewBox="0 0 40 20" aria-hidden="true"><line x1="4" y1="10" x2="30" y2="10" stroke="#36545C" stroke-width="4" stroke-linecap="round" marker-end="url(#sk-head)" filter="url(#sk-wobble-line)"/></svg>
       <div class="sk-panel sk-coral"><div class="sk-step"><span class="sk-num">4</span><span class="sk-label">Plain words</span></div><p>Words normal people use. Jargon only when needed, and explained clearly and concisely.</p></div>
     </div>
+    <footer class="deck-footer"><a href="https://github.com/lean-software-production/brand" target="_blank" rel="noopener noreferrer">GitHub repository</a></footer>
   </section>
 
   <!-- 6 · Colour -->
@@ -145,6 +152,7 @@
       <div class="swatch"><i style="background:var(--sk-paper)"></i>Paper<small>background</small></div>
       <div class="swatch"><i style="background:var(--sk-ink)"></i>Ink<small>lines</small></div>
     </div>
+    <footer class="deck-footer"><a href="https://github.com/lean-software-production/brand" target="_blank" rel="noopener noreferrer">GitHub repository</a></footer>
   </section>
 
   <!-- 7 · Type -->
@@ -154,6 +162,7 @@
     <div class="fontrow"><b>Labels + headings</b><span style="font-family:var(--sk-font-label);font-size:2.6em;color:var(--sk-deep-teal)">Patrick Hand SC</span></div>
     <div class="fontrow"><b>Sentences</b><span style="font-family:var(--sk-font-body);font-size:2.2em">Patrick Hand, for everything people actually read.</span></div>
     <p class="lede" style="font-size:1.4em;margin-top:1.2em">Big titles are always capitals and sit on a <span style="background:var(--sk-highlighter);padding:0 .3em">highlighter swash</span>. Everything else is sentence case.</p>
+    <footer class="deck-footer"><a href="https://github.com/lean-software-production/brand" target="_blank" rel="noopener noreferrer">GitHub repository</a></footer>
   </section>
 
   <!-- 8 · The line -->
@@ -170,6 +179,7 @@
       </div>
       <div class="sk-bubble sk-tail-right" style="font-size:1.6em">“Drawn by a <span class="sk-em">person</span>, not a machine.”</div>
     </div>
+    <footer class="deck-footer"><a href="https://github.com/lean-software-production/brand" target="_blank" rel="noopener noreferrer">GitHub repository</a></footer>
   </section>
 
   <!-- 9 · Pictures -->
@@ -182,6 +192,7 @@
     <div class="icons">
       <img src="kit/icons/laptop.svg" alt="Laptop"><img src="kit/icons/robot.svg" alt="Robot"><img src="kit/icons/gear.svg" alt="Gears"><img src="kit/icons/sprout.svg" alt="Sprout"><img src="kit/icons/lightbulb.svg" alt="Lightbulb"><img src="kit/icons/checklist.svg" alt="Checklist"><img src="kit/icons/page-pencil.svg" alt="Page and pencil"><img src="kit/icons/car.svg" alt="Car">
     </div>
+    <footer class="deck-footer"><a href="https://github.com/lean-software-production/brand" target="_blank" rel="noopener noreferrer">GitHub repository</a></footer>
   </section>
 
   <!-- 10 · Characters -->
@@ -202,6 +213,7 @@
         <figure><img src="kit/characters/cat.svg" alt="A ginger cat" style="height:150px"><figcaption>Cat</figcaption></figure>
       </div>
     </div>
+    <footer class="deck-footer"><a href="https://github.com/lean-software-production/brand" target="_blank" rel="noopener noreferrer">GitHub repository</a></footer>
   </section>
 
   <!-- 11 · Do / don't -->
@@ -213,6 +225,7 @@
       <div class="sk-panel sk-coral sk-dashed"><div class="sk-step"><span class="sk-label">Don't</span></div>
         <ul><li>Stock photos or glossy gradients</li><li>New colours or fonts</li><li>Big cartoon mascots front and centre</li><li>Extra wobble for “more fun”</li></ul></div>
     </div>
+    <footer class="deck-footer"><a href="https://github.com/lean-software-production/brand" target="_blank" rel="noopener noreferrer">GitHub repository</a></footer>
   </section>
 
   <!-- 12 · Get the kit -->
@@ -220,6 +233,7 @@
     <h2 class="sk-title" style="font-size:3.6em"><span class="sk-hl">Get the kit</span></h2>
     <p class="lede" style="text-align:center">Every piece in this deck is plain HTML, CSS and SVG, ready to copy.</p>
     <div class="sk-ribbon" style="font-size:1.5em;margin-top:.8em"><img src="kit/icons/books.svg" alt=""><span class="sk-kicker">Start here:</span>&nbsp;<a href="kit/index.html">the Sketchbook kit</a></div>
+    <footer class="deck-footer"><a href="https://github.com/lean-software-production/brand" target="_blank" rel="noopener noreferrer">GitHub repository</a></footer>
   </section>
 
 </div></div>
