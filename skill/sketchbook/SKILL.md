@@ -7,26 +7,28 @@ description: Use when making slides, web pages, posts, course material or diagra
 
 Our brand is **warm, whimsical, wise**: cream paper, wobbly ink, pastel watercolour, marker titles, one idea at a time, in everyday words.
 
-## 1. Read the index
+## 1. Set up the page
+
+```html
+<link rel="stylesheet" href="https://lean-software-production.github.io/brand/kit/sketchbook.css">
+<script src="https://lean-software-production.github.io/brand/kit/sketchbook.js" defer></script>
+```
+
+Always include both: without the script, outlines lose their wobble or disappear.
+
+## 2. Pick pieces from the index
 
 ```sh
 curl -fsSL https://lean-software-production.github.io/brand/kit/index.json
 ```
 
-It lists everything the kit offers:
-- `setup`: the two lines to put in the page `<head>`.
-- `images`: every icon and character, with a one-line `about`, `tags`, `aspect` (width ÷ height) and `url`.
-- `pieces`: ready-made HTML (titles, headings, step panels, bubbles, ribbons, arrows, a whole slide) with notes on how to use them.
-- `rules`: follow them.
-- `tokens`: colours and fonts, if you need them outside the CSS.
+A list of every element in the kit. Choose by reading each `about`.
 
-## 2. Build with it
+- `piece`: ready-made HTML (titles, headings, step panels, bubbles, ribbons, arrows, a whole slide). Paste it in and change the words. Start from "Whole slide" for a slide.
+- `icon`, `character`: images. Use them as whole files (`<img src="url">`); never edit, recolour or redraw them. `aspect` is width ÷ height.
+- `colour`, `font`: the palette and type, as CSS variables. Don't use other colours or fonts.
 
-- Add the `setup` lines, then paste in `pieces` and change the words. Start from "Whole slide" for a slide.
-- Image paths inside `html` are relative: prefix them with `base_url`, or download the files next to your page.
-- Use images as whole files (`<img src="…">`). Pick them by reading `about`. Never edit, recolour or redraw them.
-- Only use palette colours, and the `colour_modifiers` classes on panels.
-- If you're not sure how something should look, open `gallery` in a browser.
+To see how it all looks, open https://lean-software-production.github.io/brand/kit/index.html.
 
 ## 3. When something is missing
 

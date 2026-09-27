@@ -419,31 +419,18 @@ def aspect(viewbox):
 def plain(text):
     return html.unescape(re.sub(r"<[^>]+>", "", text))
 icon_tags = {n: g for g, names in icon_defs.GROUPS.items() for n in names}
-index = {
-    "about": "The Sketchbook brand kit: warm, whimsical, wise. Use whole files; don't edit or redraw them. "
-             "To add a piece, ask for it in https://github.com/lean-software-production/brand.",
-    "base_url": URL,
-    "setup": [f'<link rel="stylesheet" href="{URL}sketchbook.css">', f'<script src="{URL}sketchbook.js" defer></script>'],
-    "gallery": URL + "index.html",
-    "tokens": URL + "tokens.json",
-    "rules": [
-        "One idea per slide: a title, then at most one row of panels, or one bubble and one ribbon.",
-        "Characters are supporting cast: small, at the edge, doing something. Never the centrepiece.",
-        "Pictures of things beat pictures of people for explaining a step.",
-        "Only use the palette colours. Don't invent new ones.",
-        "Use everyday words; explain any jargon briefly.",
-    ],
-    "images": [{"kind": "icon", "name": n, "about": icon_defs.ABOUT[n], "tags": [icon_tags.get(n, "other")],
-                "aspect": 1.0, "path": f"icons/{n}.svg", "url": f"{URL}icons/{n}.svg"} for n in ICONS]
-            + [{"kind": "character", "name": n, "about": CHAR_ABOUT[n], "tags": ["character"],
-                "aspect": aspect(CHAR_BOXES[n]), "path": f"characters/{n}.svg", "url": f"{URL}characters/{n}.svg"} for n in CHAR_BOXES],
-    "pieces": [{"name": t, "about": plain(d), "html": snip} for t, d, snip in SNIPPETS]
-            + [{"name": "Whole slide", "about": "A complete 16:9 slide built only from kit pieces. Start from this.", "html": EXAMPLE}],
-    "colours": [{"name": k, "hex": v, "css": f"var(--sk-{k})", "about": COLOUR_ABOUT[k]} for k, v in C.items()],
-    "fonts": [{"name": name, "css": f"var(--sk-font-{k})", "about": use} for k, (name, use) in FONT_ABOUT.items()],
-    "colour_modifiers": ["sk-mustard", "sk-teal", "sk-forest", "sk-coral", "sk-blue", "sk-rust", "sk-deep-teal"],
-    "note": "Image paths inside 'html' are relative to base_url.",
-}
+def hosted(snippet):
+    return re.sub(r'src="(icons|characters)/', lambda m: f'src="{URL}{m.group(1)}/', snippet)
+index = (
+    [{"kind": "icon", "name": n, "about": icon_defs.ABOUT[n], "tags": [icon_tags.get(n, "other")],
+      "aspect": 1.0, "url": f"{URL}icons/{n}.svg"} for n in ICONS]
+    + [{"kind": "character", "name": n, "about": CHAR_ABOUT[n], "aspect": aspect(CHAR_BOXES[n]),
+        "url": f"{URL}characters/{n}.svg"} for n in CHAR_BOXES]
+    + [{"kind": "piece", "name": t, "about": plain(d), "html": hosted(snip)} for t, d, snip in SNIPPETS]
+    + [{"kind": "piece", "name": "Whole slide", "about": "A complete 16:9 slide built only from kit pieces. Start from this.", "html": hosted(EXAMPLE)}]
+    + [{"kind": "colour", "name": k, "hex": v, "css": f"var(--sk-{k})", "about": COLOUR_ABOUT[k]} for k, v in C.items()]
+    + [{"kind": "font", "name": name, "css": f"var(--sk-font-{k})", "about": use} for k, (name, use) in FONT_ABOUT.items()]
+)
 missing = set(CHAR_BOXES) - set(CHAR_ABOUT)
 assert not missing, f"add a line to CHAR_ABOUT in build_kit.py for: {sorted(missing)}"
 json.dump(index, open(os.path.join(KIT, "index.json"), "w"), indent=2, ensure_ascii=False)

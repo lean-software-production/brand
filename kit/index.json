@@ -1,461 +1,403 @@
-{
-  "about": "The Sketchbook brand kit: warm, whimsical, wise. Use whole files; don't edit or redraw them. To add a piece, ask for it in https://github.com/lean-software-production/brand.",
-  "base_url": "https://lean-software-production.github.io/brand/kit/",
-  "setup": [
-    "<link rel=\"stylesheet\" href=\"https://lean-software-production.github.io/brand/kit/sketchbook.css\">",
-    "<script src=\"https://lean-software-production.github.io/brand/kit/sketchbook.js\" defer></script>"
-  ],
-  "gallery": "https://lean-software-production.github.io/brand/kit/index.html",
-  "tokens": "https://lean-software-production.github.io/brand/kit/tokens.json",
-  "rules": [
-    "One idea per slide: a title, then at most one row of panels, or one bubble and one ribbon.",
-    "Characters are supporting cast: small, at the edge, doing something. Never the centrepiece.",
-    "Pictures of things beat pictures of people for explaining a step.",
-    "Only use the palette colours. Don't invent new ones.",
-    "Use everyday words; explain any jargon briefly."
-  ],
-  "images": [
-    {
-      "kind": "icon",
-      "name": "mug",
-      "about": "A steaming mug with a heart. Warmth, welcome, a break, a chat over coffee. Stands for 'warm'.",
-      "tags": [
-        "Brand words"
-      ],
-      "aspect": 1.0,
-      "path": "icons/mug.svg",
-      "url": "https://lean-software-production.github.io/brand/kit/icons/mug.svg"
-    },
-    {
-      "kind": "icon",
-      "name": "kite",
-      "about": "A colourful kite. Play, curiosity, freedom, trying things out. Stands for 'whimsical'.",
-      "tags": [
-        "Brand words"
-      ],
-      "aspect": 1.0,
-      "path": "icons/kite.svg",
-      "url": "https://lean-software-production.github.io/brand/kit/icons/kite.svg"
-    },
-    {
-      "kind": "icon",
-      "name": "owl",
-      "about": "An owl. Knowledge, good judgement, a wise guide. Stands for 'wise'.",
-      "tags": [
-        "Brand words"
-      ],
-      "aspect": 1.0,
-      "path": "icons/owl.svg",
-      "url": "https://lean-software-production.github.io/brand/kit/icons/owl.svg"
-    },
-    {
-      "kind": "icon",
-      "name": "books",
-      "about": "A stack of books. Sources, reading, research, a body of knowledge.",
-      "tags": [
-        "Learning"
-      ],
-      "aspect": 1.0,
-      "path": "icons/books.svg",
-      "url": "https://lean-software-production.github.io/brand/kit/icons/books.svg"
-    },
-    {
-      "kind": "icon",
-      "name": "car",
-      "about": "A car. Travel, a journey, learning on the move, speed.",
-      "tags": [
-        "Tech & systems"
-      ],
-      "aspect": 1.0,
-      "path": "icons/car.svg",
-      "url": "https://lean-software-production.github.io/brand/kit/icons/car.svg"
-    },
-    {
-      "kind": "icon",
-      "name": "lightbulb",
-      "about": "A lightbulb. An idea, an insight, a moment of understanding.",
-      "tags": [
-        "Learning"
-      ],
-      "aspect": 1.0,
-      "path": "icons/lightbulb.svg",
-      "url": "https://lean-software-production.github.io/brand/kit/icons/lightbulb.svg"
-    },
-    {
-      "kind": "icon",
-      "name": "checklist",
-      "about": "A checklist with ticks. Steps done, validation, testing, a plan.",
-      "tags": [
-        "Learning"
-      ],
-      "aspect": 1.0,
-      "path": "icons/checklist.svg",
-      "url": "https://lean-software-production.github.io/brand/kit/icons/checklist.svg"
-    },
-    {
-      "kind": "icon",
-      "name": "headphones",
-      "about": "Headphones. Listening, audio, podcasts, learning on the go.",
-      "tags": [
-        "Learning"
-      ],
-      "aspect": 1.0,
-      "path": "icons/headphones.svg",
-      "url": "https://lean-software-production.github.io/brand/kit/icons/headphones.svg"
-    },
-    {
-      "kind": "icon",
-      "name": "magnifier",
-      "about": "A magnifying glass. Looking closely, searching, focusing, filtering.",
-      "tags": [
-        "Learning"
-      ],
-      "aspect": 1.0,
-      "path": "icons/magnifier.svg",
-      "url": "https://lean-software-production.github.io/brand/kit/icons/magnifier.svg"
-    },
-    {
-      "kind": "icon",
-      "name": "page-pencil",
-      "about": "A page with a pencil. Writing, notes, drafting, creating something new.",
-      "tags": [
-        "Learning"
-      ],
-      "aspect": 1.0,
-      "path": "icons/page-pencil.svg",
-      "url": "https://lean-software-production.github.io/brand/kit/icons/page-pencil.svg"
-    },
-    {
-      "kind": "icon",
-      "name": "gear",
-      "about": "Gears. Systems, processes, how things work, machinery.",
-      "tags": [
-        "Tech & systems"
-      ],
-      "aspect": 1.0,
-      "path": "icons/gear.svg",
-      "url": "https://lean-software-production.github.io/brand/kit/icons/gear.svg"
-    },
-    {
-      "kind": "icon",
-      "name": "robot",
-      "about": "A friendly robot. AI, agents, automation.",
-      "tags": [
-        "Tech & systems"
-      ],
-      "aspect": 1.0,
-      "path": "icons/robot.svg",
-      "url": "https://lean-software-production.github.io/brand/kit/icons/robot.svg"
-    },
-    {
-      "kind": "icon",
-      "name": "sprout",
-      "about": "A sprout. Growth, learning, starting small, progress.",
-      "tags": [
-        "Tech & systems"
-      ],
-      "aspect": 1.0,
-      "path": "icons/sprout.svg",
-      "url": "https://lean-software-production.github.io/brand/kit/icons/sprout.svg"
-    },
-    {
-      "kind": "icon",
-      "name": "puzzle",
-      "about": "Two puzzle pieces fitting together. Collaboration, integration, parts of a solution.",
-      "tags": [
-        "Working together"
-      ],
-      "aspect": 1.0,
-      "path": "icons/puzzle.svg",
-      "url": "https://lean-software-production.github.io/brand/kit/icons/puzzle.svg"
-    },
-    {
-      "kind": "icon",
-      "name": "laptop",
-      "about": "A laptop. Computers, coding, working online.",
-      "tags": [
-        "Tech & systems"
-      ],
-      "aspect": 1.0,
-      "path": "icons/laptop.svg",
-      "url": "https://lean-software-production.github.io/brand/kit/icons/laptop.svg"
-    },
-    {
-      "kind": "icon",
-      "name": "chat",
-      "about": "Two speech bubbles. Conversation, feedback, asking questions.",
-      "tags": [
-        "Working together"
-      ],
-      "aspect": 1.0,
-      "path": "icons/chat.svg",
-      "url": "https://lean-software-production.github.io/brand/kit/icons/chat.svg"
-    },
-    {
-      "kind": "icon",
-      "name": "compass",
-      "about": "A compass. Direction, strategy, finding your way, goals.",
-      "tags": [
-        "Working together"
-      ],
-      "aspect": 1.0,
-      "path": "icons/compass.svg",
-      "url": "https://lean-software-production.github.io/brand/kit/icons/compass.svg"
-    },
-    {
-      "kind": "icon",
-      "name": "sticky-note",
-      "about": "A sticky note. Ideas on a wall, workshops, capturing a thought.",
-      "tags": [
-        "Working together"
-      ],
-      "aspect": 1.0,
-      "path": "icons/sticky-note.svg",
-      "url": "https://lean-software-production.github.io/brand/kit/icons/sticky-note.svg"
-    },
-    {
-      "kind": "character",
-      "name": "learner",
-      "about": "A person reading a book with headphones on. Studying, learning, taking something in.",
-      "tags": [
-        "character"
-      ],
-      "aspect": 0.551,
-      "path": "characters/learner.svg",
-      "url": "https://lean-software-production.github.io/brand/kit/characters/learner.svg"
-    },
-    {
-      "kind": "character",
-      "name": "explainer",
-      "about": "A person pointing up with an idea. Explaining, teaching, a tip or insight.",
-      "tags": [
-        "character"
-      ],
-      "aspect": 0.551,
-      "path": "characters/explainer.svg",
-      "url": "https://lean-software-production.github.io/brand/kit/characters/explainer.svg"
-    },
-    {
-      "kind": "character",
-      "name": "waver",
-      "about": "A person waving. Hello, welcome, getting someone's attention, goodbye.",
-      "tags": [
-        "character"
-      ],
-      "aspect": 0.551,
-      "path": "characters/waver.svg",
-      "url": "https://lean-software-production.github.io/brand/kit/characters/waver.svg"
-    },
-    {
-      "kind": "character",
-      "name": "coffee",
-      "about": "A person holding a mug of coffee. Relaxed, a break, informal chat.",
-      "tags": [
-        "character"
-      ],
-      "aspect": 0.551,
-      "path": "characters/coffee.svg",
-      "url": "https://lean-software-production.github.io/brand/kit/characters/coffee.svg"
-    },
-    {
-      "kind": "character",
-      "name": "pointer",
-      "about": "A person pointing up with an idea. An alternative to the explainer.",
-      "tags": [
-        "character"
-      ],
-      "aspect": 0.551,
-      "path": "characters/pointer.svg",
-      "url": "https://lean-software-production.github.io/brand/kit/characters/pointer.svg"
-    },
-    {
-      "kind": "character",
-      "name": "cat",
-      "about": "A sitting cat, winking. Playful aside, a light moment.",
-      "tags": [
-        "character"
-      ],
-      "aspect": 0.895,
-      "path": "characters/cat.svg",
-      "url": "https://lean-software-production.github.io/brand/kit/characters/cat.svg"
-    },
-    {
-      "kind": "character",
-      "name": "dog",
-      "about": "A sitting dog with its head tilted. Curiosity, a question, loyalty.",
-      "tags": [
-        "character"
-      ],
-      "aspect": 0.895,
-      "path": "characters/dog.svg",
-      "url": "https://lean-software-production.github.io/brand/kit/characters/dog.svg"
-    },
-    {
-      "kind": "character",
-      "name": "group",
-      "about": "Four people and a dog side by side. A team, a community, working together.",
-      "tags": [
-        "character"
-      ],
-      "aspect": 1.694,
-      "path": "characters/group.svg",
-      "url": "https://lean-software-production.github.io/brand/kit/characters/group.svg"
-    }
-  ],
-  "pieces": [
-    {
-      "name": "Title on highlighter",
-      "about": "Big marker caps on a yellow highlighter swash. Wrap each line's words in .sk-hl; add .sk-burst for the tick marks.",
-      "html": "<h1 class=\"sk-title\"><span class=\"sk-burst\"><span class=\"sk-hl\">How to get the agent</span><br><span class=\"sk-hl\">to teach you anything</span></span></h1>"
-    },
-    {
-      "name": "Section heading",
-      "about": "Label caps in deep teal with a rule either side.",
-      "html": "<h2 class=\"sk-section\">The learning loop</h2>"
-    },
-    {
-      "name": "Step panel",
-      "about": "A numbered step in one of the five main colours. Add .sk-dashed for a dotted outline, to highlight the step you're talking about. Use .sk-em for accent text.",
-      "html": "<div class=\"sk-row\">\n<div class=\"sk-panel sk-teal\">\n  <div class=\"sk-step\"><span class=\"sk-num\">2</span><span class=\"sk-label\">Filter + focus</span></div>\n  <img src=\"icons/magnifier.svg\" alt=\"\">\n  <p>use a lens: <span class=\"sk-em\">“what do I care about?”</span></p>\n</div>\n<div class=\"sk-panel sk-forest sk-dashed\">\n  <div class=\"sk-step\"><span class=\"sk-num\">3</span><span class=\"sk-label\">Create new source</span></div>\n  <img src=\"icons/page-pencil.svg\" alt=\"\">\n  <p>pull out just the parts that matter</p>\n</div>\n</div>"
-    },
-    {
-      "name": "Speech bubble",
-      "about": "Something a person says or asks. Add .sk-tail-right to move the tail to the right.",
-      "html": "<div class=\"sk-bubble\">“I want to learn <span class=\"sk-em\">Chapter 1 of Shape Up</span>, while I’m driving.”</div>"
-    },
-    {
-      "name": "Ribbon banner",
-      "about": "An insight or takeaway. The kicker word goes in .sk-kicker, and an icon is optional.",
-      "html": "<div class=\"sk-ribbon\"><img src=\"icons/car.svg\" alt=\"\"><span class=\"sk-kicker\">Insight:</span> “I want to learn a book while driving.”</div>"
-    },
-    {
-      "name": "Arrows",
-      "about": "A short slate connector between steps, and the blue loop-back arrow that sits under a row of panels.",
-      "html": "<svg class=\"sk-arrow\" viewBox=\"0 0 40 20\" aria-hidden=\"true\"><line x1=\"4\" y1=\"10\" x2=\"30\" y2=\"10\" stroke=\"#36545C\" stroke-width=\"4\" stroke-linecap=\"round\" marker-end=\"url(#sk-head)\" filter=\"url(#sk-wobble-line)\"/></svg>\n<svg class=\"sk-loop\" viewBox=\"0 0 1000 70\" aria-hidden=\"true\"><path d=\"M960 6 C 950 50, 820 54, 500 54 C 180 54, 50 50, 40 8\" fill=\"none\" stroke=\"#1F78A8\" stroke-width=\"5\" stroke-linecap=\"round\" marker-end=\"url(#sk-head)\" filter=\"url(#sk-wobble-soft)\"/></svg>"
-    },
-    {
-      "name": "Whole slide",
-      "about": "A complete 16:9 slide built only from kit pieces. Start from this.",
-      "html": "<div class=\"sk-slide sk-paper\"><div class=\"sk-slide-body\">\n  <h1 class=\"sk-title\" style=\"font-size:2.7em\"><span class=\"sk-burst\"><span class=\"sk-hl\">How to get the agent</span><br><span class=\"sk-hl\">to teach you anything</span></span></h1>\n  <h2 class=\"sk-section\" style=\"font-size:1.7em;margin:.4em 0 .5em\">The learning loop</h2>\n  <div class=\"sk-row\" style=\"font-size:.78em\">\n    <div class=\"sk-panel sk-mustard\">\n  <div class=\"sk-step\"><span class=\"sk-num\">1</span><span class=\"sk-label\">Add sources</span></div>\n  <img src=\"icons/books.svg\" alt=\"\">\n  <p>books, manuals, transcripts, code</p>\n</div>\n    <svg class=\"sk-arrow\" viewBox=\"0 0 40 20\" aria-hidden=\"true\"><line x1=\"4\" y1=\"10\" x2=\"30\" y2=\"10\" stroke=\"#36545C\" stroke-width=\"4\" stroke-linecap=\"round\" marker-end=\"url(#sk-head)\" filter=\"url(#sk-wobble-line)\"/></svg>\n    <div class=\"sk-panel sk-teal\">\n  <div class=\"sk-step\"><span class=\"sk-num\">2</span><span class=\"sk-label\">Filter + focus</span></div>\n  <img src=\"icons/magnifier.svg\" alt=\"\">\n  <p>use a lens: <span class=\"sk-em\">“what do I care about?”</span></p>\n</div>\n    <svg class=\"sk-arrow\" viewBox=\"0 0 40 20\" aria-hidden=\"true\"><line x1=\"4\" y1=\"10\" x2=\"30\" y2=\"10\" stroke=\"#36545C\" stroke-width=\"4\" stroke-linecap=\"round\" marker-end=\"url(#sk-head)\" filter=\"url(#sk-wobble-line)\"/></svg>\n    <div class=\"sk-panel sk-forest sk-dashed\">\n  <div class=\"sk-step\"><span class=\"sk-num\">3</span><span class=\"sk-label\">Create new source</span></div>\n  <img src=\"icons/page-pencil.svg\" alt=\"\">\n  <p>pull out just the parts that matter</p>\n</div>\n    <svg class=\"sk-arrow\" viewBox=\"0 0 40 20\" aria-hidden=\"true\"><line x1=\"4\" y1=\"10\" x2=\"30\" y2=\"10\" stroke=\"#36545C\" stroke-width=\"4\" stroke-linecap=\"round\" marker-end=\"url(#sk-head)\" filter=\"url(#sk-wobble-line)\"/></svg>\n    <div class=\"sk-panel sk-coral\">\n  <div class=\"sk-step\"><span class=\"sk-num\">4</span><span class=\"sk-label\">Create a projection</span></div>\n  <img src=\"icons/headphones.svg\" alt=\"\">\n  <p>audio summary, infographic, quiz</p>\n</div>\n    <svg class=\"sk-arrow\" viewBox=\"0 0 40 20\" aria-hidden=\"true\"><line x1=\"4\" y1=\"10\" x2=\"30\" y2=\"10\" stroke=\"#36545C\" stroke-width=\"4\" stroke-linecap=\"round\" marker-end=\"url(#sk-head)\" filter=\"url(#sk-wobble-line)\"/></svg>\n    <div class=\"sk-panel sk-blue\">\n  <div class=\"sk-step\"><span class=\"sk-num\">5</span><span class=\"sk-label\">Validate + iterate</span></div>\n  <img src=\"icons/checklist.svg\" alt=\"\">\n  <p>teach back, quiz me, spaced repetition</p>\n</div>\n  </div>\n  <div style=\"margin:0 7% 0 7%\"><svg class=\"sk-loop\" viewBox=\"0 0 1000 70\" aria-hidden=\"true\"><path d=\"M960 6 C 950 50, 820 54, 500 54 C 180 54, 50 50, 40 8\" fill=\"none\" stroke=\"#1F78A8\" stroke-width=\"5\" stroke-linecap=\"round\" marker-end=\"url(#sk-head)\" filter=\"url(#sk-wobble-soft)\"/></svg></div>\n  <div style=\"display:flex;align-items:center;justify-content:center;gap:1.5em;margin-top:-.6em\">\n    <div class=\"sk-ribbon\" style=\"font-size:1.3em\"><img src=\"icons/car.svg\" alt=\"\"><span class=\"sk-kicker\">Insight:</span> “I want to learn a book while driving.”</div>\n    <img src=\"characters/learner.svg\" alt=\"\" style=\"height:6.2em;margin-top:-1.5em\">\n  </div>\n</div></div>"
-    }
-  ],
-  "colours": [
-    {
-      "name": "mustard",
-      "hex": "#EEA306",
-      "css": "var(--sk-mustard)",
-      "about": "Step colour 1. Panels, icon washes, warm accents."
-    },
-    {
-      "name": "teal",
-      "hex": "#039695",
-      "css": "var(--sk-teal)",
-      "about": "Step colour 2. Panels, icon washes."
-    },
-    {
-      "name": "forest",
-      "hex": "#4A7D4B",
-      "css": "var(--sk-forest)",
-      "about": "Step colour 3. Panels, icon washes."
-    },
-    {
-      "name": "coral",
-      "hex": "#F76C37",
-      "css": "var(--sk-coral)",
-      "about": "Step colour 4. Panels, icon washes."
-    },
-    {
-      "name": "blue",
-      "hex": "#1F78A8",
-      "css": "var(--sk-blue)",
-      "about": "Step colour 5. Panels, icon washes, the loop-back arrow."
-    },
-    {
-      "name": "slate",
-      "hex": "#36545C",
-      "css": "var(--sk-slate)",
-      "about": "Connector arrows between steps."
-    },
-    {
-      "name": "rust",
-      "hex": "#D6631C",
-      "css": "var(--sk-rust)",
-      "about": "Accent text in speech bubbles, and ribbon kickers."
-    },
-    {
-      "name": "deep-teal",
-      "hex": "#094854",
-      "css": "var(--sk-deep-teal)",
-      "about": "Section headings and their rules."
-    },
-    {
-      "name": "highlighter",
-      "hex": "#FFEEB8",
-      "css": "var(--sk-highlighter)",
-      "about": "The swash behind big titles."
-    },
-    {
-      "name": "paper",
-      "hex": "#FCF9F3",
-      "css": "var(--sk-paper)",
-      "about": "The page background."
-    },
-    {
-      "name": "ribbon",
-      "hex": "#FAEED3",
-      "css": "var(--sk-ribbon)",
-      "about": "Ribbon banner fill."
-    },
-    {
-      "name": "bubble",
-      "hex": "#EEF4F5",
-      "css": "var(--sk-bubble)",
-      "about": "Speech bubble fill."
-    },
-    {
-      "name": "ink",
-      "hex": "#2A2724",
-      "css": "var(--sk-ink)",
-      "about": "Outlines and line drawing."
-    },
-    {
-      "name": "ink-title",
-      "hex": "#1B1B1B",
-      "css": "var(--sk-ink-title)",
-      "about": "Big title lettering."
-    },
-    {
-      "name": "body-text",
-      "hex": "#3A3631",
-      "css": "var(--sk-body-text)",
-      "about": "Sentences and captions."
-    }
-  ],
-  "fonts": [
-    {
-      "name": "Luckiest Guy",
-      "css": "var(--sk-font-title)",
-      "about": "Big titles only, always in capitals."
-    },
-    {
-      "name": "Patrick Hand SC",
-      "css": "var(--sk-font-label)",
-      "about": "Step labels and section headings."
-    },
-    {
-      "name": "Patrick Hand",
-      "css": "var(--sk-font-body)",
-      "about": "Sentences and captions."
-    }
-  ],
-  "colour_modifiers": [
-    "sk-mustard",
-    "sk-teal",
-    "sk-forest",
-    "sk-coral",
-    "sk-blue",
-    "sk-rust",
-    "sk-deep-teal"
-  ],
-  "note": "Image paths inside 'html' are relative to base_url."
-}
+[
+  {
+    "kind": "icon",
+    "name": "mug",
+    "about": "A steaming mug with a heart. Warmth, welcome, a break, a chat over coffee. Stands for 'warm'.",
+    "tags": [
+      "Brand words"
+    ],
+    "aspect": 1.0,
+    "url": "https://lean-software-production.github.io/brand/kit/icons/mug.svg"
+  },
+  {
+    "kind": "icon",
+    "name": "kite",
+    "about": "A colourful kite. Play, curiosity, freedom, trying things out. Stands for 'whimsical'.",
+    "tags": [
+      "Brand words"
+    ],
+    "aspect": 1.0,
+    "url": "https://lean-software-production.github.io/brand/kit/icons/kite.svg"
+  },
+  {
+    "kind": "icon",
+    "name": "owl",
+    "about": "An owl. Knowledge, good judgement, a wise guide. Stands for 'wise'.",
+    "tags": [
+      "Brand words"
+    ],
+    "aspect": 1.0,
+    "url": "https://lean-software-production.github.io/brand/kit/icons/owl.svg"
+  },
+  {
+    "kind": "icon",
+    "name": "books",
+    "about": "A stack of books. Sources, reading, research, a body of knowledge.",
+    "tags": [
+      "Learning"
+    ],
+    "aspect": 1.0,
+    "url": "https://lean-software-production.github.io/brand/kit/icons/books.svg"
+  },
+  {
+    "kind": "icon",
+    "name": "car",
+    "about": "A car. Travel, a journey, learning on the move, speed.",
+    "tags": [
+      "Tech & systems"
+    ],
+    "aspect": 1.0,
+    "url": "https://lean-software-production.github.io/brand/kit/icons/car.svg"
+  },
+  {
+    "kind": "icon",
+    "name": "lightbulb",
+    "about": "A lightbulb. An idea, an insight, a moment of understanding.",
+    "tags": [
+      "Learning"
+    ],
+    "aspect": 1.0,
+    "url": "https://lean-software-production.github.io/brand/kit/icons/lightbulb.svg"
+  },
+  {
+    "kind": "icon",
+    "name": "checklist",
+    "about": "A checklist with ticks. Steps done, validation, testing, a plan.",
+    "tags": [
+      "Learning"
+    ],
+    "aspect": 1.0,
+    "url": "https://lean-software-production.github.io/brand/kit/icons/checklist.svg"
+  },
+  {
+    "kind": "icon",
+    "name": "headphones",
+    "about": "Headphones. Listening, audio, podcasts, learning on the go.",
+    "tags": [
+      "Learning"
+    ],
+    "aspect": 1.0,
+    "url": "https://lean-software-production.github.io/brand/kit/icons/headphones.svg"
+  },
+  {
+    "kind": "icon",
+    "name": "magnifier",
+    "about": "A magnifying glass. Looking closely, searching, focusing, filtering.",
+    "tags": [
+      "Learning"
+    ],
+    "aspect": 1.0,
+    "url": "https://lean-software-production.github.io/brand/kit/icons/magnifier.svg"
+  },
+  {
+    "kind": "icon",
+    "name": "page-pencil",
+    "about": "A page with a pencil. Writing, notes, drafting, creating something new.",
+    "tags": [
+      "Learning"
+    ],
+    "aspect": 1.0,
+    "url": "https://lean-software-production.github.io/brand/kit/icons/page-pencil.svg"
+  },
+  {
+    "kind": "icon",
+    "name": "gear",
+    "about": "Gears. Systems, processes, how things work, machinery.",
+    "tags": [
+      "Tech & systems"
+    ],
+    "aspect": 1.0,
+    "url": "https://lean-software-production.github.io/brand/kit/icons/gear.svg"
+  },
+  {
+    "kind": "icon",
+    "name": "robot",
+    "about": "A friendly robot. AI, agents, automation.",
+    "tags": [
+      "Tech & systems"
+    ],
+    "aspect": 1.0,
+    "url": "https://lean-software-production.github.io/brand/kit/icons/robot.svg"
+  },
+  {
+    "kind": "icon",
+    "name": "sprout",
+    "about": "A sprout. Growth, learning, starting small, progress.",
+    "tags": [
+      "Tech & systems"
+    ],
+    "aspect": 1.0,
+    "url": "https://lean-software-production.github.io/brand/kit/icons/sprout.svg"
+  },
+  {
+    "kind": "icon",
+    "name": "puzzle",
+    "about": "Two puzzle pieces fitting together. Collaboration, integration, parts of a solution.",
+    "tags": [
+      "Working together"
+    ],
+    "aspect": 1.0,
+    "url": "https://lean-software-production.github.io/brand/kit/icons/puzzle.svg"
+  },
+  {
+    "kind": "icon",
+    "name": "laptop",
+    "about": "A laptop. Computers, coding, working online.",
+    "tags": [
+      "Tech & systems"
+    ],
+    "aspect": 1.0,
+    "url": "https://lean-software-production.github.io/brand/kit/icons/laptop.svg"
+  },
+  {
+    "kind": "icon",
+    "name": "chat",
+    "about": "Two speech bubbles. Conversation, feedback, asking questions.",
+    "tags": [
+      "Working together"
+    ],
+    "aspect": 1.0,
+    "url": "https://lean-software-production.github.io/brand/kit/icons/chat.svg"
+  },
+  {
+    "kind": "icon",
+    "name": "compass",
+    "about": "A compass. Direction, strategy, finding your way, goals.",
+    "tags": [
+      "Working together"
+    ],
+    "aspect": 1.0,
+    "url": "https://lean-software-production.github.io/brand/kit/icons/compass.svg"
+  },
+  {
+    "kind": "icon",
+    "name": "sticky-note",
+    "about": "A sticky note. Ideas on a wall, workshops, capturing a thought.",
+    "tags": [
+      "Working together"
+    ],
+    "aspect": 1.0,
+    "url": "https://lean-software-production.github.io/brand/kit/icons/sticky-note.svg"
+  },
+  {
+    "kind": "character",
+    "name": "learner",
+    "about": "A person reading a book with headphones on. Studying, learning, taking something in.",
+    "aspect": 0.551,
+    "url": "https://lean-software-production.github.io/brand/kit/characters/learner.svg"
+  },
+  {
+    "kind": "character",
+    "name": "explainer",
+    "about": "A person pointing up with an idea. Explaining, teaching, a tip or insight.",
+    "aspect": 0.551,
+    "url": "https://lean-software-production.github.io/brand/kit/characters/explainer.svg"
+  },
+  {
+    "kind": "character",
+    "name": "waver",
+    "about": "A person waving. Hello, welcome, getting someone's attention, goodbye.",
+    "aspect": 0.551,
+    "url": "https://lean-software-production.github.io/brand/kit/characters/waver.svg"
+  },
+  {
+    "kind": "character",
+    "name": "coffee",
+    "about": "A person holding a mug of coffee. Relaxed, a break, informal chat.",
+    "aspect": 0.551,
+    "url": "https://lean-software-production.github.io/brand/kit/characters/coffee.svg"
+  },
+  {
+    "kind": "character",
+    "name": "pointer",
+    "about": "A person pointing up with an idea. An alternative to the explainer.",
+    "aspect": 0.551,
+    "url": "https://lean-software-production.github.io/brand/kit/characters/pointer.svg"
+  },
+  {
+    "kind": "character",
+    "name": "cat",
+    "about": "A sitting cat, winking. Playful aside, a light moment.",
+    "aspect": 0.895,
+    "url": "https://lean-software-production.github.io/brand/kit/characters/cat.svg"
+  },
+  {
+    "kind": "character",
+    "name": "dog",
+    "about": "A sitting dog with its head tilted. Curiosity, a question, loyalty.",
+    "aspect": 0.895,
+    "url": "https://lean-software-production.github.io/brand/kit/characters/dog.svg"
+  },
+  {
+    "kind": "character",
+    "name": "group",
+    "about": "Four people and a dog side by side. A team, a community, working together.",
+    "aspect": 1.694,
+    "url": "https://lean-software-production.github.io/brand/kit/characters/group.svg"
+  },
+  {
+    "kind": "piece",
+    "name": "Title on highlighter",
+    "about": "Big marker caps on a yellow highlighter swash. Wrap each line's words in .sk-hl; add .sk-burst for the tick marks.",
+    "html": "<h1 class=\"sk-title\"><span class=\"sk-burst\"><span class=\"sk-hl\">How to get the agent</span><br><span class=\"sk-hl\">to teach you anything</span></span></h1>"
+  },
+  {
+    "kind": "piece",
+    "name": "Section heading",
+    "about": "Label caps in deep teal with a rule either side.",
+    "html": "<h2 class=\"sk-section\">The learning loop</h2>"
+  },
+  {
+    "kind": "piece",
+    "name": "Step panel",
+    "about": "A numbered step in one of the five main colours. Add .sk-dashed for a dotted outline, to highlight the step you're talking about. Use .sk-em for accent text.",
+    "html": "<div class=\"sk-row\">\n<div class=\"sk-panel sk-teal\">\n  <div class=\"sk-step\"><span class=\"sk-num\">2</span><span class=\"sk-label\">Filter + focus</span></div>\n  <img src=\"https://lean-software-production.github.io/brand/kit/icons/magnifier.svg\" alt=\"\">\n  <p>use a lens: <span class=\"sk-em\">“what do I care about?”</span></p>\n</div>\n<div class=\"sk-panel sk-forest sk-dashed\">\n  <div class=\"sk-step\"><span class=\"sk-num\">3</span><span class=\"sk-label\">Create new source</span></div>\n  <img src=\"https://lean-software-production.github.io/brand/kit/icons/page-pencil.svg\" alt=\"\">\n  <p>pull out just the parts that matter</p>\n</div>\n</div>"
+  },
+  {
+    "kind": "piece",
+    "name": "Speech bubble",
+    "about": "Something a person says or asks. Add .sk-tail-right to move the tail to the right.",
+    "html": "<div class=\"sk-bubble\">“I want to learn <span class=\"sk-em\">Chapter 1 of Shape Up</span>, while I’m driving.”</div>"
+  },
+  {
+    "kind": "piece",
+    "name": "Ribbon banner",
+    "about": "An insight or takeaway. The kicker word goes in .sk-kicker, and an icon is optional.",
+    "html": "<div class=\"sk-ribbon\"><img src=\"https://lean-software-production.github.io/brand/kit/icons/car.svg\" alt=\"\"><span class=\"sk-kicker\">Insight:</span> “I want to learn a book while driving.”</div>"
+  },
+  {
+    "kind": "piece",
+    "name": "Arrows",
+    "about": "A short slate connector between steps, and the blue loop-back arrow that sits under a row of panels.",
+    "html": "<svg class=\"sk-arrow\" viewBox=\"0 0 40 20\" aria-hidden=\"true\"><line x1=\"4\" y1=\"10\" x2=\"30\" y2=\"10\" stroke=\"#36545C\" stroke-width=\"4\" stroke-linecap=\"round\" marker-end=\"url(#sk-head)\" filter=\"url(#sk-wobble-line)\"/></svg>\n<svg class=\"sk-loop\" viewBox=\"0 0 1000 70\" aria-hidden=\"true\"><path d=\"M960 6 C 950 50, 820 54, 500 54 C 180 54, 50 50, 40 8\" fill=\"none\" stroke=\"#1F78A8\" stroke-width=\"5\" stroke-linecap=\"round\" marker-end=\"url(#sk-head)\" filter=\"url(#sk-wobble-soft)\"/></svg>"
+  },
+  {
+    "kind": "piece",
+    "name": "Whole slide",
+    "about": "A complete 16:9 slide built only from kit pieces. Start from this.",
+    "html": "<div class=\"sk-slide sk-paper\"><div class=\"sk-slide-body\">\n  <h1 class=\"sk-title\" style=\"font-size:2.7em\"><span class=\"sk-burst\"><span class=\"sk-hl\">How to get the agent</span><br><span class=\"sk-hl\">to teach you anything</span></span></h1>\n  <h2 class=\"sk-section\" style=\"font-size:1.7em;margin:.4em 0 .5em\">The learning loop</h2>\n  <div class=\"sk-row\" style=\"font-size:.78em\">\n    <div class=\"sk-panel sk-mustard\">\n  <div class=\"sk-step\"><span class=\"sk-num\">1</span><span class=\"sk-label\">Add sources</span></div>\n  <img src=\"https://lean-software-production.github.io/brand/kit/icons/books.svg\" alt=\"\">\n  <p>books, manuals, transcripts, code</p>\n</div>\n    <svg class=\"sk-arrow\" viewBox=\"0 0 40 20\" aria-hidden=\"true\"><line x1=\"4\" y1=\"10\" x2=\"30\" y2=\"10\" stroke=\"#36545C\" stroke-width=\"4\" stroke-linecap=\"round\" marker-end=\"url(#sk-head)\" filter=\"url(#sk-wobble-line)\"/></svg>\n    <div class=\"sk-panel sk-teal\">\n  <div class=\"sk-step\"><span class=\"sk-num\">2</span><span class=\"sk-label\">Filter + focus</span></div>\n  <img src=\"https://lean-software-production.github.io/brand/kit/icons/magnifier.svg\" alt=\"\">\n  <p>use a lens: <span class=\"sk-em\">“what do I care about?”</span></p>\n</div>\n    <svg class=\"sk-arrow\" viewBox=\"0 0 40 20\" aria-hidden=\"true\"><line x1=\"4\" y1=\"10\" x2=\"30\" y2=\"10\" stroke=\"#36545C\" stroke-width=\"4\" stroke-linecap=\"round\" marker-end=\"url(#sk-head)\" filter=\"url(#sk-wobble-line)\"/></svg>\n    <div class=\"sk-panel sk-forest sk-dashed\">\n  <div class=\"sk-step\"><span class=\"sk-num\">3</span><span class=\"sk-label\">Create new source</span></div>\n  <img src=\"https://lean-software-production.github.io/brand/kit/icons/page-pencil.svg\" alt=\"\">\n  <p>pull out just the parts that matter</p>\n</div>\n    <svg class=\"sk-arrow\" viewBox=\"0 0 40 20\" aria-hidden=\"true\"><line x1=\"4\" y1=\"10\" x2=\"30\" y2=\"10\" stroke=\"#36545C\" stroke-width=\"4\" stroke-linecap=\"round\" marker-end=\"url(#sk-head)\" filter=\"url(#sk-wobble-line)\"/></svg>\n    <div class=\"sk-panel sk-coral\">\n  <div class=\"sk-step\"><span class=\"sk-num\">4</span><span class=\"sk-label\">Create a projection</span></div>\n  <img src=\"https://lean-software-production.github.io/brand/kit/icons/headphones.svg\" alt=\"\">\n  <p>audio summary, infographic, quiz</p>\n</div>\n    <svg class=\"sk-arrow\" viewBox=\"0 0 40 20\" aria-hidden=\"true\"><line x1=\"4\" y1=\"10\" x2=\"30\" y2=\"10\" stroke=\"#36545C\" stroke-width=\"4\" stroke-linecap=\"round\" marker-end=\"url(#sk-head)\" filter=\"url(#sk-wobble-line)\"/></svg>\n    <div class=\"sk-panel sk-blue\">\n  <div class=\"sk-step\"><span class=\"sk-num\">5</span><span class=\"sk-label\">Validate + iterate</span></div>\n  <img src=\"https://lean-software-production.github.io/brand/kit/icons/checklist.svg\" alt=\"\">\n  <p>teach back, quiz me, spaced repetition</p>\n</div>\n  </div>\n  <div style=\"margin:0 7% 0 7%\"><svg class=\"sk-loop\" viewBox=\"0 0 1000 70\" aria-hidden=\"true\"><path d=\"M960 6 C 950 50, 820 54, 500 54 C 180 54, 50 50, 40 8\" fill=\"none\" stroke=\"#1F78A8\" stroke-width=\"5\" stroke-linecap=\"round\" marker-end=\"url(#sk-head)\" filter=\"url(#sk-wobble-soft)\"/></svg></div>\n  <div style=\"display:flex;align-items:center;justify-content:center;gap:1.5em;margin-top:-.6em\">\n    <div class=\"sk-ribbon\" style=\"font-size:1.3em\"><img src=\"https://lean-software-production.github.io/brand/kit/icons/car.svg\" alt=\"\"><span class=\"sk-kicker\">Insight:</span> “I want to learn a book while driving.”</div>\n    <img src=\"https://lean-software-production.github.io/brand/kit/characters/learner.svg\" alt=\"\" style=\"height:6.2em;margin-top:-1.5em\">\n  </div>\n</div></div>"
+  },
+  {
+    "kind": "colour",
+    "name": "mustard",
+    "hex": "#EEA306",
+    "css": "var(--sk-mustard)",
+    "about": "Step colour 1. Panels, icon washes, warm accents."
+  },
+  {
+    "kind": "colour",
+    "name": "teal",
+    "hex": "#039695",
+    "css": "var(--sk-teal)",
+    "about": "Step colour 2. Panels, icon washes."
+  },
+  {
+    "kind": "colour",
+    "name": "forest",
+    "hex": "#4A7D4B",
+    "css": "var(--sk-forest)",
+    "about": "Step colour 3. Panels, icon washes."
+  },
+  {
+    "kind": "colour",
+    "name": "coral",
+    "hex": "#F76C37",
+    "css": "var(--sk-coral)",
+    "about": "Step colour 4. Panels, icon washes."
+  },
+  {
+    "kind": "colour",
+    "name": "blue",
+    "hex": "#1F78A8",
+    "css": "var(--sk-blue)",
+    "about": "Step colour 5. Panels, icon washes, the loop-back arrow."
+  },
+  {
+    "kind": "colour",
+    "name": "slate",
+    "hex": "#36545C",
+    "css": "var(--sk-slate)",
+    "about": "Connector arrows between steps."
+  },
+  {
+    "kind": "colour",
+    "name": "rust",
+    "hex": "#D6631C",
+    "css": "var(--sk-rust)",
+    "about": "Accent text in speech bubbles, and ribbon kickers."
+  },
+  {
+    "kind": "colour",
+    "name": "deep-teal",
+    "hex": "#094854",
+    "css": "var(--sk-deep-teal)",
+    "about": "Section headings and their rules."
+  },
+  {
+    "kind": "colour",
+    "name": "highlighter",
+    "hex": "#FFEEB8",
+    "css": "var(--sk-highlighter)",
+    "about": "The swash behind big titles."
+  },
+  {
+    "kind": "colour",
+    "name": "paper",
+    "hex": "#FCF9F3",
+    "css": "var(--sk-paper)",
+    "about": "The page background."
+  },
+  {
+    "kind": "colour",
+    "name": "ribbon",
+    "hex": "#FAEED3",
+    "css": "var(--sk-ribbon)",
+    "about": "Ribbon banner fill."
+  },
+  {
+    "kind": "colour",
+    "name": "bubble",
+    "hex": "#EEF4F5",
+    "css": "var(--sk-bubble)",
+    "about": "Speech bubble fill."
+  },
+  {
+    "kind": "colour",
+    "name": "ink",
+    "hex": "#2A2724",
+    "css": "var(--sk-ink)",
+    "about": "Outlines and line drawing."
+  },
+  {
+    "kind": "colour",
+    "name": "ink-title",
+    "hex": "#1B1B1B",
+    "css": "var(--sk-ink-title)",
+    "about": "Big title lettering."
+  },
+  {
+    "kind": "colour",
+    "name": "body-text",
+    "hex": "#3A3631",
+    "css": "var(--sk-body-text)",
+    "about": "Sentences and captions."
+  },
+  {
+    "kind": "font",
+    "name": "Luckiest Guy",
+    "css": "var(--sk-font-title)",
+    "about": "Big titles only, always in capitals."
+  },
+  {
+    "kind": "font",
+    "name": "Patrick Hand SC",
+    "css": "var(--sk-font-label)",
+    "about": "Step labels and section headings."
+  },
+  {
+    "kind": "font",
+    "name": "Patrick Hand",
+    "css": "var(--sk-font-body)",
+    "about": "Sentences and captions."
+  }
+]
