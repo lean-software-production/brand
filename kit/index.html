@@ -20,14 +20,16 @@
   .chunk h3 { margin:0; font-size:15px; } .desc { margin:4px 0 10px; color:var(--g-muted); font-size:13.5px; }
   .demo { padding:22px 18px; border-radius:8px; font-size:14px; overflow:hidden; }
   .demo .sk-panel { max-width:260px; }
+  .demo .sk-row .sk-panel { max-width:none; }
   details { margin-top:10px; } summary { cursor:pointer; font-size:13px; color:var(--g-muted); }
   pre { background:#1f1e1c; color:#ece7dc; padding:10px 12px; border-radius:6px; overflow:auto; font-size:12px; white-space:pre-wrap; word-break:break-word; }
   .row { display:grid; grid-template-columns:repeat(auto-fill,minmax(150px,1fr)); gap:12px; }
   figure { margin:0; background:var(--sk-paper); border-radius:8px; padding:12px; text-align:center; }
-  figure img { width:80px; height:80px; } figure.char img { width:auto; height:200px; }
+  figure img { width:80px; height:80px; } figure.char img { width:auto; height:200px; max-width:100%; object-fit:contain; }
   figcaption { font:12px ui-monospace,monospace; color:#6b665c; margin-top:6px; overflow-wrap:anywhere; }
   .sw { font:12px/1.35 ui-monospace,monospace; } .sw i { display:block; height:34px; border-radius:6px; border:1px solid rgba(0,0,0,.12); margin-bottom:4px; }
   .sw b { display:block; font-weight:600; } .sw span { color:var(--g-muted); }
+  h3.grp { font:600 13px/1 system-ui; margin:18px 0 8px; color:var(--g-muted); }
   .fonts { display:grid; gap:10px; background:var(--sk-paper); color:var(--sk-ink); padding:16px; border-radius:8px; }
 </style></head>
 <body><div class="wrap">
@@ -36,7 +38,7 @@
 Add <code>sketchbook.css</code> and <code>sketchbook.js</code> to a page, then paste in any chunk. Drop the icons and characters in as images anywhere.</p></header>
 
 <h2 class="g">Example: a whole slide built only from kit pieces</h2>
-<div class="sk-slide sk-paper">
+<div class="sk-slide sk-paper"><div class="sk-slide-body">
   <h1 class="sk-title" style="font-size:2.7em"><span class="sk-burst"><span class="sk-hl">How to get the agent</span><br><span class="sk-hl">to teach you anything</span></span></h1>
   <h2 class="sk-section" style="font-size:1.7em;margin:.4em 0 .5em">The learning loop</h2>
   <div class="sk-row" style="font-size:.78em">
@@ -75,8 +77,8 @@ Add <code>sketchbook.css</code> and <code>sketchbook.js</code> to a page, then p
     <div class="sk-ribbon" style="font-size:1.3em"><img src="icons/car.svg" alt=""><span class="sk-kicker">Insight:</span> “I want to learn a book while driving.”</div>
     <img src="characters/learner.svg" alt="" style="height:6.2em;margin-top:-1.5em">
   </div>
-</div>
-<details><summary>Copy the code</summary><pre><code>&lt;div class=&quot;sk-slide sk-paper&quot;&gt;
+</div></div>
+<details><summary>Copy the code</summary><pre><code>&lt;div class=&quot;sk-slide sk-paper&quot;&gt;&lt;div class=&quot;sk-slide-body&quot;&gt;
   &lt;h1 class=&quot;sk-title&quot; style=&quot;font-size:2.7em&quot;&gt;&lt;span class=&quot;sk-burst&quot;&gt;&lt;span class=&quot;sk-hl&quot;&gt;How to get the agent&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;sk-hl&quot;&gt;to teach you anything&lt;/span&gt;&lt;/span&gt;&lt;/h1&gt;
   &lt;h2 class=&quot;sk-section&quot; style=&quot;font-size:1.7em;margin:.4em 0 .5em&quot;&gt;The learning loop&lt;/h2&gt;
   &lt;div class=&quot;sk-row&quot; style=&quot;font-size:.78em&quot;&gt;
@@ -115,19 +117,33 @@ Add <code>sketchbook.css</code> and <code>sketchbook.js</code> to a page, then p
     &lt;div class=&quot;sk-ribbon&quot; style=&quot;font-size:1.3em&quot;&gt;&lt;img src=&quot;icons/car.svg&quot; alt=&quot;&quot;&gt;&lt;span class=&quot;sk-kicker&quot;&gt;Insight:&lt;/span&gt; “I want to learn a book while driving.”&lt;/div&gt;
     &lt;img src=&quot;characters/learner.svg&quot; alt=&quot;&quot; style=&quot;height:6.2em;margin-top:-1.5em&quot;&gt;
   &lt;/div&gt;
-&lt;/div&gt;</code></pre></details>
+&lt;/div&gt;&lt;/div&gt;</code></pre></details>
 
 <h2 class="g">Chunks</h2>
 <div class="chunks"><section class="chunk"><h3>Title on highlighter</h3><p class="desc">Big marker caps on a yellow highlighter swash. Wrap each line's words in <code>.sk-hl</code>; add <code>.sk-burst</code> for the tick marks.</p><div class="demo sk-paper"><h1 class="sk-title"><span class="sk-burst"><span class="sk-hl">How to get the agent</span><br><span class="sk-hl">to teach you anything</span></span></h1></div><details><summary>Copy the code</summary><pre><code>&lt;h1 class=&quot;sk-title&quot;&gt;&lt;span class=&quot;sk-burst&quot;&gt;&lt;span class=&quot;sk-hl&quot;&gt;How to get the agent&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;sk-hl&quot;&gt;to teach you anything&lt;/span&gt;&lt;/span&gt;&lt;/h1&gt;</code></pre></details></section>
 <section class="chunk"><h3>Section heading</h3><p class="desc">Label caps in deep teal with a rule either side.</p><div class="demo sk-paper"><h2 class="sk-section">The learning loop</h2></div><details><summary>Copy the code</summary><pre><code>&lt;h2 class=&quot;sk-section&quot;&gt;The learning loop&lt;/h2&gt;</code></pre></details></section>
-<section class="chunk"><h3>Step panel</h3><p class="desc">A numbered step in one of the five step colours. Add <code>.sk-dashed</code> to highlight the step you're talking about. Use <code>.sk-em</code> for accent text.</p><div class="demo sk-paper"><div class="sk-panel sk-teal">
+<section class="chunk"><h3>Step panel</h3><p class="desc">A numbered step in one of the five main colours. Add <code>.sk-dashed</code> for a dotted outline, to highlight the step you're talking about. Use <code>.sk-em</code> for accent text.</p><div class="demo sk-paper"><div class="sk-row">
+<div class="sk-panel sk-teal">
   <div class="sk-step"><span class="sk-num">2</span><span class="sk-label">Filter + focus</span></div>
   <img src="icons/magnifier.svg" alt="">
   <p>use a lens: <span class="sk-em">“what do I care about?”</span></p>
-</div></div><details><summary>Copy the code</summary><pre><code>&lt;div class=&quot;sk-panel sk-teal&quot;&gt;
+</div>
+<div class="sk-panel sk-forest sk-dashed">
+  <div class="sk-step"><span class="sk-num">3</span><span class="sk-label">Create new source</span></div>
+  <img src="icons/page-pencil.svg" alt="">
+  <p>pull out just the parts that matter</p>
+</div>
+</div></div><details><summary>Copy the code</summary><pre><code>&lt;div class=&quot;sk-row&quot;&gt;
+&lt;div class=&quot;sk-panel sk-teal&quot;&gt;
   &lt;div class=&quot;sk-step&quot;&gt;&lt;span class=&quot;sk-num&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;sk-label&quot;&gt;Filter + focus&lt;/span&gt;&lt;/div&gt;
   &lt;img src=&quot;icons/magnifier.svg&quot; alt=&quot;&quot;&gt;
   &lt;p&gt;use a lens: &lt;span class=&quot;sk-em&quot;&gt;“what do I care about?”&lt;/span&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sk-panel sk-forest sk-dashed&quot;&gt;
+  &lt;div class=&quot;sk-step&quot;&gt;&lt;span class=&quot;sk-num&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;sk-label&quot;&gt;Create new source&lt;/span&gt;&lt;/div&gt;
+  &lt;img src=&quot;icons/page-pencil.svg&quot; alt=&quot;&quot;&gt;
+  &lt;p&gt;pull out just the parts that matter&lt;/p&gt;
+&lt;/div&gt;
 &lt;/div&gt;</code></pre></details></section>
 <section class="chunk"><h3>Speech bubble</h3><p class="desc">Something a person says or asks. Add <code>.sk-tail-right</code> to move the tail to the right.</p><div class="demo sk-paper"><div class="sk-bubble">“I want to learn <span class="sk-em">Chapter 1 of Shape Up</span>, while I’m driving.”</div></div><details><summary>Copy the code</summary><pre><code>&lt;div class=&quot;sk-bubble&quot;&gt;“I want to learn &lt;span class=&quot;sk-em&quot;&gt;Chapter 1 of Shape Up&lt;/span&gt;, while I’m driving.”&lt;/div&gt;</code></pre></details></section>
 <section class="chunk"><h3>Ribbon banner</h3><p class="desc">An insight or takeaway. The kicker word goes in <code>.sk-kicker</code>, and an icon is optional.</p><div class="demo sk-paper"><div class="sk-ribbon"><img src="icons/car.svg" alt=""><span class="sk-kicker">Insight:</span> “I want to learn a book while driving.”</div></div><details><summary>Copy the code</summary><pre><code>&lt;div class=&quot;sk-ribbon&quot;&gt;&lt;img src=&quot;icons/car.svg&quot; alt=&quot;&quot;&gt;&lt;span class=&quot;sk-kicker&quot;&gt;Insight:&lt;/span&gt; “I want to learn a book while driving.”&lt;/div&gt;</code></pre></details></section>
@@ -137,16 +153,20 @@ Add <code>sketchbook.css</code> and <code>sketchbook.js</code> to a page, then p
 
 <h2 class="g">Characters</h2>
 <div class="row"><figure class="char"><img src="characters/learner.svg" alt=""><figcaption>characters/learner.svg</figcaption></figure>
-<figure class="char"><img src="characters/explainer.svg" alt=""><figcaption>characters/explainer.svg</figcaption></figure></div>
+<figure class="char"><img src="characters/explainer.svg" alt=""><figcaption>characters/explainer.svg</figcaption></figure>
+<figure class="char"><img src="characters/waver.svg" alt=""><figcaption>characters/waver.svg</figcaption></figure>
+<figure class="char"><img src="characters/coffee.svg" alt=""><figcaption>characters/coffee.svg</figcaption></figure>
+<figure class="char"><img src="characters/pointer.svg" alt=""><figcaption>characters/pointer.svg</figcaption></figure>
+<figure class="char"><img src="characters/group.svg" alt=""><figcaption>characters/group.svg</figcaption></figure>
+<figure class="char"><img src="characters/cat.svg" alt=""><figcaption>characters/cat.svg</figcaption></figure>
+<figure class="char"><img src="characters/dog.svg" alt=""><figcaption>characters/dog.svg</figcaption></figure></div>
 
 <h2 class="g">Doodle icons</h2>
-<div class="row"><figure><img src="icons/books.svg" alt=""><figcaption>icons/books.svg</figcaption></figure>
-<figure><img src="icons/magnifier.svg" alt=""><figcaption>icons/magnifier.svg</figcaption></figure>
-<figure><img src="icons/page-pencil.svg" alt=""><figcaption>icons/page-pencil.svg</figcaption></figure>
-<figure><img src="icons/headphones.svg" alt=""><figcaption>icons/headphones.svg</figcaption></figure>
-<figure><img src="icons/checklist.svg" alt=""><figcaption>icons/checklist.svg</figcaption></figure>
-<figure><img src="icons/car.svg" alt=""><figcaption>icons/car.svg</figcaption></figure>
-<figure><img src="icons/lightbulb.svg" alt=""><figcaption>icons/lightbulb.svg</figcaption></figure></div>
+<p class="desc">One colour for simple objects; up to three when the object has distinct parts. Always from the palette.</p>
+<h3 class="grp">Brand words</h3><div class="row"><figure><img src="icons/mug.svg" alt=""><figcaption>icons/mug.svg</figcaption></figure><figure><img src="icons/kite.svg" alt=""><figcaption>icons/kite.svg</figcaption></figure><figure><img src="icons/owl.svg" alt=""><figcaption>icons/owl.svg</figcaption></figure></div>
+<h3 class="grp">Learning</h3><div class="row"><figure><img src="icons/books.svg" alt=""><figcaption>icons/books.svg</figcaption></figure><figure><img src="icons/page-pencil.svg" alt=""><figcaption>icons/page-pencil.svg</figcaption></figure><figure><img src="icons/magnifier.svg" alt=""><figcaption>icons/magnifier.svg</figcaption></figure><figure><img src="icons/lightbulb.svg" alt=""><figcaption>icons/lightbulb.svg</figcaption></figure><figure><img src="icons/checklist.svg" alt=""><figcaption>icons/checklist.svg</figcaption></figure><figure><img src="icons/headphones.svg" alt=""><figcaption>icons/headphones.svg</figcaption></figure></div>
+<h3 class="grp">Working together</h3><div class="row"><figure><img src="icons/chat.svg" alt=""><figcaption>icons/chat.svg</figcaption></figure><figure><img src="icons/puzzle.svg" alt=""><figcaption>icons/puzzle.svg</figcaption></figure><figure><img src="icons/sticky-note.svg" alt=""><figcaption>icons/sticky-note.svg</figcaption></figure><figure><img src="icons/compass.svg" alt=""><figcaption>icons/compass.svg</figcaption></figure></div>
+<h3 class="grp">Tech & systems</h3><div class="row"><figure><img src="icons/laptop.svg" alt=""><figcaption>icons/laptop.svg</figcaption></figure><figure><img src="icons/robot.svg" alt=""><figcaption>icons/robot.svg</figcaption></figure><figure><img src="icons/gear.svg" alt=""><figcaption>icons/gear.svg</figcaption></figure><figure><img src="icons/sprout.svg" alt=""><figcaption>icons/sprout.svg</figcaption></figure><figure><img src="icons/car.svg" alt=""><figcaption>icons/car.svg</figcaption></figure></div>
 
 <h2 class="g">Tokens: colours (CSS variables in sketchbook.css; also tokens.json)</h2>
 <div class="row"><div class="sw"><i style="background:#EEA306"></i><b>--sk-mustard</b><span>#EEA306</span></div><div class="sw"><i style="background:#039695"></i><b>--sk-teal</b><span>#039695</span></div><div class="sw"><i style="background:#4A7D4B"></i><b>--sk-forest</b><span>#4A7D4B</span></div><div class="sw"><i style="background:#F76C37"></i><b>--sk-coral</b><span>#F76C37</span></div><div class="sw"><i style="background:#1F78A8"></i><b>--sk-blue</b><span>#1F78A8</span></div><div class="sw"><i style="background:#36545C"></i><b>--sk-slate</b><span>#36545C</span></div><div class="sw"><i style="background:#D6631C"></i><b>--sk-rust</b><span>#D6631C</span></div><div class="sw"><i style="background:#094854"></i><b>--sk-deep-teal</b><span>#094854</span></div><div class="sw"><i style="background:#FFEEB8"></i><b>--sk-highlighter</b><span>#FFEEB8</span></div><div class="sw"><i style="background:#FCF9F3"></i><b>--sk-paper</b><span>#FCF9F3</span></div><div class="sw"><i style="background:#FAEED3"></i><b>--sk-ribbon</b><span>#FAEED3</span></div><div class="sw"><i style="background:#EEF4F5"></i><b>--sk-bubble</b><span>#EEF4F5</span></div><div class="sw"><i style="background:#2A2724"></i><b>--sk-ink</b><span>#2A2724</span></div><div class="sw"><i style="background:#1B1B1B"></i><b>--sk-ink-title</b><span>#1B1B1B</span></div><div class="sw"><i style="background:#3A3631"></i><b>--sk-body-text</b><span>#3A3631</span></div></div>

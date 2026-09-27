@@ -42,9 +42,12 @@
 }
 .sk-slide {
   aspect-ratio: 16 / 9; width: 100%; box-sizing: border-box; overflow: hidden;
-  container-type: inline-size; padding: 3cqw 3.5cqw;
-  font-size: 1.6cqw;               /* everything inside scales with the slide width */
-  border-radius: 6px;
+  container-type: inline-size; border-radius: 6px;
+}
+/* put everything inside .sk-slide-body: it scales with the slide's width, not the window's */
+.sk-slide-body {
+  height: 100%; box-sizing: border-box; padding: 3cqw 3.5cqw;
+  font-size: 1.6cqw; display: flex; flex-direction: column;
 }
 
 /* ---------- title on a highlighter swash, optional burst ticks ---------- */

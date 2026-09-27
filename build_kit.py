@@ -110,9 +110,12 @@ css = f"""/* Sketchbook kit: tokens + reusable chunks. Spec: README.md. Also inc
 }}
 .sk-slide {{
   aspect-ratio: 16 / 9; width: 100%; box-sizing: border-box; overflow: hidden;
-  container-type: inline-size; padding: 3cqw 3.5cqw;
-  font-size: 1.6cqw;               /* everything inside scales with the slide width */
-  border-radius: 6px;
+  container-type: inline-size; border-radius: 6px;
+}}
+/* put everything inside .sk-slide-body: it scales with the slide's width, not the window's */
+.sk-slide-body {{
+  height: 100%; box-sizing: border-box; padding: 3cqw 3.5cqw;
+  font-size: 1.6cqw; display: flex; flex-direction: column;
 }}
 
 /* ---------- title on a highlighter swash, optional burst ticks ---------- */
@@ -210,39 +213,36 @@ open(os.path.join(KIT, "sketchbook.css"), "w").write(css)
 json.dump(TOKENS, open(os.path.join(KIT, "tokens.json"), "w"), indent=2)
 
 # ------------------------------------------------ icons (standalone SVGs)
-ICONS = {
-    "books": ('<path d="M22 104 L118 104 L118 128 L22 128 Z"/><path d="M30 80 L112 80 L112 104 L30 104 Z"/><path d="M40 38 L60 36 L66 80 L44 80 Z"/>'
-              '<path d="M64 30 L84 30 L86 80 L66 80 Z"/><path d="M90 44 L110 50 L100 80 L86 78 Z"/><path d="M30 116 L110 116 M38 92 L104 92 M50 48 L56 70 M74 40 L76 70"/>', "mustard"),
-    "magnifier": ('<path d="M12 30 L90 30 M12 50 L70 50 M12 70 L60 70 M12 90 L50 90 M12 110 L74 110"/><circle cx="78" cy="64" r="34"/>'
-                  '<path d="M103 89 L128 116 C 132 121, 126 127, 121 123 L96 96"/><path d="M60 50 C 64 42, 72 38, 80 38"/>', "teal"),
-    "page-pencil": ('<path d="M22 14 L84 14 L106 36 L106 128 L22 128 Z"/><path d="M84 14 L84 36 L106 36"/><path d="M36 54 L90 54 M36 72 L90 72 M36 90 L70 90"/>'
-                    '<path d="M96 118 L128 64 L138 70 L106 124 L94 130 Z"/><path d="M122 60 L132 66"/>', "forest"),
-    "headphones": ('<path d="M26 84 C 22 30, 118 30, 114 84"/><path d="M16 80 L38 80 L38 124 L16 124 C 10 124, 8 118, 8 112 L8 92 C 8 86, 10 80, 16 80 Z"/>'
-                   '<path d="M102 80 L124 80 C 130 80, 132 86, 132 92 L132 112 C 132 118, 130 124, 124 124 L102 124 Z"/><path d="M58 88 L58 110 M70 78 L70 120 M82 92 L82 106"/>', "coral"),
-    "checklist": ('<path d="M24 22 L116 22 L116 132 L24 132 Z"/><path d="M50 12 L90 12 L90 32 L50 32 Z"/>'
-                  '<path d="M38 50 L54 50 L54 66 L38 66 Z M38 78 L54 78 L54 94 L38 94 Z M38 106 L54 106 L54 122 L38 122 Z"/>'
-                  '<path d="M64 58 L102 58 M64 86 L102 86 M64 114 L92 114"/><path d="M40 58 L46 64 L60 44 M40 86 L46 92 L60 72"/>', "blue"),
-    "car": ('<path d="M8 86 L8 66 C 8 60, 12 58, 18 56 L36 52 L52 30 C 56 26, 60 24, 66 24 L100 24 C 108 24, 112 28, 116 34 L128 54 C 136 56, 140 60, 140 68 L140 86 Z"/>'
-            '<path d="M58 34 L68 34 L68 52 L46 52 Z M76 34 L102 34 L112 52 L76 52 Z"/><circle cx="40" cy="88" r="14"/><circle cx="110" cy="88" r="14"/>', "rust"),
-    "lightbulb": ('<path d="M70 30 C 40 30, 30 60, 48 80 C 56 90, 56 98, 56 106 L 84 106 C 84 98, 84 90, 92 80 C 110 60, 100 30, 70 30 Z"/>'
-                  '<path d="M58 116 L82 116 M62 126 L78 126 M22 56 L8 50 M70 14 L70 -2 M118 56 L132 50"/>', "mustard"),
-}
-for name, (body, col) in ICONS.items():
-    svg = (f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="-6 -10 156 152" role="img" aria-label="{name} doodle">'
+import icons as icon_defs
+ICONS = icon_defs.ICONS
+for name, parts in ICONS.items():
+    svg = (f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="-6 -10 156 156" role="img" aria-label="{name} doodle">'
            f'<defs>{filt("w", 0.035, 3.5, "-40 -40 240 240")}{WASH}</defs>'
-           f'<g fill="{C[col]}" stroke="none" opacity=".55" filter="url(#sk-wash)" transform="translate(5 5)">{body}</g>'
-           f'<g fill="none" stroke="{INK}" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" filter="url(#w)">{body}</g></svg>')
+           + icon_defs.render(parts, C, INK) + '</svg>')
     open(os.path.join(KIT, "icons", f"{name}.svg"), "w").write(svg)
 
 # ------------------------------------------------ characters (standalone SVGs, A+B style)
 CHAR_DEFS = (filt("wob-bubble", 0.04, 4.5, "-50 -50 400 500")
              + WASH.replace('id="sk-wash"', 'id="wash"')
              + filt("wob-lite", 0.03, 1.8, "-50 -50 400 500"))
-for name, spec in (("learner", gc.learner), ("explainer", gc.explainer)):
-    body = gc.render(gc.person(spec), "blend", paper=C["paper"])
-    svg = (f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="50 4 186 356" role="img" aria-label="{name} character">'
+import animals
+PEOPLE = {"learner": gc.learner, "explainer": gc.explainer, "waver": gc.waver, "coffee": gc.coffee, "pointer": gc.bun}
+def blend(parts): return gc.render(parts, "blend", paper=C["paper"])
+def write_char(name, viewbox, body, label):
+    svg = (f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="{viewbox}" role="img" aria-label="{label}">'
            f'<defs>{CHAR_DEFS}</defs>{body}</svg>')
     open(os.path.join(KIT, "characters", f"{name}.svg"), "w").write(svg)
+for name, spec in PEOPLE.items():
+    write_char(name, "50 4 196 356", blend(gc.person(spec)), f"{name} character")
+write_char("cat", "40 20 170 190", blend(animals.cat()), "cat")
+write_char("dog", "40 20 170 190", blend(animals.dog()), "dog")
+# a group: four people side by side (the waver mirrored to wave outward), dog at their feet
+group = (f'<g transform="translate(260 0) scale(-1 1)">{blend(gc.person(gc.waver))}</g>'
+         f'<g transform="translate(125 0)">{blend(gc.person(gc.learner))}</g>'
+         f'<g transform="translate(250 0)">{blend(gc.person(gc.coffee))}</g>'
+         f'<g transform="translate(375 0)">{blend(gc.person(gc.bun))}</g>'
+         f'<g transform="translate(-30 212) scale(.78)">{blend(animals.dog())}</g>')
+write_char("group", "0 4 610 360", group, "a group of four people and a dog")
 
 # ------------------------------------------------ snippets + gallery
 ARROW = ('<svg class="sk-arrow" viewBox="0 0 40 20" aria-hidden="true"><line x1="4" y1="10" x2="30" y2="10" '
@@ -260,8 +260,9 @@ SNIPPETS = [
      '<h1 class="sk-title"><span class="sk-burst"><span class="sk-hl">How to get the agent</span><br><span class="sk-hl">to teach you anything</span></span></h1>'),
     ("Section heading", "Label caps in deep teal with a rule either side.",
      '<h2 class="sk-section">The learning loop</h2>'),
-    ("Step panel", "A numbered step in one of the five step colours. Add <code>.sk-dashed</code> to highlight the step you're talking about. Use <code>.sk-em</code> for accent text.",
-     panel("teal", 2, "Filter + focus", "magnifier", 'use a lens: <span class="sk-em">“what do I care about?”</span>')),
+    ("Step panel", "A numbered step in one of the five main colours. Add <code>.sk-dashed</code> for a dotted outline, to highlight the step you're talking about. Use <code>.sk-em</code> for accent text.",
+     '<div class="sk-row">\n' + panel("teal", 2, "Filter + focus", "magnifier", 'use a lens: <span class="sk-em">“what do I care about?”</span>') + '\n'
+     + panel("forest", 3, "Create new source", "page-pencil", "pull out just the parts that matter", dashed=True) + '\n</div>'),
     ("Speech bubble", "Something a person says or asks. Add <code>.sk-tail-right</code> to move the tail to the right.",
      '<div class="sk-bubble">“I want to learn <span class="sk-em">Chapter 1 of Shape Up</span>, while I’m driving.”</div>'),
     ("Ribbon banner", "An insight or takeaway. The kicker word goes in <code>.sk-kicker</code>, and an icon is optional.",
@@ -270,7 +271,7 @@ SNIPPETS = [
      ARROW + '\n' + LOOP),
 ]
 
-EXAMPLE = f'''<div class="sk-slide sk-paper">
+EXAMPLE = f'''<div class="sk-slide sk-paper"><div class="sk-slide-body">
   <h1 class="sk-title" style="font-size:2.7em"><span class="sk-burst"><span class="sk-hl">How to get the agent</span><br><span class="sk-hl">to teach you anything</span></span></h1>
   <h2 class="sk-section" style="font-size:1.7em;margin:.4em 0 .5em">The learning loop</h2>
   <div class="sk-row" style="font-size:.78em">
@@ -289,7 +290,7 @@ EXAMPLE = f'''<div class="sk-slide sk-paper">
     <div class="sk-ribbon" style="font-size:1.3em"><img src="icons/car.svg" alt=""><span class="sk-kicker">Insight:</span> “I want to learn a book while driving.”</div>
     <img src="characters/learner.svg" alt="" style="height:6.2em;margin-top:-1.5em">
   </div>
-</div>'''
+</div></div>'''
 
 def swatch(k, v):
     return f'<div class="sw"><i style="background:{v}"></i><b>--sk-{k}</b><span>{v}</span></div>'
@@ -298,8 +299,9 @@ cards = "\n".join(
     f'<section class="chunk"><h3>{html.escape(t)}</h3><p class="desc">{d}</p>'
     f'<div class="demo sk-paper">{s}</div><details><summary>Copy the code</summary><pre><code>{html.escape(s)}</code></pre></details></section>'
     for t, d, s in SNIPPETS)
-icons = "\n".join(f'<figure><img src="icons/{n}.svg" alt=""><figcaption>icons/{n}.svg</figcaption></figure>' for n in ICONS)
-chars = "\n".join(f'<figure class="char"><img src="characters/{n}.svg" alt=""><figcaption>characters/{n}.svg</figcaption></figure>' for n in ("learner", "explainer"))
+icons = "\n".join(f'<h3 class="grp">{g}</h3><div class="row">' + "".join(f'<figure><img src="icons/{n}.svg" alt=""><figcaption>icons/{n}.svg</figcaption></figure>' for n in names) + '</div>'
+                  for g, names in icon_defs.GROUPS.items())
+chars = "\n".join(f'<figure class="char"><img src="characters/{n}.svg" alt=""><figcaption>characters/{n}.svg</figcaption></figure>' for n in list(PEOPLE) + ["group", "cat", "dog"])
 
 gallery = f'''<!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
@@ -323,14 +325,16 @@ gallery = f'''<!doctype html>
   .chunk h3 {{ margin:0; font-size:15px; }} .desc {{ margin:4px 0 10px; color:var(--g-muted); font-size:13.5px; }}
   .demo {{ padding:22px 18px; border-radius:8px; font-size:14px; overflow:hidden; }}
   .demo .sk-panel {{ max-width:260px; }}
+  .demo .sk-row .sk-panel {{ max-width:none; }}
   details {{ margin-top:10px; }} summary {{ cursor:pointer; font-size:13px; color:var(--g-muted); }}
   pre {{ background:#1f1e1c; color:#ece7dc; padding:10px 12px; border-radius:6px; overflow:auto; font-size:12px; white-space:pre-wrap; word-break:break-word; }}
   .row {{ display:grid; grid-template-columns:repeat(auto-fill,minmax(150px,1fr)); gap:12px; }}
   figure {{ margin:0; background:var(--sk-paper); border-radius:8px; padding:12px; text-align:center; }}
-  figure img {{ width:80px; height:80px; }} figure.char img {{ width:auto; height:200px; }}
+  figure img {{ width:80px; height:80px; }} figure.char img {{ width:auto; height:200px; max-width:100%; object-fit:contain; }}
   figcaption {{ font:12px ui-monospace,monospace; color:#6b665c; margin-top:6px; overflow-wrap:anywhere; }}
   .sw {{ font:12px/1.35 ui-monospace,monospace; }} .sw i {{ display:block; height:34px; border-radius:6px; border:1px solid rgba(0,0,0,.12); margin-bottom:4px; }}
   .sw b {{ display:block; font-weight:600; }} .sw span {{ color:var(--g-muted); }}
+  h3.grp {{ font:600 13px/1 system-ui; margin:18px 0 8px; color:var(--g-muted); }}
   .fonts {{ display:grid; gap:10px; background:var(--sk-paper); color:var(--sk-ink); padding:16px; border-radius:8px; }}
 </style></head>
 <body><div class="wrap">
@@ -349,7 +353,8 @@ Add <code>sketchbook.css</code> and <code>sketchbook.js</code> to a page, then p
 <div class="row">{chars}</div>
 
 <h2 class="g">Doodle icons</h2>
-<div class="row">{icons}</div>
+<p class="desc">One colour for simple objects; up to three when the object has distinct parts. Always from the palette.</p>
+{icons}
 
 <h2 class="g">Tokens: colours (CSS variables in sketchbook.css; also tokens.json)</h2>
 <div class="row">{"".join(swatch(k, v) for k, v in C.items())}</div>

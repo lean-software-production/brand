@@ -17,22 +17,22 @@ Without `sketchbook.js`, outlines, badges and bubbles lose their wobble (Chrome)
 
 | Piece | Markup |
 |---|---|
-| 16:9 slide on paper | `<div class="sk-slide sk-paper">…</div>`. Everything inside scales with the slide width. `sk-paper` alone gives any block the paper background. |
+| 16:9 slide on paper | `<div class="sk-slide sk-paper"><div class="sk-slide-body">…</div></div>`. Everything inside the body scales with the slide width. `sk-paper` alone gives any block the paper background. |
 | Title on highlighter | `<h1 class="sk-title"><span class="sk-burst"><span class="sk-hl">Line one</span><br><span class="sk-hl">Line two</span></span></h1>`. `sk-burst` (the tick marks) is optional. |
 | Section heading | `<h2 class="sk-section">The learning loop</h2>` |
-| Step panel | `<div class="sk-panel sk-teal">` + `<div class="sk-step"><span class="sk-num">2</span><span class="sk-label">Filter + focus</span></div>` + `<img src="icons/magnifier.svg" alt="">` + `<p>…</p>`. Add `sk-dashed` to highlight one step. |
+| Step panel | `<div class="sk-panel sk-teal">` + `<div class="sk-step"><span class="sk-num">2</span><span class="sk-label">Filter + focus</span></div>` + `<img src="icons/magnifier.svg" alt="">` + `<p>…</p>`. Add `sk-dashed` for a dotted outline, to highlight one step. |
 | Step row | `<div class="sk-row">` panels with `<svg class="sk-arrow">` between them (copy from `index.html`). Panels share the width equally. |
 | Loop-back arrow | `<svg class="sk-loop">` (copy from `index.html`). Put it under a step row. |
 | Speech bubble | `<div class="sk-bubble">“…”</div>`. Add `sk-tail-right` to move the tail. |
 | Ribbon banner | `<div class="sk-ribbon"><img src="icons/car.svg" alt=""><span class="sk-kicker">Insight:</span> …</div>` |
 | Accent text | `<span class="sk-em">…</span>` inside a panel (step colour) or bubble (rust). |
 
-**Colour modifiers:** `sk-mustard`, `sk-teal`, `sk-forest`, `sk-coral`, `sk-blue`, `sk-rust`, `sk-deep-teal`. The five-step sequence is always mustard → teal → forest → coral → blue.
+**Colour modifiers:** `sk-mustard`, `sk-teal`, `sk-forest`, `sk-coral`, `sk-blue`, `sk-rust`, `sk-deep-teal`. For numbered steps we usually go mustard → teal → forest → coral → blue. That keeps a series consistent, but it’s a habit, not a rule.
 
 ## Images (use anywhere: slides, web, Google Slides, docs)
 
-- `icons/`: books, magnifier, page-pencil, headphones, checklist, car, lightbulb. Thin wobbly ink over a watercolour wash.
-- `characters/`: learner (headphones + book) and explainer (pointing). Chunky clean outline with a pastel wash.
+- `icons/`: 18 everyday objects. Brand words: mug (warm), kite (whimsical), owl (wise). Learning: books, page-pencil, magnifier, lightbulb, checklist, headphones. Working together: chat, puzzle, sticky-note, compass. Tech and systems: laptop, robot, gear, sprout, car. Thin wobbly ink over a watercolour wash. **Colour rule:** one colour for simple objects, and up to three when the object has distinct parts, always from the palette. New objects are welcome; add them to `../icons.py`.
+- `characters/`: five people (learner, explainer, waver, coffee, pointer), a `group` of four with a dog, and a `cat` and `dog`. Chunky clean outline with a pastel wash. New people and poses go in `../gen_characters.py`, and animals in `../animals.py`.
 
 Each SVG is self-contained, with its own effects, so it works as a plain `<img>`.
 
@@ -48,5 +48,5 @@ CSS variables in `sketchbook.css` (`var(--sk-mustard)`, `var(--sk-font-title)` a
 - One idea per slide: a title, then at most one row of panels or one bubble and one ribbon.
 - Characters are supporting cast. Keep them small and at the edge, doing something, never the centrepiece.
 - Pictures of things (books, headphones) beat pictures of people for explaining a step.
-- Don't invent new colours. If you need more than five steps, reuse the sequence.
+- Don't invent new colours.
 - Every outline wobbles, but only a little. Don't turn the wobble up.

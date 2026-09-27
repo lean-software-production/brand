@@ -30,6 +30,16 @@ def person(p):
         D("M160 180 L160 222", 3)
         D("M130 196 L150 192 M130 206 L150 202 M170 194 L188 197 M170 204 L186 207", 2.5)
         C(160, 226, 10, p["skin"])
+    elif p["pose"] == "wave":
+        L("M162 150 C 186 142, 198 120, 202 98", p["top"], 22)
+        C(203, 88, 12, p["skin"])
+        D("M218 70 C 226 78, 226 92, 220 100 M226 62 C 238 74, 238 98, 228 108", 3.5)
+    elif p["pose"] == "mug":
+        L("M162 152 C 184 172, 184 196, 168 206", p["top"], 22)
+        S("M142 186 L174 186 L172 224 L144 224 Z", p.get("mugc", "#F76C37"))
+        D("M174 194 C 186 194, 186 214, 173 214", 3.5)
+        C(160, 212, 10, p["skin"])
+        D("M152 176 C 148 168, 156 164, 152 156 M164 176 C 160 168, 168 164, 164 156", 3)
     else:  # pointing up
         L("M162 150 C 186 134, 196 108, 198 82", p["top"], 22)
         L("M199 70 L203 48", p["skin"], 8)
@@ -37,12 +47,24 @@ def person(p):
         D("M186 40 L180 32 M212 36 L218 28 M200 26 L200 16", 3.5)
     # head
     parts.append(("head-start",))
+    if p["hair"] == "long":
+        S("M86 100 C 78 50, 110 36, 130 38 C 150 36, 182 50, 174 100 L 180 158 C 168 164, 156 158, 154 146 L 106 146 C 104 158, 92 164, 80 158 Z", p["hairc"])
+    if p["hair"] == "bun":
+        C(130, 44, 17, p["hairc"])
     C(130, 92, 42, p["skin"])
     if p["hair"] == "short":
         S("M88 96 C 82 52, 110 40, 134 42 C 162 44, 178 62, 172 96 C 164 74, 144 68, 126 72 C 108 74, 96 82, 88 96 Z", p["hairc"])
+    elif p["hair"] == "long":
+        S("M88 92 C 90 58, 112 48, 134 50 C 156 50, 172 64, 172 92 C 160 72, 140 66, 124 70 C 108 72, 96 80, 88 92 Z", p["hairc"])
+    elif p["hair"] == "bun":
+        S("M88 94 C 84 60, 108 48, 132 50 C 158 50, 176 66, 172 94 C 162 76, 144 70, 128 72 C 110 74, 96 82, 88 94 Z", p["hairc"])
+    elif p["hair"] == "bald":
+        D("M100 62 C 110 56, 122 54, 132 54", 2.5)
     else:  # curly
         S("M84 104 C 68 94, 72 66, 90 62 C 88 42, 112 32, 126 42 C 138 28, 164 34, 164 52 C 184 54, 190 82, 176 104 C 170 82, 152 72, 130 72 C 108 72, 92 84, 84 104 Z", p["hairc"])
     Dot(116, 98, 4.5); Dot(144, 98, 4.5)
+    if p.get("beard"):
+        S("M96 110 C 100 134, 116 140, 130 140 C 144 140, 160 134, 164 110 C 156 122, 146 126, 130 126 C 114 126, 104 122, 96 110 Z", p["beard"])
     D("M119 113 Q130 122 141 113")
     parts.append(("blush", 106, 110)); parts.append(("blush", 154, 110))
     if p.get("glasses"):
@@ -103,6 +125,10 @@ def render(parts, style, head_scale=1.0, paper="var(--paper)"):
 
 learner = dict(pose="book", skin="#f3c9a8", hair="short", hairc="#6b4a2e", top="#4a7d4b", trousers="#36545c",
                book="#1f78a8", headphones=True, phones="#f76c37")
+waver = dict(pose="wave", skin="#e8b48f", hair="long", hairc="#3b2a20", top="#039695", trousers="#36545c")
+coffee = dict(pose="mug", skin="#7a4b30", hair="bald", hairc="#2b2320", beard="#7a6656", glasses=True, top="#1f78a8",
+              trousers="#36545c", mugc="#F76C37")
+bun = dict(pose="point", skin="#f0c2a0", hair="bun", hairc="#c0612b", top="#f76c37", trousers="#4a7d4b")
 explainer = dict(pose="point", skin="#a8704a", hair="curly", hairc="#2b2320", top="#eea306", trousers="#1f78a8",
                  glasses=True)
 

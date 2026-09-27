@@ -38,8 +38,8 @@
   .swatch small { display: block; font-family: ui-monospace, monospace; font-size: .7em; color: #6b665c; }
   .fontrow { display: grid; grid-template-columns: 11em 1fr; align-items: baseline; gap: 1em; margin: .7em 0; }
   .fontrow b { font-family: var(--sk-font-label); font-weight: 400; color: var(--sk-deep-teal); font-size: 1.3em; }
-  .icons { display: flex; gap: 1.6em; justify-content: center; margin: 1em 0 .4em; }
-  .icons img { width: 130px; }
+  .icons { display: flex; gap: 1.2em; justify-content: center; margin: .6em 0 .2em; }
+  .icons img { width: 120px; }
   .dodont { display: grid; grid-template-columns: 1fr 1fr; gap: 2em; margin-top: .8em; }
   .dodont .sk-panel { font-size: 1.1em; }
   .dodont ul { margin: 0; padding-left: 1.1em; font-size: 1.25em; line-height: 1.35; color: var(--sk-body-text); }
@@ -66,17 +66,17 @@
     <div class="sk-row" style="font-size:1.25em;margin-top:1.2em">
       <div class="sk-panel sk-coral">
         <div class="sk-step"><span class="sk-num">1</span><span class="sk-label">Warm</span></div>
-        <img src="kit/icons/headphones.svg" alt="">
+        <img src="kit/icons/mug.svg" alt="A steaming mug with a heart">
         <p>Welcoming, never corporate.</p>
       </div>
-      <div class="sk-panel sk-mustard">
+      <div class="sk-panel sk-mustard sk-dashed">
         <div class="sk-step"><span class="sk-num">2</span><span class="sk-label">Whimsical</span></div>
-        <img src="kit/icons/lightbulb.svg" alt="">
+        <img src="kit/icons/kite.svg" alt="A colourful kite">
         <p>Playful, because humans and collaboration matter.</p>
       </div>
       <div class="sk-panel sk-teal">
         <div class="sk-step"><span class="sk-num">3</span><span class="sk-label">Wise</span></div>
-        <img src="kit/icons/magnifier.svg" alt="">
+        <img src="kit/icons/owl.svg" alt="An owl">
         <p>Simple and clear, so hard topics feel easy.</p>
       </div>
     </div>
@@ -117,7 +117,7 @@
     <div class="sk-row" style="font-size:1em;margin-top:1em">
       <div class="sk-panel sk-mustard"><div class="sk-step"><span class="sk-num">1</span><span class="sk-label">One idea</span></div><p>One idea per slide, section or post.</p></div>
       <svg class="sk-arrow" viewBox="0 0 40 20" aria-hidden="true"><line x1="4" y1="10" x2="30" y2="10" stroke="#36545C" stroke-width="4" stroke-linecap="round" marker-end="url(#sk-head)" filter="url(#sk-wobble-line)"/></svg>
-      <div class="sk-panel sk-teal"><div class="sk-step"><span class="sk-num">2</span><span class="sk-label">In order</span></div><p>Numbered steps, always in the same colour order.</p></div>
+      <div class="sk-panel sk-teal"><div class="sk-step"><span class="sk-num">2</span><span class="sk-label">In order</span></div><p>Numbered steps that read in order.</p></div>
       <svg class="sk-arrow" viewBox="0 0 40 20" aria-hidden="true"><line x1="4" y1="10" x2="30" y2="10" stroke="#36545C" stroke-width="4" stroke-linecap="round" marker-end="url(#sk-head)" filter="url(#sk-wobble-line)"/></svg>
       <div class="sk-panel sk-forest"><div class="sk-step"><span class="sk-num">3</span><span class="sk-label">Familiar</span></div><p>Everyday objects to explain abstract things.</p></div>
       <svg class="sk-arrow" viewBox="0 0 40 20" aria-hidden="true"><line x1="4" y1="10" x2="30" y2="10" stroke="#36545C" stroke-width="4" stroke-linecap="round" marker-end="url(#sk-head)" filter="url(#sk-wobble-line)"/></svg>
@@ -128,7 +128,7 @@
   <!-- 6 · Colour -->
   <section>
     <h2 class="sk-section">Colour</h2>
-    <p class="lede">Five step colours, <b>always in this order</b>. If you need more than five steps, start the sequence again.</p>
+    <p class="lede">Five main colours. For numbered steps, this order keeps a series consistent, but it’s a habit, not a rule.</p>
     <div class="swatches">
       <div class="swatch"><i style="background:var(--sk-mustard)"></i>Mustard<small>#EEA306</small></div>
       <div class="swatch"><i style="background:var(--sk-teal)"></i>Teal<small>#039695</small></div>
@@ -175,10 +175,12 @@
   <!-- 9 · Pictures -->
   <section class="mid">
     <h2 class="sk-section">Pictures: objects first</h2>
-    <p class="lede">To explain a step, draw a familiar <b>thing</b>. Thin wobbly ink over a watercolour wash.</p>
+    <p class="lede">To explain an idea, draw a familiar <b>thing</b>: thin wobbly ink over a watercolour wash. Use <b>one colour</b> for simple objects and <b>up to three</b> when an object has distinct parts, always from the palette. New objects are welcome.</p>
     <div class="icons">
-      <img src="kit/icons/books.svg" alt="Books"><img src="kit/icons/magnifier.svg" alt="Magnifier"><img src="kit/icons/page-pencil.svg" alt="Page and pencil">
-      <img src="kit/icons/headphones.svg" alt="Headphones"><img src="kit/icons/checklist.svg" alt="Checklist"><img src="kit/icons/car.svg" alt="Car"><img src="kit/icons/lightbulb.svg" alt="Lightbulb">
+      <img src="kit/icons/mug.svg" alt="Mug"><img src="kit/icons/kite.svg" alt="Kite"><img src="kit/icons/owl.svg" alt="Owl"><img src="kit/icons/books.svg" alt="Books"><img src="kit/icons/chat.svg" alt="Chat bubbles"><img src="kit/icons/puzzle.svg" alt="Puzzle pieces"><img src="kit/icons/sticky-note.svg" alt="Sticky note"><img src="kit/icons/compass.svg" alt="Compass">
+    </div>
+    <div class="icons">
+      <img src="kit/icons/laptop.svg" alt="Laptop"><img src="kit/icons/robot.svg" alt="Robot"><img src="kit/icons/gear.svg" alt="Gears"><img src="kit/icons/sprout.svg" alt="Sprout"><img src="kit/icons/lightbulb.svg" alt="Lightbulb"><img src="kit/icons/checklist.svg" alt="Checklist"><img src="kit/icons/page-pencil.svg" alt="Page and pencil"><img src="kit/icons/car.svg" alt="Car">
     </div>
   </section>
 
@@ -190,13 +192,14 @@
         <p class="lede">A chunky clean outline with a pastel wash.</p>
         <ul class="sk-list sk-forest">
           <li>Small and at the edge, never the centrepiece</li>
-          <li>Always <i>doing</i> something: reading, pointing, listening</li>
+          <li>Always <i>doing</i> something: reading, waving, pointing</li>
           <li>A mix of people who look like our learners</li>
+          <li>Groups show collaboration; the cat and dog add a smile</li>
         </ul>
       </div>
       <div class="chars">
-        <figure><img src="kit/characters/learner.svg" alt=""><figcaption>The learner</figcaption></figure>
-        <figure><img src="kit/characters/explainer.svg" alt=""><figcaption>The explainer</figcaption></figure>
+        <figure><img src="kit/characters/group.svg" alt="Four people and a dog" style="height:340px"><figcaption>Working together</figcaption></figure>
+        <figure><img src="kit/characters/cat.svg" alt="A ginger cat" style="height:150px"><figcaption>Cat</figcaption></figure>
       </div>
     </div>
   </section>
@@ -216,7 +219,7 @@
   <section class="center">
     <h2 class="sk-title" style="font-size:3.6em"><span class="sk-hl">Get the kit</span></h2>
     <p class="lede" style="text-align:center">Every piece in this deck is plain HTML, CSS and SVG, ready to copy.</p>
-    <div class="sk-ribbon" style="font-size:1.5em;margin-top:.8em"><img src="kit/icons/books.svg" alt=""><span class="sk-kicker">Start here:</span>&nbsp;<a href="kit/">the Sketchbook kit</a></div>
+    <div class="sk-ribbon" style="font-size:1.5em;margin-top:.8em"><img src="kit/icons/books.svg" alt=""><span class="sk-kicker">Start here:</span>&nbsp;<a href="kit/index.html">the Sketchbook kit</a></div>
   </section>
 
 </div></div>
