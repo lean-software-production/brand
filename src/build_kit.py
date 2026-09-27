@@ -8,6 +8,7 @@ sys.path.insert(0, HERE)
 import characters as gc
 
 KIT = os.path.join(HERE, "..", "kit")
+URL = "https://lean-software-production.github.io/brand/kit/"  # where GitHub Pages publishes kit/
 for d in ("", "icons", "characters"):
     os.makedirs(os.path.join(KIT, d), exist_ok=True)
 
@@ -215,6 +216,8 @@ json.dump(TOKENS, open(os.path.join(KIT, "tokens.json"), "w"), indent=2)
 # ------------------------------------------------ icons (standalone SVGs)
 import icons as icon_defs
 ICONS = icon_defs.ICONS
+missing = set(ICONS) - set(icon_defs.ABOUT)
+assert not missing, f"add a line to ABOUT in icons.py for: {sorted(missing)}"
 for name, parts in ICONS.items():
     svg = (f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="-6 -10 156 156" role="img" aria-label="{name} doodle">'
            f'<defs>{filt("w", 0.035, 3.5, "-40 -40 240 240")}{WASH}</defs>'
@@ -228,7 +231,9 @@ CHAR_DEFS = (filt("wob-bubble", 0.04, 4.5, "-50 -50 400 500")
 import animals
 PEOPLE = {"learner": gc.learner, "explainer": gc.explainer, "waver": gc.waver, "coffee": gc.coffee, "pointer": gc.bun}
 def blend(parts): return gc.render(parts, paper=C["paper"])
+CHAR_BOXES = {}
 def write_char(name, viewbox, body, label):
+    CHAR_BOXES[name] = viewbox
     svg = (f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="{viewbox}" role="img" aria-label="{label}">'
            f'<defs>{CHAR_DEFS}</defs>{body}</svg>')
     open(os.path.join(KIT, "characters", f"{name}.svg"), "w").write(svg)
@@ -243,6 +248,18 @@ group = (f'<g transform="translate(260 0) scale(-1 1)">{blend(gc.person(gc.waver
          f'<g transform="translate(375 0)">{blend(gc.person(gc.bun))}</g>'
          f'<g transform="translate(-30 212) scale(.78)">{blend(animals.dog())}</g>')
 write_char("group", "0 4 610 360", group, "a group of four people and a dog")
+
+# One line per character: who they are and when to use them. Published in kit/index.json.
+CHAR_ABOUT = {
+    "learner": "A person reading a book with headphones on. Studying, learning, taking something in.",
+    "explainer": "A person pointing up with an idea. Explaining, teaching, a tip or insight.",
+    "waver": "A person waving. Hello, welcome, getting someone's attention, goodbye.",
+    "coffee": "A person holding a mug of coffee. Relaxed, a break, informal chat.",
+    "pointer": "A person pointing up with an idea. An alternative to the explainer.",
+    "group": "Four people and a dog side by side. A team, a community, working together.",
+    "cat": "A sitting cat, winking. Playful aside, a light moment.",
+    "dog": "A sitting dog with its head tilted. Curiosity, a question, loyalty.",
+}
 
 # ------------------------------------------------ snippets + gallery
 ARROW = ('<svg class="sk-arrow" viewBox="0 0 40 20" aria-hidden="true"><line x1="4" y1="10" x2="30" y2="10" '
@@ -301,7 +318,7 @@ cards = "\n".join(
     for t, d, s in SNIPPETS)
 icons = "\n".join(f'<h3 class="grp">{g}</h3><div class="row">' + "".join(f'<figure><img src="icons/{n}.svg" alt=""><figcaption>icons/{n}.svg</figcaption></figure>' for n in names) + '</div>'
                   for g, names in icon_defs.GROUPS.items())
-chars = "\n".join(f'<figure class="char"><img src="characters/{n}.svg" alt=""><figcaption>characters/{n}.svg</figcaption></figure>' for n in list(PEOPLE) + ["group", "cat", "dog"])
+chars = "\n".join(f'<figure class="char"><img src="characters/{n}.svg" alt=""><figcaption>characters/{n}.svg</figcaption></figure>' for n in CHAR_BOXES)
 
 gallery = f'''<!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
@@ -367,4 +384,39 @@ Add <code>sketchbook.css</code> and <code>sketchbook.js</code> to a page, then p
 </div>
 </div></body></html>'''
 open(os.path.join(KIT, "index.html"), "w").write(gallery)
+
+# ------------------------------------------------ index.json: the kit, for agents
+import re
+def aspect(viewbox):
+    w, h = viewbox.split()[2:]
+    return round(float(w) / float(h), 3)
+def plain(text):
+    return html.unescape(re.sub(r"<[^>]+>", "", text))
+icon_tags = {n: g for g, names in icon_defs.GROUPS.items() for n in names}
+index = {
+    "about": "The Sketchbook brand kit: warm, whimsical, wise. Use whole files; don't edit or redraw them. "
+             "To add a piece, ask for it in https://github.com/lean-software-production/brand.",
+    "base_url": URL,
+    "setup": [f'<link rel="stylesheet" href="{URL}sketchbook.css">', f'<script src="{URL}sketchbook.js" defer></script>'],
+    "gallery": URL + "index.html",
+    "tokens": URL + "tokens.json",
+    "rules": [
+        "One idea per slide: a title, then at most one row of panels, or one bubble and one ribbon.",
+        "Characters are supporting cast: small, at the edge, doing something. Never the centrepiece.",
+        "Pictures of things beat pictures of people for explaining a step.",
+        "Only use the palette colours. Don't invent new ones.",
+        "Use everyday words; explain any jargon briefly.",
+    ],
+    "images": [{"kind": "icon", "name": n, "about": icon_defs.ABOUT[n], "tags": [icon_tags.get(n, "other")],
+                "aspect": 1.0, "path": f"icons/{n}.svg", "url": f"{URL}icons/{n}.svg"} for n in ICONS]
+            + [{"kind": "character", "name": n, "about": CHAR_ABOUT[n], "tags": ["character"],
+                "aspect": aspect(CHAR_BOXES[n]), "path": f"characters/{n}.svg", "url": f"{URL}characters/{n}.svg"} for n in CHAR_BOXES],
+    "pieces": [{"name": t, "about": plain(d), "html": snip} for t, d, snip in SNIPPETS]
+            + [{"name": "Whole slide", "about": "A complete 16:9 slide built only from kit pieces. Start from this.", "html": EXAMPLE}],
+    "colour_modifiers": ["sk-mustard", "sk-teal", "sk-forest", "sk-coral", "sk-blue", "sk-rust", "sk-deep-teal"],
+    "note": "Image paths inside 'html' are relative to base_url.",
+}
+missing = set(CHAR_BOXES) - set(CHAR_ABOUT)
+assert not missing, f"add a line to CHAR_ABOUT in build_kit.py for: {sorted(missing)}"
+json.dump(index, open(os.path.join(KIT, "index.json"), "w"), indent=2, ensure_ascii=False)
 print("kit built:", sorted(os.listdir(KIT)))

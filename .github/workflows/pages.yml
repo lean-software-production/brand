@@ -1,4 +1,4 @@
-# Publishes the brand guidelines deck (index.html) and the Sketchbook kit (kit/) to GitHub Pages.
+# Publishes the brand guidelines deck (index.html), the Sketchbook kit (kit/) and the agent skill (skill/) to GitHub Pages.
 name: Publish to GitHub Pages
 
 on:
@@ -27,7 +27,7 @@ jobs:
       - name: Assemble site
         run: |
           mkdir _site
-          cp -r index.html kit _site/
+          cp -r index.html kit skill _site/
           touch _site/.nojekyll
 
       - uses: actions/configure-pages@v5

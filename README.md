@@ -6,6 +6,17 @@ The Sketchbook brand: a hand-drawn style for our slides, website, courses and po
 - **Sketchbook kit:** `kit/`. Ready-to-use CSS, icons and characters. Open `kit/index.html` to see every piece, and read `kit/README.md` to use them.
 - **Still to decide:** `TODO.md`.
 
+## Using the brand from another project (agents)
+
+Install the `sketchbook` skill. It reads the kit's machine-readable index (`kit/index.json`, published at https://lean-software-production.github.io/brand/kit/index.json) and uses the pieces from there.
+
+```sh
+mkdir -p ~/.claude/skills/sketchbook
+curl -fsSL https://lean-software-production.github.io/brand/skill/sketchbook/SKILL.md -o ~/.claude/skills/sketchbook/SKILL.md
+```
+
+Use `.claude/skills/` inside a project instead to install it for that project only. Agents without skills can be pointed at the same `SKILL.md`.
+
 ## Warm, whimsical, wise
 
 - **Warm:** cream paper, soft pastel washes and friendly faces. Welcoming, never corporate.

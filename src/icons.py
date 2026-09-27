@@ -118,6 +118,28 @@ ICONS = {
     ],
 }
 
+# One line per icon: what it shows and what it's good for. Published in kit/index.json so agents can pick icons.
+ABOUT = {
+    "mug": "A steaming mug with a heart. Warmth, welcome, a break, a chat over coffee. Stands for 'warm'.",
+    "kite": "A colourful kite. Play, curiosity, freedom, trying things out. Stands for 'whimsical'.",
+    "owl": "An owl. Knowledge, good judgement, a wise guide. Stands for 'wise'.",
+    "books": "A stack of books. Sources, reading, research, a body of knowledge.",
+    "page-pencil": "A page with a pencil. Writing, notes, drafting, creating something new.",
+    "magnifier": "A magnifying glass. Looking closely, searching, focusing, filtering.",
+    "lightbulb": "A lightbulb. An idea, an insight, a moment of understanding.",
+    "checklist": "A checklist with ticks. Steps done, validation, testing, a plan.",
+    "headphones": "Headphones. Listening, audio, podcasts, learning on the go.",
+    "chat": "Two speech bubbles. Conversation, feedback, asking questions.",
+    "puzzle": "Two puzzle pieces fitting together. Collaboration, integration, parts of a solution.",
+    "sticky-note": "A sticky note. Ideas on a wall, workshops, capturing a thought.",
+    "compass": "A compass. Direction, strategy, finding your way, goals.",
+    "laptop": "A laptop. Computers, coding, working online.",
+    "robot": "A friendly robot. AI, agents, automation.",
+    "gear": "Gears. Systems, processes, how things work, machinery.",
+    "sprout": "A sprout. Growth, learning, starting small, progress.",
+    "car": "A car. Travel, a journey, learning on the move, speed.",
+}
+
 GROUPS = {
     "Brand words": ["mug", "kite", "owl"],
     "Learning": ["books", "page-pencil", "magnifier", "lightbulb", "checklist", "headphones"],

@@ -24,14 +24,14 @@ In `src/icons.py`, add an entry to `ICONS`. It's a list of `(colour, path)` part
 - `(None, "M…")`: an ink line only (details, open strokes).
 - `("solid", "M…")`: filled ink (pupils, dots).
 
-Colour names are the palette keys in `TOKENS` in `src/build_kit.py`. Use one colour for simple objects, and up to three when the object has distinct parts. Also add the name to a list in `GROUPS`, or it won't appear in the gallery. It's written to `kit/icons/<name>.svg`.
+Colour names are the palette keys in `TOKENS` in `src/build_kit.py`. Use one colour for simple objects, and up to three when the object has distinct parts. Also add the name to a list in `GROUPS`, or it won't appear in the gallery, and a one-line description to `ABOUT`. Agents choose icons by that description (it's published in `kit/index.json`), so say what it shows and what it's good for. It's written to `kit/icons/<name>.svg`.
 
 ## Add a person
 
 People are one body with settings (`src/characters.py`):
 
 - **Settings:** `pose` (`book`, `wave`, `mug`, anything else points), `hair` (`short`, `long`, `bun`, `bald`, `curly`), `skin`, `hairc`, `top`, `trousers`, and optional `glasses`, `headphones`/`phones`, `book`, `mugc`.
-- **Adding them:** add a settings `dict` next to the others, then add it to `PEOPLE` in `src/build_kit.py`.
+- **Adding them:** add a settings `dict` next to the others, then add it to `PEOPLE` in `src/build_kit.py`, with a one-line description in `CHAR_ABOUT`.
 - **New poses or hair:** add a branch in `person()`.
 
 Because every person shares one body, they can start to look alike. Before adding many, see the character-variety item in `TODO.md`.
@@ -46,7 +46,7 @@ In `src/animals.py`, write a function that returns parts in a 200×200 box:
 - `("dot", cx, cy, r)`: an eye.
 - `("blush", cx, cy)`: a cheek.
 
-Then add a `write_char(...)` call for it in `src/build_kit.py`, and its name to the `chars` list for the gallery. The same parts work for any chunky figure, not just animals.
+Then add a `write_char(...)` call for it in `src/build_kit.py`, and a one-line description to `CHAR_ABOUT`. The same parts work for any chunky figure, not just animals.
 
 ## Compose a scene
 
@@ -58,4 +58,4 @@ If a slide needs something specific that the kit won't reuse, you can still draw
 
 ## A new layout piece (CSS)
 
-Layout pieces are the building blocks like panels, bubbles and ribbons, and they live in the `sketchbook.css` section of `src/build_kit.py`. Class names start with `sk-`. Take colours and fonts from the tokens, and never add new colours. Add the new piece to the gallery in the same file, and to the table in `kit/README.md`.
+Layout pieces are the building blocks like panels, bubbles and ribbons, and they live in the `sketchbook.css` section of `src/build_kit.py`. Class names start with `sk-`. Take colours and fonts from the tokens, and never add new colours. Add it to `SNIPPETS` in the same file, which puts it in both the gallery and `kit/index.json`, and to the table in `kit/README.md`.
