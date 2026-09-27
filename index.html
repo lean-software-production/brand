@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Brand Guidelines</title>
+<meta name="description" content="Warm, whimsical, wise: our brand guidelines and the Sketchbook kit.">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reset.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
+<link rel="stylesheet" href="kit/sketchbook.css">
+<script src="kit/sketchbook.js" defer></script>
+<style>
+  /* Deck = kit pieces on paper. The slide is 1600×900; reveal scales it to fit. */
+  html, body, .reveal-viewport { background: var(--sk-paper); }
+  .reveal-viewport { background-image: none; }
+  .reveal { font-family: var(--sk-font-body); color: var(--sk-ink); }
+  .reveal .slides section { font-size: 26px; text-align: left; height: 100%; box-sizing: border-box; padding: 30px 10px 20px; display: flex !important; flex-direction: column; }
+  .reveal .slides section.mid { justify-content: center; }
+  .reveal .sk-bubble::before { border-width: 5px; }
+  .reveal .sk-bubble::after { border-right-width: 5px; border-bottom-width: 5px; }
+  .reveal .sk-panel::before { border-width: 4px; }
+  .reveal .slides section.center { display: flex !important; flex-direction: column; justify-content: center; align-items: center; text-align: center; }
+  .reveal .progress { color: var(--sk-mustard); height: 5px; }
+  .reveal .controls { color: var(--sk-deep-teal); }
+  .reveal .slide-number { background: transparent; color: var(--sk-deep-teal); font-family: var(--sk-font-label); font-size: 20px; }
+
+  .kicker { font-family: var(--sk-font-label); color: var(--sk-rust); font-size: 1.5em; margin: 0 0 .2em; }
+  .lede { font-size: 1.7em; line-height: 1.3; color: var(--sk-body-text); max-width: 28em; margin: .4em 0; }
+  .big-word { font-size: 5.4em; text-align: left; line-height: 1.1; margin: 0 0 .1em -.1em; }
+  .split { display: grid; grid-template-columns: 1.25fr 1fr; gap: 2.5em; align-items: center; flex: 1; min-height: 0; }
+  .split > img { max-height: 620px; justify-self: center; }
+  ul.sk-list { list-style: none; padding: 0; margin: .6em 0 0; }
+  ul.sk-list li { font-size: 1.45em; line-height: 1.3; margin: .45em 0; padding-left: 1.4em; position: relative; color: var(--sk-body-text); }
+  ul.sk-list li::before { content: ""; position: absolute; left: 0; top: .45em; width: .55em; height: .55em; border-radius: 50%; background: var(--sk-accent); }
+  .swatches { display: flex; gap: 1em; margin-top: .6em; }
+  .swatch { flex: 1; text-align: center; font-family: var(--sk-font-label); font-size: 1.15em; color: var(--sk-body-text); }
+  .swatch i { display: block; height: 3.4em; border-radius: .8em; margin-bottom: .35em; border: 3px solid var(--sk-ink); }
+  .swatch small { display: block; font-family: ui-monospace, monospace; font-size: .7em; color: #6b665c; }
+  .fontrow { display: grid; grid-template-columns: 11em 1fr; align-items: baseline; gap: 1em; margin: .7em 0; }
+  .fontrow b { font-family: var(--sk-font-label); font-weight: 400; color: var(--sk-deep-teal); font-size: 1.3em; }
+  .icons { display: flex; gap: 1.6em; justify-content: center; margin: 1em 0 .4em; }
+  .icons img { width: 130px; }
+  .dodont { display: grid; grid-template-columns: 1fr 1fr; gap: 2em; margin-top: .8em; }
+  .dodont .sk-panel { font-size: 1.1em; }
+  .dodont ul { margin: 0; padding-left: 1.1em; font-size: 1.25em; line-height: 1.35; color: var(--sk-body-text); }
+  .chars { display: flex; gap: 3em; align-items: flex-end; justify-content: center; }
+  .chars figure { margin: 0; text-align: center; font-family: var(--sk-font-label); font-size: 1.3em; color: var(--sk-deep-teal); }
+  .chars img { height: 420px; }
+  code { font-family: ui-monospace, monospace; font-size: .85em; background: #f1ead9; padding: .05em .3em; border-radius: 4px; }
+  a { color: var(--sk-blue); }
+</style>
+</head>
+<body>
+<div class="reveal"><div class="slides">
+
+  <!-- 1 · Title -->
+  <section class="center">
+    <p class="kicker">Brand guidelines</p>
+    <h1 class="sk-title" style="font-size:5em"><span class="sk-burst"><span class="sk-hl">Warm, whimsical,</span><br><span class="sk-hl">wise</span></span></h1>
+    <p class="lede" style="text-align:center">How we look, sound and explain things, on slides, the website, courses and everything else we make.</p>
+  </section>
+
+  <!-- 2 · The three words -->
+  <section class="mid">
+    <h2 class="sk-section">Our brand in three words</h2>
+    <div class="sk-row" style="font-size:1.25em;margin-top:1.2em">
+      <div class="sk-panel sk-coral">
+        <div class="sk-step"><span class="sk-num">1</span><span class="sk-label">Warm</span></div>
+        <img src="kit/icons/headphones.svg" alt="">
+        <p>Welcoming, never corporate.</p>
+      </div>
+      <div class="sk-panel sk-mustard">
+        <div class="sk-step"><span class="sk-num">2</span><span class="sk-label">Whimsical</span></div>
+        <img src="kit/icons/lightbulb.svg" alt="">
+        <p>Playful, because humans and collaboration matter.</p>
+      </div>
+      <div class="sk-panel sk-teal">
+        <div class="sk-step"><span class="sk-num">3</span><span class="sk-label">Wise</span></div>
+        <img src="kit/icons/magnifier.svg" alt="">
+        <p>Simple and clear, so hard topics feel easy.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3 · Warm -->
+  <section>
+    <div class="split">
+      <div>
+        <h2 class="sk-title big-word"><span class="sk-hl">Warm</span></h2>
+        <p class="lede">Cream paper, soft pastel washes and friendly faces make everything we put out, from slides and the website to courses and posts, feel welcoming, never corporate.</p>
+        <ul class="sk-list sk-coral">
+          <li>Paper, not white screens</li>
+          <li>Pastel washes, not flat corporate colour</li>
+          <li>We talk like a person, not a press release</li>
+        </ul>
+      </div>
+      <img src="kit/characters/learner.svg" alt="The learner character, reading with headphones on">
+    </div>
+  </section>
+
+  <!-- 4 · Whimsical -->
+  <section>
+    <div class="split">
+      <div>
+        <h2 class="sk-title big-word"><span class="sk-hl">Whimsical</span></h2>
+        <p class="lede">Wobbly ink, marker lettering and friendly doodles balance the mechanical, systems-heavy ideas in our trainings with a playfulness that reminds everyone that humans and collaboration matter.</p>
+        <div class="sk-bubble" style="max-width:20em;font-size:1.45em">“Factories, pipelines, agents… and <span class="sk-em">people</span>, working it out together.”</div>
+      </div>
+      <img src="kit/characters/explainer.svg" alt="The explainer character, pointing upward with an idea">
+    </div>
+  </section>
+
+  <!-- 5 · Wise -->
+  <section class="mid">
+    <h2 class="sk-title big-word"><span class="sk-hl">Wise</span></h2>
+    <p class="lede" style="max-width:34em">Simplicity and clarity first, with one idea at a time, steps in a clear order and simple, familiar images, so even hard topics are easy to understand.</p>
+    <div class="sk-row" style="font-size:1em;margin-top:1em">
+      <div class="sk-panel sk-mustard"><div class="sk-step"><span class="sk-num">1</span><span class="sk-label">One idea</span></div><p>One idea per slide, section or post.</p></div>
+      <svg class="sk-arrow" viewBox="0 0 40 20" aria-hidden="true"><line x1="4" y1="10" x2="30" y2="10" stroke="#36545C" stroke-width="4" stroke-linecap="round" marker-end="url(#sk-head)" filter="url(#sk-wobble-line)"/></svg>
+      <div class="sk-panel sk-teal"><div class="sk-step"><span class="sk-num">2</span><span class="sk-label">In order</span></div><p>Numbered steps, always in the same colour order.</p></div>
+      <svg class="sk-arrow" viewBox="0 0 40 20" aria-hidden="true"><line x1="4" y1="10" x2="30" y2="10" stroke="#36545C" stroke-width="4" stroke-linecap="round" marker-end="url(#sk-head)" filter="url(#sk-wobble-line)"/></svg>
+      <div class="sk-panel sk-forest"><div class="sk-step"><span class="sk-num">3</span><span class="sk-label">Familiar</span></div><p>Everyday objects to explain abstract things.</p></div>
+    </div>
+  </section>
+
+  <!-- 6 · Colour -->
+  <section>
+    <h2 class="sk-section">Colour</h2>
+    <p class="lede">Five step colours, <b>always in this order</b>. If you need more than five steps, start the sequence again.</p>
+    <div class="swatches">
+      <div class="swatch"><i style="background:var(--sk-mustard)"></i>Mustard<small>#EEA306</small></div>
+      <div class="swatch"><i style="background:var(--sk-teal)"></i>Teal<small>#039695</small></div>
+      <div class="swatch"><i style="background:var(--sk-forest)"></i>Forest<small>#4A7D4B</small></div>
+      <div class="swatch"><i style="background:var(--sk-coral)"></i>Coral<small>#F76C37</small></div>
+      <div class="swatch"><i style="background:var(--sk-blue)"></i>Blue<small>#1F78A8</small></div>
+    </div>
+    <p class="lede" style="font-size:1.4em;margin-top:1em">Supporting colours: headings, arrows, highlights and paper. Don't invent new ones.</p>
+    <div class="swatches">
+      <div class="swatch"><i style="background:var(--sk-deep-teal)"></i>Deep teal<small>headings</small></div>
+      <div class="swatch"><i style="background:var(--sk-slate)"></i>Slate<small>arrows</small></div>
+      <div class="swatch"><i style="background:var(--sk-rust)"></i>Rust<small>kickers</small></div>
+      <div class="swatch"><i style="background:var(--sk-highlighter)"></i>Highlighter<small>titles</small></div>
+      <div class="swatch"><i style="background:var(--sk-paper)"></i>Paper<small>background</small></div>
+      <div class="swatch"><i style="background:var(--sk-ink)"></i>Ink<small>lines</small></div>
+    </div>
+  </section>
+
+  <!-- 7 · Type -->
+  <section>
+    <h2 class="sk-section">Type</h2>
+    <div class="fontrow"><b>Titles</b><span style="font-family:var(--sk-font-title);font-size:3.2em;line-height:1">LUCKIEST GUY</span></div>
+    <div class="fontrow"><b>Labels + headings</b><span style="font-family:var(--sk-font-label);font-size:2.6em;color:var(--sk-deep-teal)">Patrick Hand SC</span></div>
+    <div class="fontrow"><b>Sentences</b><span style="font-family:var(--sk-font-body);font-size:2.2em">Patrick Hand, for everything people actually read.</span></div>
+    <p class="lede" style="font-size:1.4em;margin-top:1.2em">Big titles are always capitals and sit on a <span style="background:var(--sk-highlighter);padding:0 .3em">highlighter swash</span>. Everything else is sentence case.</p>
+  </section>
+
+  <!-- 8 · The line -->
+  <section>
+    <h2 class="sk-section">The wobbly line</h2>
+    <div class="split">
+      <div>
+        <p class="lede">Every outline wobbles, <b>but only a little</b>: just enough to feel drawn by a person, never messy.</p>
+        <ul class="sk-list sk-blue">
+          <li>Thin lines: bubbles, panels, arrows, doodles</li>
+          <li>Chunky lines: character outlines</li>
+          <li>Never turn the wobble up</li>
+        </ul>
+      </div>
+      <div class="sk-bubble sk-tail-right" style="font-size:1.6em">“Drawn by a <span class="sk-em">person</span>, not a machine.”</div>
+    </div>
+  </section>
+
+  <!-- 9 · Pictures -->
+  <section class="mid">
+    <h2 class="sk-section">Pictures: objects first</h2>
+    <p class="lede">To explain a step, draw a familiar <b>thing</b>. Thin wobbly ink over a watercolour wash.</p>
+    <div class="icons">
+      <img src="kit/icons/books.svg" alt="Books"><img src="kit/icons/magnifier.svg" alt="Magnifier"><img src="kit/icons/page-pencil.svg" alt="Page and pencil">
+      <img src="kit/icons/headphones.svg" alt="Headphones"><img src="kit/icons/checklist.svg" alt="Checklist"><img src="kit/icons/car.svg" alt="Car"><img src="kit/icons/lightbulb.svg" alt="Lightbulb">
+    </div>
+  </section>
+
+  <!-- 10 · Characters -->
+  <section>
+    <h2 class="sk-section">Characters: supporting cast</h2>
+    <div class="split" style="grid-template-columns:1fr 1.1fr">
+      <div>
+        <p class="lede">A chunky clean outline with a pastel wash.</p>
+        <ul class="sk-list sk-forest">
+          <li>Small and at the edge, never the centrepiece</li>
+          <li>Always <i>doing</i> something: reading, pointing, listening</li>
+          <li>A mix of people who look like our learners</li>
+        </ul>
+      </div>
+      <div class="chars">
+        <figure><img src="kit/characters/learner.svg" alt=""><figcaption>The learner</figcaption></figure>
+        <figure><img src="kit/characters/explainer.svg" alt=""><figcaption>The explainer</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- 11 · Do / don't -->
+  <section class="mid">
+    <h2 class="sk-section">Do &amp; don't</h2>
+    <div class="dodont">
+      <div class="sk-panel sk-forest"><div class="sk-step"><span class="sk-label">Do</span></div>
+        <ul><li>One idea at a time</li><li>Use the kit's pieces and colours</li><li>Explain with everyday objects</li><li>Leave space: paper is part of the look</li></ul></div>
+      <div class="sk-panel sk-coral sk-dashed"><div class="sk-step"><span class="sk-label">Don't</span></div>
+        <ul><li>Stock photos or glossy gradients</li><li>New colours or fonts</li><li>Big cartoon mascots front and centre</li><li>Extra wobble for “more fun”</li></ul></div>
+    </div>
+  </section>
+
+  <!-- 12 · Get the kit -->
+  <section class="center">
+    <h2 class="sk-title" style="font-size:3.6em"><span class="sk-hl">Get the kit</span></h2>
+    <p class="lede" style="text-align:center">Every piece in this deck is plain HTML, CSS and SVG, ready to copy.</p>
+    <div class="sk-ribbon" style="font-size:1.5em;margin-top:.8em"><img src="kit/icons/books.svg" alt=""><span class="sk-kicker">Start here:</span>&nbsp;<a href="kit/">the Sketchbook kit</a></div>
+  </section>
+
+</div></div>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+<script>
+  Reveal.initialize({ width: 1600, height: 900, margin: 0.04, hash: true, slideNumber: 'c/t', transition: 'fade', center: false });
+</script>
+</body>
+</html>
