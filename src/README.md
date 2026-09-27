@@ -28,7 +28,7 @@ Colour names are the palette keys in `TOKENS` in `src/build_kit.py`. Use one col
 
 People are one body with settings (`src/characters.py`):
 
-- **Settings:** `pose` (`book`, `wave`, `mug`, anything else points), `hair` (`short`, `long`, `bun`, `bald`, `curly`), `skin`, `hairc`, `top`, `trousers`, and optional `glasses`, `beard`, `headphones`/`phones`, `book`, `mugc`.
+- **Settings:** `pose` (`book`, `wave`, `mug`, anything else points), `hair` (`short`, `long`, `bun`, `bald`, `curly`), `skin`, `hairc`, `top`, `trousers`, and optional `glasses`, `headphones`/`phones`, `book`, `mugc`.
 - **Adding them:** add a settings `dict` next to the others, then add it to `PEOPLE` in `src/build_kit.py`.
 - **New poses or hair:** add a branch in `person()`.
 

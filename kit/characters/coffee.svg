@@ -16,7 +16,6 @@
 <path d="M100 62 C 110 56, 122 54, 132 54" fill="none" stroke="#2a2724" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
 <circle cx="116" cy="98" r="4.5" fill="#2a2724"/>
 <circle cx="144" cy="98" r="4.5" fill="#2a2724"/>
-<path d="M96 110 C 100 134, 116 140, 130 140 C 144 140, 160 134, 164 110 C 156 122, 146 126, 130 126 C 114 126, 104 122, 96 110 Z" fill="#FCF9F3"/><path d="M96 110 C 100 134, 116 140, 130 140 C 144 140, 160 134, 164 110 C 156 122, 146 126, 130 126 C 114 126, 104 122, 96 110 Z" fill="#7a6656" opacity=".6" transform="translate(2 2)" filter="url(#wash)"/><path d="M96 110 C 100 134, 116 140, 130 140 C 144 140, 160 134, 164 110 C 156 122, 146 126, 130 126 C 114 126, 104 122, 96 110 Z" fill="none" stroke="#2a2724" stroke-width="5" stroke-linejoin="round" filter="url(#wob-bubble)"/>
 <path d="M119 113 Q130 122 141 113" fill="none" stroke="#2a2724" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
 <ellipse cx="106" cy="110" rx="8" ry="5" fill="#f28c7a" opacity=".45"/>
 <ellipse cx="154" cy="110" rx="8" ry="5" fill="#f28c7a" opacity=".45"/>

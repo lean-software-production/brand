@@ -61,8 +61,6 @@ def person(p):
     else:  # curly
         S("M84 104 C 68 94, 72 66, 90 62 C 88 42, 112 32, 126 42 C 138 28, 164 34, 164 52 C 184 54, 190 82, 176 104 C 170 82, 152 72, 130 72 C 108 72, 92 84, 84 104 Z", p["hairc"])
     Dot(116, 98, 4.5); Dot(144, 98, 4.5)
-    if p.get("beard"):
-        S("M96 110 C 100 134, 116 140, 130 140 C 144 140, 160 134, 164 110 C 156 122, 146 126, 130 126 C 114 126, 104 122, 96 110 Z", p["beard"])
     D("M119 113 Q130 122 141 113")
     parts.append(("blush", 106, 110)); parts.append(("blush", 154, 110))
     if p.get("glasses"):
@@ -108,7 +106,7 @@ def render(parts, paper="var(--paper)"):
 learner = dict(pose="book", skin="#f3c9a8", hair="short", hairc="#6b4a2e", top="#4a7d4b", trousers="#36545c",
                book="#1f78a8", headphones=True, phones="#f76c37")
 waver = dict(pose="wave", skin="#e8b48f", hair="long", hairc="#3b2a20", top="#039695", trousers="#36545c")
-coffee = dict(pose="mug", skin="#7a4b30", hair="bald", hairc="#2b2320", beard="#7a6656", glasses=True, top="#1f78a8",
+coffee = dict(pose="mug", skin="#7a4b30", hair="bald", hairc="#2b2320", glasses=True, top="#1f78a8",
               trousers="#36545c", mugc="#F76C37")
 bun = dict(pose="point", skin="#f0c2a0", hair="bun", hairc="#c0612b", top="#f76c37", trousers="#4a7d4b")
 explainer = dict(pose="point", skin="#a8704a", hair="curly", hairc="#2b2320", top="#eea306", trousers="#1f78a8",
