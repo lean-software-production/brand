@@ -9,14 +9,21 @@ def person(p):
     C = lambda cx, cy, r, col: parts.append(("shape", f"M{cx-r} {cy} a{r} {r} 0 1 0 {2*r} 0 a{r} {r} 0 1 0 {-2*r} 0 Z", col))
     D = lambda d, w=3.5: parts.append(("line", d, w))
     Dot = lambda cx, cy, r: parts.append(("dot", cx, cy, r))
-    # legs + shoes
-    L("M112 256 L110 330", p["trousers"], 26)
-    L("M148 256 L150 330", p["trousers"], 26)
-    S("M88 330 h26 a10 10 0 0 1 0 20 h-26 a10 10 0 0 1 0 -20 Z", INK)
-    S("M146 330 h26 a10 10 0 0 1 0 20 h-26 a10 10 0 0 1 0 -20 Z", INK)
-    # back (left) arm, hanging
-    L("M98 152 C 84 178, 80 204, 82 228", p["top"], 22)
-    C(82, 236, 11, p["skin"])
+    shoe = lambda x, y: S(f"M{x} {y} h26 a10 10 0 0 1 0 20 h-26 a10 10 0 0 1 0 -20 Z", INK)
+    # legs + shoes, feet together or apart
+    if p.get("stance") == "wide":
+        L("M112 256 L102 330", p["trousers"], 26); L("M148 256 L158 330", p["trousers"], 26)
+        shoe(80, 330); shoe(154, 330)
+    else:
+        L("M112 256 L110 330", p["trousers"], 26); L("M148 256 L150 330", p["trousers"], 26)
+        shoe(88, 330); shoe(146, 330)
+    # back (left) arm: hanging, or swung out
+    if p.get("arm") == "out":
+        L("M98 152 C 80 170, 70 192, 64 214", p["top"], 22)
+        C(62, 222, 11, p["skin"])
+    else:
+        L("M98 152 C 84 178, 80 204, 82 228", p["top"], 22)
+        C(82, 236, 11, p["skin"])
     # torso
     S("M96 140 C 104 132, 156 132, 164 140 L 176 246 C 177 256, 172 262, 162 262 L 98 262 C 88 262, 83 256, 84 246 Z", p["top"])
     D("M114 140 Q130 152 146 140")
@@ -44,7 +51,9 @@ def person(p):
         C(199, 72, 11, p["skin"])
         D("M186 40 L180 32 M212 36 L218 28 M200 26 L200 16", 3.5)
     # head
-    parts.append(("head-start",))
+    # head: tilted, with the face turned a little to one side (look)
+    parts.append(("head-start", f"rotate({p.get('tilt', 0)} 130 134)"))
+    dx = p.get("look", 0)
     if p["hair"] == "long":
         S("M86 100 C 78 50, 110 36, 130 38 C 150 36, 182 50, 174 100 L 180 158 C 168 164, 156 158, 154 146 L 106 146 C 104 158, 92 164, 80 158 Z", p["hairc"])
     if p["hair"] == "bun":
@@ -60,11 +69,11 @@ def person(p):
         D("M100 62 C 110 56, 122 54, 132 54", 2.5)
     else:  # curly
         S("M84 104 C 68 94, 72 66, 90 62 C 88 42, 112 32, 126 42 C 138 28, 164 34, 164 52 C 184 54, 190 82, 176 104 C 170 82, 152 72, 130 72 C 108 72, 92 84, 84 104 Z", p["hairc"])
-    Dot(116, 98, 4.5); Dot(144, 98, 4.5)
-    D("M119 113 Q130 122 141 113")
-    parts.append(("blush", 106, 110)); parts.append(("blush", 154, 110))
+    Dot(116 + dx, 98, 4.5); Dot(144 + dx, 98, 4.5)
+    D(f"M{119 + dx} 113 Q{130 + dx} 122 {141 + dx} 113")
+    parts.append(("blush", 106 + dx, 110)); parts.append(("blush", 154 + dx, 110))
     if p.get("glasses"):
-        D("M106 98 a10 10 0 1 0 20 0 a10 10 0 1 0 -20 0 M134 98 a10 10 0 1 0 20 0 a10 10 0 1 0 -20 0 M126 97 L134 97", 3)
+        D(f"M{106 + dx} 98 a10 10 0 1 0 20 0 a10 10 0 1 0 -20 0 M{134 + dx} 98 a10 10 0 1 0 20 0 a10 10 0 1 0 -20 0 M{126 + dx} 97 L{134 + dx} 97", 3)
     if p.get("headphones"):
         L("M90 92 C 86 40, 174 40, 170 92", p["phones"], 7)
         S("M78 80 h14 a6 6 0 0 1 6 6 v18 a6 6 0 0 1 -6 6 h-14 a6 6 0 0 1 -6 -6 v-18 a6 6 0 0 1 6 -6 Z", p["phones"])
@@ -103,11 +112,13 @@ def render(parts, paper="var(--paper)"):
             out.append(f'<ellipse cx="{part[1]}" cy="{part[2]}" rx="8" ry="5" fill="#f28c7a" opacity=".45"/>')
     return "\n".join(out)
 
-learner = dict(pose="book", skin="#f3c9a8", hair="short", hairc="#6b4a2e", top="#4a7d4b", trousers="#36545c",
+# Optional: tilt (head angle, degrees), look (face offset in px, + is our right), stance="wide", arm="out".
+# Give each person one or two of these, suggested by what they're doing, not all of them.
+learner = dict(pose="book", tilt=8, look=4, skin="#f3c9a8", hair="short", hairc="#6b4a2e", top="#4a7d4b", trousers="#36545c",
                book="#1f78a8", headphones=True, phones="#f76c37")
-waver = dict(pose="wave", skin="#e8b48f", hair="long", hairc="#3b2a20", top="#039695", trousers="#36545c")
-coffee = dict(pose="mug", skin="#7a4b30", hair="bald", hairc="#2b2320", glasses=True, top="#1f78a8",
+waver = dict(pose="wave", stance="wide", arm="out", skin="#e8b48f", hair="long", hairc="#3b2a20", top="#039695", trousers="#36545c")
+coffee = dict(pose="mug", look=3, skin="#7a4b30", hair="bald", hairc="#2b2320", glasses=True, top="#1f78a8",
               trousers="#36545c", mugc="#F76C37")
-bun = dict(pose="point", skin="#f0c2a0", hair="bun", hairc="#c0612b", top="#f76c37", trousers="#4a7d4b")
+bun = dict(pose="point", tilt=-6, skin="#f0c2a0", hair="bun", hairc="#c0612b", top="#f76c37", trousers="#4a7d4b")
 explainer = dict(pose="point", skin="#a8704a", hair="curly", hairc="#2b2320", top="#eea306", trousers="#1f78a8",
                  glasses=True)

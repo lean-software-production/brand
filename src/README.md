@@ -14,7 +14,7 @@ python3 src/build_kit.py
 
 After a change, rebuild, then **look at it**: screenshot `kit/index.html` (e.g. with headless Chromium) and check it before you commit. Commit `src/` and the rebuilt `kit/` together.
 
-**Draw lopsided.** A mirror-image drawing looks machine-made. Tilt the head (wrap it in `("head-start", "rotate(…)")` … `("head-end",)`), make ears, eyes, hands and paws differ, and put the face or the action off centre. See `cat()` and `dog()` in `src/animals.py`.
+**Draw lopsided.** A mirror-image drawing looks machine-made. Tilt the head (wrap it in `("head-start", "rotate(…)")` … `("head-end",)`), make ears, eyes, hands and paws differ, and put the face or the action off centre. See `cat()` and `dog()` in `src/animals.py`. But don't overdo it: one or two touches per drawing, suggested by what the figure is doing, and feet stay on the ground. If every figure has a wobbly head, that looks machine-made too.
 
 ## Add an object icon
 
