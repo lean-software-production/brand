@@ -38,10 +38,7 @@ Each SVG is self-contained, with its own effects, so it works as a plain `<img>`
 
 ## Tokens
 
-CSS variables in `sketchbook.css` (`var(--sk-mustard)`, `var(--sk-font-title)` and so on), also in `tokens.json`.
-
-- **Colours:** mustard #EEA306, teal #039695, forest #4A7D4B, coral #F76C37, blue #1F78A8, slate #36545C (connector arrows), rust #D6631C, deep-teal #094854 (headings), highlighter #FFEEB8, paper #FCF9F3, ribbon #FAEED3, bubble #EEF4F5, ink #2A2724.
-- **Fonts:** `--sk-font-title` Luckiest Guy (big titles, always capitals), `--sk-font-label` Patrick Hand SC (step labels, headings), `--sk-font-body` Patrick Hand (sentences).
+CSS variables in `sketchbook.css` (`var(--sk-mustard)`, `var(--sk-font-title)` and so on), also in `tokens.json`. What each colour and font is for is shown in `index.html` and listed in `index.json`.
 
 ## Rules of thumb
 

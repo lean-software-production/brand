@@ -33,6 +33,30 @@ TOKENS = {
     },
 }
 C = TOKENS["color"]
+# What each colour and font is for. Shown in the gallery and published in index.json.
+COLOUR_ABOUT = {
+    "mustard": "Step colour 1. Panels, icon washes, warm accents.",
+    "teal": "Step colour 2. Panels, icon washes.",
+    "forest": "Step colour 3. Panels, icon washes.",
+    "coral": "Step colour 4. Panels, icon washes.",
+    "blue": "Step colour 5. Panels, icon washes, the loop-back arrow.",
+    "slate": "Connector arrows between steps.",
+    "rust": "Accent text in speech bubbles, and ribbon kickers.",
+    "deep-teal": "Section headings and their rules.",
+    "highlighter": "The swash behind big titles.",
+    "paper": "The page background.",
+    "ribbon": "Ribbon banner fill.",
+    "bubble": "Speech bubble fill.",
+    "ink": "Outlines and line drawing.",
+    "ink-title": "Big title lettering.",
+    "body-text": "Sentences and captions.",
+}
+FONT_ABOUT = {
+    "title": ("Luckiest Guy", "Big titles only, always in capitals."),
+    "label": ("Patrick Hand SC", "Step labels and section headings."),
+    "body": ("Patrick Hand", "Sentences and captions."),
+}
+assert set(COLOUR_ABOUT) == set(C) and set(FONT_ABOUT) == set(TOKENS["font"]), "every colour and font needs a line in COLOUR_ABOUT / FONT_ABOUT"
 INK = C["ink"]
 
 def svg_uri(svg):
@@ -310,15 +334,19 @@ EXAMPLE = f'''<div class="sk-slide sk-paper"><div class="sk-slide-body">
 </div></div>'''
 
 def swatch(k, v):
-    return f'<div class="sw"><i style="background:{v}"></i><b>--sk-{k}</b><span>{v}</span></div>'
+    return f'<div class="sw"><i style="background:{v}"></i><b>--sk-{k}</b><span>{v}</span><em>{html.escape(COLOUR_ABOUT[k])}</em></div>'
+def figure(path, about, cls=""):
+    return f'<figure{cls}><img src="{path}" alt=""><figcaption>{html.escape(about)}<code>{path}</code></figcaption></figure>'
 
 cards = "\n".join(
     f'<section class="chunk"><h3>{html.escape(t)}</h3><p class="desc">{d}</p>'
     f'<div class="demo sk-paper">{s}</div><details><summary>Copy the code</summary><pre><code>{html.escape(s)}</code></pre></details></section>'
     for t, d, s in SNIPPETS)
-icons = "\n".join(f'<h3 class="grp">{g}</h3><div class="row">' + "".join(f'<figure><img src="icons/{n}.svg" alt=""><figcaption>icons/{n}.svg</figcaption></figure>' for n in names) + '</div>'
+fonts = "".join(f'<div><div style="font-family:var(--sk-font-{k});font-size:28px">{name}</div>{html.escape(use)}<code>--sk-font-{k}</code></div>'
+                for k, (name, use) in FONT_ABOUT.items())
+icons = "\n".join(f'<h3 class="grp">{g}</h3><div class="row">' + "".join(figure(f"icons/{n}.svg", icon_defs.ABOUT[n]) for n in names) + '</div>'
                   for g, names in icon_defs.GROUPS.items())
-chars = "\n".join(f'<figure class="char"><img src="characters/{n}.svg" alt=""><figcaption>characters/{n}.svg</figcaption></figure>' for n in CHAR_BOXES)
+chars = "\n".join(figure(f"characters/{n}.svg", CHAR_ABOUT[n], ' class="char"') for n in CHAR_BOXES)
 
 gallery = f'''<!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
@@ -348,7 +376,9 @@ gallery = f'''<!doctype html>
   .row {{ display:grid; grid-template-columns:repeat(auto-fill,minmax(150px,1fr)); gap:12px; }}
   figure {{ margin:0; background:var(--sk-paper); border-radius:8px; padding:12px; text-align:center; }}
   figure img {{ width:80px; height:80px; }} figure.char img {{ width:auto; height:200px; max-width:100%; object-fit:contain; }}
-  figcaption {{ font:12px ui-monospace,monospace; color:#6b665c; margin-top:6px; overflow-wrap:anywhere; }}
+  figcaption {{ font:12.5px/1.35 system-ui,sans-serif; color:#4a463f; margin-top:6px; text-align:left; }}
+  figcaption code, .fonts code {{ display:block; font:11px ui-monospace,monospace; color:#6b665c; margin-top:4px; overflow-wrap:anywhere; }}
+  .sw em {{ display:block; font:12px/1.35 system-ui,sans-serif; color:var(--g-fg); margin-top:2px; }}
   .sw {{ font:12px/1.35 ui-monospace,monospace; }} .sw i {{ display:block; height:34px; border-radius:6px; border:1px solid rgba(0,0,0,.12); margin-bottom:4px; }}
   .sw b {{ display:block; font-weight:600; }} .sw span {{ color:var(--g-muted); }}
   h3.grp {{ font:600 13px/1 system-ui; margin:18px 0 8px; color:var(--g-muted); }}
@@ -377,11 +407,7 @@ Add <code>sketchbook.css</code> and <code>sketchbook.js</code> to a page, then p
 <div class="row">{"".join(swatch(k, v) for k, v in C.items())}</div>
 
 <h2 class="g">Tokens: type</h2>
-<div class="fonts">
-  <div style="font-family:var(--sk-font-title);font-size:34px">--SK-FONT-TITLE · LUCKIEST GUY</div>
-  <div style="font-family:var(--sk-font-label);font-size:28px;color:var(--sk-deep-teal)">--sk-font-label · Patrick Hand SC</div>
-  <div style="font-family:var(--sk-font-body);font-size:24px">--sk-font-body · Patrick Hand: for sentences and captions</div>
-</div>
+<div class="fonts">{fonts}</div>
 </div></body></html>'''
 open(os.path.join(KIT, "index.html"), "w").write(gallery)
 
@@ -413,6 +439,8 @@ index = {
                 "aspect": aspect(CHAR_BOXES[n]), "path": f"characters/{n}.svg", "url": f"{URL}characters/{n}.svg"} for n in CHAR_BOXES],
     "pieces": [{"name": t, "about": plain(d), "html": snip} for t, d, snip in SNIPPETS]
             + [{"name": "Whole slide", "about": "A complete 16:9 slide built only from kit pieces. Start from this.", "html": EXAMPLE}],
+    "colours": [{"name": k, "hex": v, "css": f"var(--sk-{k})", "about": COLOUR_ABOUT[k]} for k, v in C.items()],
+    "fonts": [{"name": name, "css": f"var(--sk-font-{k})", "about": use} for k, (name, use) in FONT_ABOUT.items()],
     "colour_modifiers": ["sk-mustard", "sk-teal", "sk-forest", "sk-coral", "sk-blue", "sk-rust", "sk-deep-teal"],
     "note": "Image paths inside 'html' are relative to base_url.",
 }
