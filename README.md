@@ -9,7 +9,7 @@ The Sketchbook brand: a hand-drawn style for our slides, website, courses and po
 ## Warm, whimsical, wise
 
 - **Warm:** cream paper, soft pastel washes and friendly faces. Welcoming, never corporate.
-- **Whimsical:** wobbly ink, marker lettering and friendly doodles. They balance the systems-heavy ideas in our trainings with a reminder that humans and collaboration matter.
+- **Whimsical:** wobbly ink, marker lettering and friendly doodles. They balance the systems-heavy ideas in our trainings with a reminder that humans and collaboration matter. Nothing is perfectly symmetrical: heads tilt, ears and hands don't match, and faces sit a little off centre, so it looks drawn by a hand, not a machine.
 - **Wise:** simplicity and clarity first. One idea at a time, steps in a clear order, simple familiar images. We use everyday words, and when we need jargon we explain it clearly and briefly.
 
 ## Style

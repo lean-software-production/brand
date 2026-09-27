@@ -84,7 +84,7 @@ def render(parts, paper="var(--paper)"):
     for part in parts:
         k = part[0]
         if k == "head-start":
-            out.append('<g>'); continue
+            out.append(f'<g transform="{part[1]}">' if len(part) > 1 else '<g>'); continue
         if k == "head-end":
             out.append("</g>"); continue
         if k == "shape":

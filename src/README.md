@@ -14,6 +14,8 @@ python3 src/build_kit.py
 
 After a change, rebuild, then **look at it**: screenshot `kit/index.html` (e.g. with headless Chromium) and check it before you commit. Commit `src/` and the rebuilt `kit/` together.
 
+**Draw lopsided.** A mirror-image drawing looks machine-made. Tilt the head (wrap it in `("head-start", "rotate(…)")` … `("head-end",)`), make ears, eyes, hands and paws differ, and put the face or the action off centre. See `cat()` and `dog()` in `src/animals.py`.
+
 ## Add an object icon
 
 In `src/icons.py`, add an entry to `ICONS`. It's a list of `(colour, path)` parts in a 140×140 box, back to front:
