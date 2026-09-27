@@ -12,6 +12,7 @@ Titles use black marker capitals in Luckiest Guy on a pale-yellow highlighter sw
 
 - [Brand guidelines deck](index.html): open in a browser and use the arrow keys. Published to GitHub Pages on every push to `main`.
 - [Sketchbook kit](kit/): reusable CSS, icons and characters. [Browse the gallery](kit/index.html) or [read how to use it](kit/README.md).
+- [bb theme](bb-theme/sketchbook/theme.css): the brand's paper, ink, teal and handwriting for the bb app. Copy `bb-theme/sketchbook/` into the folder `bb theme dir` prints, then run `bb theme set sketchbook`.
 - [Decisions still to make](TODO.md).
 - [Contributor guide](CONTRIBUTING.md): how to change the kit.
 
