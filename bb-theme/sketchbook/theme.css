@@ -7,8 +7,8 @@
  * Colours come only from kit/tokens.json. Where a palette colour is too
  * faint to read as text, it's darkened with ink (light mode) or lightened
  * with paper (dark mode) using color-mix, never swapped for a new hue.
- * The brand has no dark mode yet, so the dark block is a proposal: ink
- * becomes the page and paper the text.
+ * Dark mode follows the brand (README.md): ink becomes the page and
+ * paper the text.
  *
  * Install: copy this folder to `bb theme dir`, then `bb theme set sketchbook`.
  */
