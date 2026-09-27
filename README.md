@@ -1,37 +1,37 @@
-# Sketchbook brand style — agreed decisions (2026-09-27)
+# Brand
 
-Reference: the "How to learn anything w/ an Agent" lightning-lesson slides and the two
-infographics in the "LL1: HOW TO LEARN ANYTHING" frame on the canvas.
+The Sketchbook brand: a hand-drawn style for our slides, website, courses and posts.
 
-## What's in this folder
-- `index.html`: the brand guidelines deck (reveal.js). Published to GitHub Pages by `.github/workflows/pages.yml` on every push to `main`. Open it locally in a browser, and use the arrow keys to move between slides.
-- `TODO.md`: brand decisions we still need to make.
-- `kit/`: the Sketchbook kit, with reusable pieces for slides and web pages. Open `kit/index.html` to see them, and read `kit/README.md` for how to use them.
-- `reference/` (not published): the original slides and infographics this style was taken from.
-- `build_kit.py`, `gen_characters.py`: generate the kit. Edit these, not the output.
-- `slide-example*.html`, `character-styles.html`: the prototypes we iterated on to get here.
+- **Guidelines deck:** `index.html`. Open it in a browser and use the arrow keys. It's published to GitHub Pages on every push to `main`.
+- **Sketchbook kit:** `kit/`. Ready-to-use CSS, icons and characters. Open `kit/index.html` to see every piece, and read `kit/README.md` to use them.
+- **Still to decide:** `TODO.md`.
 
-## Brand in three words
-**Warm, whimsical, wise.**
-- **Warm:** cream paper, soft pastel washes and friendly faces make everything we put out, from slides and the website to courses and posts, feel welcoming, never corporate.
-- **Whimsical:** wobbly ink, marker lettering and friendly doodles balance the mechanical, systems-heavy ideas in our trainings with a playfulness that reminds everyone that humans and collaboration matter.
-- **Wise:** simplicity and clarity first, with one idea at a time, steps in a clear order and simple, familiar images, so even hard topics are easy to understand. We use words normal people would use whenever we can. When we introduce jargon, we explain it clearly and concisely.
+## Warm, whimsical, wise
 
-## Approved
-- **Typography** — Luckiest Guy (big titles), Patrick Hand SC (step labels, headings), Patrick Hand (body).
-- **Title treatment** — black marker caps on a pale-yellow highlighter swash (#FFEEB8), with burst tick marks either side.
-- **Wobbly hand-drawn line** — the v1 speech-bubble wobble is THE line style. Use it on outlines, bubbles, panels and characters:
-  `<feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="3"/><feDisplacementMap in="SourceGraphic" scale="3.5"/>`
-  On chunky outlines (characters, ~5px strokes) use `baseFrequency="0.04"` and `scale="4.5"`: enough to show on the thick line but still smooth (scale 7 was too wobbly, 3.5 invisible).
-  Always set `filterUnits="userSpaceOnUse"` with a region big enough for the drawing. Otherwise straight lines get clipped to nothing.
-- **Characters: "A + B"** — a chunky, clear ink outline (5px, #2A2724) with the wobble above, filled with a pastel watercolour wash (fill at ~60% opacity, offset 2px, displacement + blur filter). Put an opaque paper layer under each wash. Very dark colours (hair, shoes) stay at ~88% so they don't turn grey. The generator is `gen_characters.py` (render mode `"blend"`).
-- **Object doodles** (v2) — thin wobbly ink over an offset watercolour wash.
-- **Layout pieces** (v2) — a section heading with rules on either side, outlined panels in the step colours (the highlighted step is dashed), a blue loop-back arrow, and a ribbon banner.
+- **Warm:** cream paper, soft pastel washes and friendly faces. Welcoming, never corporate.
+- **Whimsical:** wobbly ink, marker lettering and friendly doodles. They balance the systems-heavy ideas in our trainings with a reminder that humans and collaboration matter.
+- **Wise:** simplicity and clarity first. One idea at a time, steps in a clear order, simple familiar images. We use everyday words, and when we need jargon we explain it clearly and briefly.
 
-## Palette (sampled from the slides)
-Mustard #EEA306 · Teal #039695 · Forest #4A7D4B · Coral #F76C37 · Blue #1F78A8 · Slate arrow #36545C ·
-Rust #D6631C · Deep teal #094854 · Highlighter #FFEEB8 · Paper #FCF9F3 · Ribbon #FAEED3 · Ink #1B1B1B / #2A2724
+## Style
 
-## Rejected
-- v1 big flat cartoon person (clip-art feel).
-- v3 thin-pencil person: too hand-drawn, wanted chunkier.
+- **Type:** Luckiest Guy for big titles, Patrick Hand SC for step labels and headings, Patrick Hand for body text.
+- **Titles:** black marker capitals on a pale-yellow highlighter swash, with burst tick marks either side.
+- **The wobbly line:** every outline, bubble, panel and character wobbles a little:
+  `<feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="3"/><feDisplacementMap in="SourceGraphic" scale="3.5"/>`.
+  On chunky ~5px outlines use `baseFrequency="0.04"` and `scale="4.5"`. Always set `filterUnits="userSpaceOnUse"` with a region big enough for the drawing, or straight lines get clipped away.
+- **Characters:** a chunky 5px ink outline with the wobble, over a pastel watercolour wash (~60% opacity, offset 2px) on an opaque paper layer. Very dark colours (hair, shoes) stay at ~88% so they don't turn grey.
+- **Objects:** thin wobbly ink over an offset watercolour wash.
+- **Colours and fonts** are defined once, as tokens: see `kit/README.md`.
+
+## Changing the kit
+
+Everything in `kit/` except `kit/README.md` is generated. Edit the files in `src/` and rebuild:
+
+```sh
+python3 src/build_kit.py
+```
+
+- `src/build_kit.py`: tokens, CSS, the wobble filters and the kit gallery page.
+- `src/icons.py`: object doodles.
+- `src/characters.py`: people.
+- `src/animals.py`: animals.

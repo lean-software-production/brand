@@ -11,7 +11,7 @@
 <path d="M174 194 C 186 194, 186 214, 173 214" fill="none" stroke="#2a2724" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
 <path d="M150 212 a10 10 0 1 0 20 0 a10 10 0 1 0 -20 0 Z" fill="#FCF9F3"/><path d="M150 212 a10 10 0 1 0 20 0 a10 10 0 1 0 -20 0 Z" fill="#7a4b30" opacity=".6" transform="translate(2 2)" filter="url(#wash)"/><path d="M150 212 a10 10 0 1 0 20 0 a10 10 0 1 0 -20 0 Z" fill="none" stroke="#2a2724" stroke-width="5" stroke-linejoin="round" filter="url(#wob-bubble)"/>
 <path d="M152 176 C 148 168, 156 164, 152 156 M164 176 C 160 168, 168 164, 164 156" fill="none" stroke="#2a2724" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-<g transform="translate(130 110) scale(1.0) translate(-130 -110)">
+<g>
 <path d="M88 92 a42 42 0 1 0 84 0 a42 42 0 1 0 -84 0 Z" fill="#FCF9F3"/><path d="M88 92 a42 42 0 1 0 84 0 a42 42 0 1 0 -84 0 Z" fill="#7a4b30" opacity=".6" transform="translate(2 2)" filter="url(#wash)"/><path d="M88 92 a42 42 0 1 0 84 0 a42 42 0 1 0 -84 0 Z" fill="none" stroke="#2a2724" stroke-width="5" stroke-linejoin="round" filter="url(#wob-bubble)"/>
 <path d="M100 62 C 110 56, 122 54, 132 54" fill="none" stroke="#2a2724" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
 <circle cx="116" cy="98" r="4.5" fill="#2a2724"/>

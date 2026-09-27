@@ -1,13 +1,13 @@
-# Builds the static Sketchbook kit into ./kit from the agreed style (see README.md).
-# Run: python3 build_kit.py
+# Builds the Sketchbook kit into ../kit from the agreed style (see ../README.md).
+# Run: python3 src/build_kit.py
 import html, json, os, sys
 from urllib.parse import quote
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
-import gen_characters as gc
+import characters as gc
 
-KIT = os.path.join(HERE, "kit")
+KIT = os.path.join(HERE, "..", "kit")
 for d in ("", "icons", "characters"):
     os.makedirs(os.path.join(KIT, d), exist_ok=True)
 
@@ -227,7 +227,7 @@ CHAR_DEFS = (filt("wob-bubble", 0.04, 4.5, "-50 -50 400 500")
              + filt("wob-lite", 0.03, 1.8, "-50 -50 400 500"))
 import animals
 PEOPLE = {"learner": gc.learner, "explainer": gc.explainer, "waver": gc.waver, "coffee": gc.coffee, "pointer": gc.bun}
-def blend(parts): return gc.render(parts, "blend", paper=C["paper"])
+def blend(parts): return gc.render(parts, paper=C["paper"])
 def write_char(name, viewbox, body, label):
     svg = (f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="{viewbox}" role="img" aria-label="{label}">'
            f'<defs>{CHAR_DEFS}</defs>{body}</svg>')

@@ -1,6 +1,4 @@
-# Generates character-styles.html: the same two people rendered in three chunky styles.
-import os
-HERE = os.path.dirname(os.path.abspath(__file__))
+# People for the kit: their shapes (person) and how they are drawn (render). Used by build_kit.py.
 INK = "#2a2724"
 
 def person(p):
@@ -82,43 +80,27 @@ def dark(col):
     r, g, b = (int(col[i:i+2], 16) for i in (1, 3, 5))
     return 0.2126*r + 0.7152*g + 0.0722*b < 60
 
-def render(parts, style, head_scale=1.0, paper="var(--paper)"):
+def render(parts, paper="var(--paper)"):
+    """Chunky wobbly ink outline over a pastel watercolour wash, on an opaque paper layer."""
     out = []
     for part in parts:
         k = part[0]
         if k == "head-start":
-            out.append(f'<g transform="translate(130 110) scale({head_scale}) translate(-130 -110)">'); continue
+            out.append('<g>'); continue
         if k == "head-end":
             out.append("</g>"); continue
         if k == "shape":
             d, col = part[1], part[2]
-            if style == "comic":
-                out.append(f'<path d="{d}" fill="{col}" stroke="{INK}" stroke-width="5" stroke-linejoin="round" filter="url(#wob-lite)"/>')
-            elif style == "soft":
-                out.append(f'<path d="{d}" fill="{col}"/>')
-            elif style == "blend":
-                out.append(f'<path d="{d}" fill="{paper}"/><path d="{d}" fill="{col}" opacity="{'.88' if dark(col) else '.6'}" transform="translate(2 2)" filter="url(#wash)"/>'
-                           f'<path d="{d}" fill="none" stroke="{INK}" stroke-width="5" stroke-linejoin="round" filter="url(#wob-bubble)"/>')
-            else:  # storybook
-                out.append(f'<path d="{d}" fill="{col}" opacity=".62" transform="translate(4 4)" filter="url(#wash)"/>'
-                           f'<path d="{d}" fill="none" stroke="{INK}" stroke-width="4.5" stroke-linejoin="round" filter="url(#wob)"/>')
+            out.append(f'<path d="{d}" fill="{paper}"/><path d="{d}" fill="{col}" opacity="{'.88' if dark(col) else '.6'}" transform="translate(2 2)" filter="url(#wash)"/>'
+                       f'<path d="{d}" fill="none" stroke="{INK}" stroke-width="5" stroke-linejoin="round" filter="url(#wob-bubble)"/>')
         elif k == "limb":
             d, col, w = part[1], part[2], part[3]
-            if style == "comic":
-                out.append(f'<g filter="url(#wob-lite)" fill="none" stroke-linecap="round"><path d="{d}" stroke="{INK}" stroke-width="{w+10}"/><path d="{d}" stroke="{col}" stroke-width="{w}"/></g>')
-            elif style == "soft":
-                out.append(f'<path d="{d}" fill="none" stroke="{col}" stroke-width="{w+4}" stroke-linecap="round"/>')
-            elif style == "blend":
-                out.append(f'<g fill="none" stroke-linecap="round"><path d="{d}" stroke="{INK}" stroke-width="{w+10}" filter="url(#wob-bubble)"/><path d="{d}" stroke="{paper}" stroke-width="{w}"/>'
-                           f'<path d="{d}" stroke="{col}" stroke-width="{w-2}" opacity=".6" filter="url(#wash)"/></g>')
-            else:
-                out.append(f'<g fill="none" stroke-linecap="round"><path d="{d}" stroke="{INK}" stroke-width="{w+9}" filter="url(#wob)"/><path d="{d}" stroke="{paper}" stroke-width="{w}"/>'
-                           f'<path d="{d}" stroke="{col}" stroke-width="{w-2}" opacity=".72" filter="url(#wash)"/></g>')
+            out.append(f'<g fill="none" stroke-linecap="round"><path d="{d}" stroke="{INK}" stroke-width="{w+10}" filter="url(#wob-bubble)"/><path d="{d}" stroke="{paper}" stroke-width="{w}"/>'
+                       f'<path d="{d}" stroke="{col}" stroke-width="{w-2}" opacity=".6" filter="url(#wash)"/></g>')
         elif k == "line":
-            w = part[2] + (1 if style in ("comic", "blend") else 0)
-            out.append(f'<path d="{part[1]}" fill="none" stroke="{INK}" stroke-width="{w}" stroke-linecap="round" stroke-linejoin="round"/>')
+            out.append(f'<path d="{part[1]}" fill="none" stroke="{INK}" stroke-width="{part[2] + 1}" stroke-linecap="round" stroke-linejoin="round"/>')
         elif k == "dot":
-            out.append(f'<circle cx="{part[1]}" cy="{part[2]}" r="{part[3] + (1 if style=="soft" else 0)}" fill="{INK}"/>')
+            out.append(f'<circle cx="{part[1]}" cy="{part[2]}" r="{part[3]}" fill="{INK}"/>')
         elif k == "blush":
             out.append(f'<ellipse cx="{part[1]}" cy="{part[2]}" rx="8" ry="5" fill="#f28c7a" opacity=".45"/>')
     return "\n".join(out)
@@ -131,33 +113,3 @@ coffee = dict(pose="mug", skin="#7a4b30", hair="bald", hairc="#2b2320", beard="#
 bun = dict(pose="point", skin="#f0c2a0", hair="bun", hairc="#c0612b", top="#f76c37", trousers="#4a7d4b")
 explainer = dict(pose="point", skin="#a8704a", hair="curly", hairc="#2b2320", top="#eea306", trousers="#1f78a8",
                  glasses=True)
-
-def main():
-    STYLES = [
-        ("comic", "A · Comic ink", 1.0,
-         "Thick, even black outline and flat colour fills, like the “meeting you missed” comic. The boldest and most graphic; still readable from the back of the room."),
-        ("storybook", "B · Storybook", 1.0,
-         "Chunky ink outline with the watercolour wash sitting slightly off the line. The same shapes as A, but softer: closest to the infographics, just heavier than v3."),
-        ("soft", "C · Soft shapes", 1.12,
-         "No outlines: rounded blocks of flat colour, a slightly bigger head, stubby limbs. A modern, friendly look that sits well next to the wobbly ink panels."),
-    ]
-
-    cards = []
-    for key, name, hs, desc in STYLES:
-        svg = (f'<svg viewBox="30 0 480 370" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="{name}: two example people">'
-               f'<g>{render(person(learner), key, hs)}</g>'
-               f'<g transform="translate(240 0)">{render(person(explainer), key, hs)}</g></svg>')
-        cards.append(f'<section class="card"><h2>{name}</h2><div class="stage">{svg}</div><p>{desc}</p></section>')
-
-    bsvg = (f'<svg viewBox="30 0 480 370" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A plus B: two example people">'
-            f'<g>{render(person(learner), "blend")}</g><g transform="translate(240 0)">{render(person(explainer), "blend")}</g></svg>')
-    blend = (f'<section class="card pick"><div class="stage">{bsvg}</div><div><h2>A + B · Clean ink, pastel wash</h2>'
-             f'<p>A’s clear, even outline, wobbling like the v1 speech bubble, with B’s soft pastel watercolour inside it. The wash sits just inside the line, so the colour still looks painted but the edges stay crisp.</p>'
-             f'<p class="tag">Combined from your feedback</p></div></section>')
-    html = open(os.path.join(HERE, "character-styles.tmpl.html")).read().replace("{{CARDS}}", "\n".join(cards)).replace("{{BLEND}}", blend)
-    open(os.path.join(HERE, "character-styles.html"), "w").write(html)
-    print("ok")
-
-
-if __name__ == "__main__":
-    main()

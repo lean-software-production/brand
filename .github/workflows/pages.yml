@@ -27,7 +27,7 @@ jobs:
       - name: Assemble site
         run: |
           mkdir _site
-          cp -r index.html kit slide-example.html slide-example-v2.html slide-example-v3.html character-styles.html _site/
+          cp -r index.html kit _site/
           touch _site/.nojekyll
 
       - uses: actions/configure-pages@v5

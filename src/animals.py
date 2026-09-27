@@ -1,4 +1,4 @@
-# Animals for the Sketchbook kit, drawn with the same parts as the people in gen_characters.py
+# Animals for the Sketchbook kit, drawn with the same parts as the people in characters.py
 # (chunky clean outline + pastel wash). Each sits in a 200×200 box.
 INK = "#2a2724"
 CREAM = "#FAEED3"
