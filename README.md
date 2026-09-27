@@ -14,7 +14,7 @@ infographics in the "LL1: HOW TO LEARN ANYTHING" frame on the canvas.
 **Warm, whimsical, wise.**
 - **Warm:** cream paper, soft pastel washes and friendly faces make everything we put out, from slides and the website to courses and posts, feel welcoming, never corporate.
 - **Whimsical:** wobbly ink, marker lettering and friendly doodles balance the mechanical, systems-heavy ideas in our trainings with a playfulness that reminds everyone that humans and collaboration matter.
-- **Wise:** simplicity and clarity first, with one idea at a time, steps in a clear order and simple, familiar images, so even hard topics are easy to understand.
+- **Wise:** simplicity and clarity first, with one idea at a time, steps in a clear order and simple, familiar images, so even hard topics are easy to understand. We use words normal people would use whenever we can. When we introduce jargon, we explain it clearly and concisely.
 
 ## Approved
 - **Typography** — Luckiest Guy (big titles), Patrick Hand SC (step labels, headings), Patrick Hand (body).
