@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sketchbook Slide Style</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Patrick+Hand&family=Patrick+Hand+SC&display=swap" rel="stylesheet">
+<style>
+  /* ---- Tokens: colours sampled from pixels in the lesson's slide images ---- */
+  :root {
+    --mustard: #eea306;   /* step 1 circle, framework strip */
+    --teal:    #039695;   /* step 2 circle */
+    --green:   #4a7d4b;   /* step 3 circle + dashed box */
+    --coral:   #f76c37;   /* step 4 circle */
+    --blue:    #1f78a8;   /* step 5 circle + loop-back arrow */
+    --slate:   #36545c;   /* short connector arrows */
+    --rust:    #d6631c;   /* left panel border, infographic */
+    --deep-teal:#094854;  /* right panel border, infographic */
+    --hilite:  #ffeeb8;   /* highlighter swash behind comic title */
+    --paper:   #fcf9f3;   /* infographic paper */
+    --banner:  #faeed3;   /* infographic ribbon */
+    --ink:     #1b1b1b;
+
+    --page-bg: #efeae0;
+    --page-fg: #2a2a2a;
+    --muted:   #6b665c;
+    --card:    #ffffff;
+    --line:    #d9d2c3;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --page-bg: #1c1b19; --page-fg: #ece7dc; --muted: #a39d90; --card: #262521; --line: #3a3833;
+    }
+  }
+  :root[data-theme="dark"] { --page-bg: #1c1b19; --page-fg: #ece7dc; --muted: #a39d90; --card: #262521; --line: #3a3833; }
+
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--page-bg); color: var(--page-fg);
+         font: 16px/1.5 system-ui, sans-serif; padding: 24px 16px 48px; }
+  .wrap { max-width: 1120px; margin: 0 auto; }
+  h1.page { font: 600 15px/1 system-ui; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); margin: 0 0 12px; }
+
+  /* ---------------- THE SLIDE (always paper, like a projected slide) ---------------- */
+  .slide {
+    aspect-ratio: 16 / 9; width: 100%; container-type: inline-size;
+    background: var(--paper); color: var(--ink);
+    border-radius: 6px; box-shadow: 0 2px 0 rgba(0,0,0,.06), 0 12px 40px rgba(0,0,0,.18);
+    position: relative; overflow: hidden;
+    font-family: "Patrick Hand", "Comic Sans MS", cursive;
+  }
+  .slide svg { display: block; width: 100%; height: 100%; }
+  .t-title { font-family: "Luckiest Guy", "Patrick Hand SC", cursive; fill: var(--ink); letter-spacing: 1px; }
+  .t-step  { font-family: "Patrick Hand SC", "Patrick Hand", cursive; font-weight: 400; }
+  .t-body  { font-family: "Patrick Hand", cursive; fill: #33302b; }
+  .num     { font-family: "Luckiest Guy", cursive; fill: #fff; }
+
+  /* ---------------- notes under the slide ---------------- */
+  .notes { display: grid; grid-template-columns: 1.3fr 1fr; gap: 16px; margin-top: 20px; }
+  @media (max-width: 760px) { .notes { grid-template-columns: 1fr; } }
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 16px 18px; }
+  .card h2 { font: 700 14px/1.2 system-ui; margin: 0 0 10px; letter-spacing: .02em; }
+  .card ul { margin: 0; padding-left: 18px; }
+  .card li { margin: 4px 0; font-size: 14px; }
+  .swatches { display: grid; grid-template-columns: repeat(auto-fill, minmax(108px, 1fr)); gap: 8px; }
+  .sw { font: 12px/1.3 ui-monospace, monospace; }
+  .sw i { display: block; height: 34px; border-radius: 6px; border: 1px solid rgba(0,0,0,.12); margin-bottom: 4px; }
+  .sw b { font-family: system-ui; font-weight: 600; display: block; }
+  .muted { color: var(--muted); font-size: 13px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1 class="page">Example slide — style reflected from the “How to learn anything w/ an Agent” lightning-lesson slides</h1>
+
+  <div class="slide" role="img" aria-label="Slide: How to get the agent to teach you anything — five-step loop: add sources, filter and focus, create new source, create a projection, validate and iterate.">
+    <svg viewBox="0 0 1600 900" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <!-- wobble: makes vector strokes read as hand-inked -->
+        <filter id="wobble" x="-5%" y="-5%" width="110%" height="110%">
+          <feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="3"/>
+          <feDisplacementMap in="SourceGraphic" scale="3.5"/>
+        </filter>
+        <filter id="wobble-soft">
+          <feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="2" seed="8"/>
+          <feDisplacementMap in="SourceGraphic" scale="9"/>
+        </filter>
+        <marker id="head" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+          <path d="M1 1 L8 5 L1 9" fill="none" stroke="context-stroke" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+        </marker>
+      </defs>
+
+      <!-- ===== TITLE: black marker caps on a yellow highlighter swash, with burst ticks ===== -->
+      <path filter="url(#wobble-soft)" fill="var(--hilite)"
+            d="M250 58 C 520 40, 1080 42, 1352 60 L 1360 132 C 1080 150, 520 146, 244 134 Z"/>
+      <path filter="url(#wobble-soft)" fill="var(--hilite)"
+            d="M330 150 C 600 138, 1000 138, 1276 150 L 1282 222 C 1000 236, 600 234, 322 224 Z"/>
+      <text class="t-title" x="800" y="122" text-anchor="middle" font-size="68">HOW TO GET THE AGENT</text>
+      <text class="t-title" x="800" y="210" text-anchor="middle" font-size="68">TO TEACH YOU ANYTHING</text>
+      <g stroke="var(--ink)" stroke-width="7" stroke-linecap="round" filter="url(#wobble)">
+        <line x1="170" y1="78"  x2="205" y2="100"/><line x1="150" y1="140" x2="198" y2="142"/><line x1="170" y1="200" x2="206" y2="182"/>
+        <line x1="1430" y1="78" x2="1395" y2="100"/><line x1="1450" y1="140" x2="1402" y2="142"/><line x1="1430" y1="200" x2="1394" y2="182"/>
+      </g>
+
+      <!-- ===== CHARACTER: curious learner with a big mustard "?" ===== -->
+      <g filter="url(#wobble)" stroke="var(--ink)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+        <!-- body / jumper -->
+        <path d="M120 560 C 118 470, 170 430, 240 428 C 312 430, 362 470, 360 560 Z" fill="var(--blue)"/>
+        <!-- backpack strap -->
+        <path d="M170 450 C 180 500, 186 530, 184 560" fill="none" stroke-width="4"/>
+        <!-- neck -->
+        <path d="M222 418 L 222 436 M 258 418 L 258 436" fill="none"/>
+        <!-- head -->
+        <circle cx="240" cy="360" r="66" fill="#f6d2b4"/>
+        <!-- scruffy hair -->
+        <path d="M176 350 C 160 300, 190 272, 214 286 C 206 262, 246 250, 256 276 C 272 252, 312 266, 300 292 C 326 292, 330 330, 306 334 C 290 316, 270 312, 252 318 C 232 306, 200 316, 190 348 Z" fill="#6b4226"/>
+        <!-- eye, cheek, mouth -->
+        <circle cx="266" cy="356" r="5" fill="var(--ink)" stroke="none"/>
+        <circle cx="286" cy="382" r="9" fill="#f2a58c" stroke="none" opacity=".7"/>
+        <path d="M262 398 C 272 402, 282 400, 288 394" fill="none" stroke-width="4"/>
+        <!-- hand on chin -->
+        <path d="M250 440 C 262 420, 280 414, 288 424 C 294 432, 286 440, 276 442" fill="#f6d2b4"/>
+      </g>
+      <text x="320" y="300" font-family="Luckiest Guy, cursive" font-size="110" fill="var(--mustard)" transform="rotate(10 340 260)">?</text>
+      <g stroke="var(--ink)" stroke-width="5" stroke-linecap="round" filter="url(#wobble)">
+        <line x1="150" y1="270" x2="132" y2="248"/><line x1="130" y1="320" x2="104" y2="316"/>
+      </g>
+
+      <!-- ===== SPEECH BUBBLE: what the learner asks ===== -->
+      <g filter="url(#wobble)">
+        <path d="M420 300 C 420 262, 450 250, 500 250 L 1380 250 C 1430 250, 1452 266, 1452 300 L 1452 360 C 1452 394, 1430 408, 1380 408 L 520 408 L 470 452 L 484 408 C 446 406, 420 394, 420 360 Z"
+              fill="#eef4f5" stroke="var(--ink)" stroke-width="4" stroke-linejoin="round"/>
+      </g>
+      <text class="t-body" x="470" y="318" font-size="38">“I want to learn <tspan font-weight="700" fill="var(--rust)">Chapter 1 of <tspan font-style="italic">Shape Up</tspan></tspan> —</text>
+      <text class="t-body" x="470" y="370" font-size="38">while I’m driving. Where do I even start?”</text>
+      <!-- tiny doodle icons in the bubble, as in the comic's bubble -->
+      <g filter="url(#wobble)" stroke="var(--slate)" stroke-width="4" fill="none" stroke-linecap="round">
+        <!-- headphones -->
+        <path d="M1300 346 C 1300 300, 1380 300, 1380 346"/>
+        <rect x="1292" y="340" width="18" height="30" rx="6" fill="var(--teal)"/>
+        <rect x="1370" y="340" width="18" height="30" rx="6" fill="var(--teal)"/>
+      </g>
+
+      <!-- ===== FRAMEWORK STRIP: numbered coloured circles + marker-caps labels ===== -->
+      <g font-size="40">
+        <!-- 1 -->
+        <g filter="url(#wobble)"><circle cx="150" cy="650" r="40" fill="var(--mustard)"/></g>
+        <text class="num" x="150" y="666" text-anchor="middle" font-size="46">1</text>
+        <text class="t-step" x="200" y="664" fill="var(--mustard)">ADD SOURCES</text>
+
+        <!-- 2 -->
+        <g filter="url(#wobble)"><circle cx="520" cy="650" r="40" fill="var(--teal)"/></g>
+        <text class="num" x="520" y="666" text-anchor="middle" font-size="46">2</text>
+        <text class="t-step" x="570" y="664" fill="var(--teal)">FILTER + FOCUS</text>
+
+        <!-- 3 (dashed box = the step being highlighted) -->
+        <rect x="868" y="594" width="330" height="112" rx="14" fill="none" stroke="var(--green)" stroke-width="3.5" stroke-dasharray="12 9" filter="url(#wobble)"/>
+        <g filter="url(#wobble)"><circle cx="930" cy="650" r="40" fill="var(--green)"/></g>
+        <text class="num" x="930" y="666" text-anchor="middle" font-size="46">3</text>
+        <text class="t-step" x="980" y="648" fill="var(--green)" font-size="36">CREATE NEW</text>
+        <text class="t-step" x="980" y="684" fill="var(--green)" font-size="36">SOURCE</text>
+
+        <!-- 4 -->
+        <g filter="url(#wobble)"><circle cx="1280" cy="650" r="40" fill="var(--coral)"/></g>
+        <text class="num" x="1280" y="666" text-anchor="middle" font-size="46">4</text>
+        <text class="t-step" x="1330" y="648" fill="var(--coral)" font-size="36">CREATE A</text>
+        <text class="t-step" x="1330" y="684" fill="var(--coral)" font-size="36">PROJECTION</text>
+      </g>
+      <!-- slate connector arrows -->
+      <g stroke="var(--slate)" stroke-width="7" stroke-linecap="round" fill="none" marker-end="url(#head)" filter="url(#wobble)">
+        <line x1="428" y1="650" x2="470" y2="650"/>
+        <line x1="818" y1="650" x2="860" y2="650"/>
+        <line x1="1206" y1="650" x2="1232" y2="650"/>
+      </g>
+
+      <!-- 5 sits below-right, and the blue loop swoops back to 1 -->
+      <g filter="url(#wobble)"><circle cx="1180" cy="810" r="40" fill="var(--blue)"/></g>
+      <text class="num" x="1180" y="826" text-anchor="middle" font-size="46">5</text>
+      <text class="t-step" x="1230" y="824" fill="var(--blue)" font-size="38">VALIDATE + ITERATE</text>
+      <path d="M1270 712 C 1262 736, 1240 752, 1218 766" fill="none" stroke="var(--slate)" stroke-width="7" stroke-linecap="round" marker-end="url(#head)" filter="url(#wobble)"/>
+      <path d="M1132 812 C 700 830, 220 810, 150 704" fill="none" stroke="var(--blue)" stroke-width="7" stroke-linecap="round" marker-end="url(#head)" filter="url(#wobble-soft)"/>
+      <text class="t-body" x="560" y="790" font-size="30" fill="var(--blue)" transform="rotate(-1 560 790)">…then loop back with better questions</text>
+
+      <!-- lightbulb doodle, as in the comic's speech bubble -->
+      <g filter="url(#wobble)" stroke="var(--ink)" stroke-width="4" stroke-linecap="round" transform="translate(1196 282) scale(.8)">
+        <path d="M40 10 C 10 10, 0 40, 18 60 C 26 70, 26 78, 26 86 L 54 86 C 54 78, 54 70, 62 60 C 80 40, 70 10, 40 10 Z" fill="#fde58a"/>
+        <line x1="28" y1="96" x2="52" y2="96"/><line x1="32" y1="106" x2="48" y2="106"/>
+        <line x1="-8" y1="36" x2="-22" y2="30"/><line x1="40" y1="-6" x2="40" y2="-22"/><line x1="88" y1="36" x2="102" y2="30"/>
+      </g>
+    </svg>
+  </div>
+
+  <div class="notes">
+    <div class="card">
+      <h2>What I could actually see (and what I borrowed from it)</h2>
+      <ul>
+        <li><b>Hand-drawn ink cartoon</b> — thick black outlines, flat muted fills, little “burst” tick marks for emphasis, cheeky characters (the “What happened at the meeting you missed?” comic).</li>
+        <li><b>Titles</b> — heavy black marker caps sitting on a pale-yellow highlighter swash.</li>
+        <li><b>Frameworks</b> — numbered, solid-colour circles with same-colour marker-caps labels, slate arrows between steps, a dashed box around the highlighted step, and a big blue curved arrow looping back (the “framework strip” used on every “learn a book” slide).</li>
+        <li><b>Infographics</b> — cream paper, ribbon banner, rust vs. deep-teal panels, small doodle icons beside each bullet.</li>
+        <li>The slide’s text is the lesson’s own: the 5-step loop from the strip, plus the “learn a book while driving / Ch1 of <i>Shape Up</i>” insight from the <i>learn a book 1</i> frame.</li>
+      </ul>
+      <p class="muted" style="margin:12px 0 0">Caveats, honestly: the originals are AI-generated raster illustrations — I’ve redrawn the look in SVG, so the characters here are rougher than the real ones. The fonts are my nearest Google Fonts matches (Luckiest Guy / Patrick Hand SC / Patrick Hand), not identified from the slides. About half the lesson frames are all named “FOO”, and the CLI couldn’t pull their images one at a time, so I may be missing some slides.</p>
+    </div>
+    <div class="card">
+      <h2>Palette (sampled from the slide pixels)</h2>
+      <div class="swatches">
+        <div class="sw"><i style="background:#eea306"></i><b>Mustard</b>#EEA306</div>
+        <div class="sw"><i style="background:#039695"></i><b>Teal</b>#039695</div>
+        <div class="sw"><i style="background:#4a7d4b"></i><b>Forest</b>#4A7D4B</div>
+        <div class="sw"><i style="background:#f76c37"></i><b>Coral</b>#F76C37</div>
+        <div class="sw"><i style="background:#1f78a8"></i><b>Blue</b>#1F78A8</div>
+        <div class="sw"><i style="background:#36545c"></i><b>Slate arrow</b>#36545C</div>
+        <div class="sw"><i style="background:#d6631c"></i><b>Rust</b>#D6631C</div>
+        <div class="sw"><i style="background:#094854"></i><b>Deep teal</b>#094854</div>
+        <div class="sw"><i style="background:#ffeeb8"></i><b>Highlighter</b>#FFEEB8</div>
+        <div class="sw"><i style="background:#fcf9f3"></i><b>Paper</b>#FCF9F3</div>
+        <div class="sw"><i style="background:#faeed3"></i><b>Ribbon</b>#FAEED3</div>
+        <div class="sw"><i style="background:#1b1b1b"></i><b>Ink</b>#1B1B1B</div>
+      </div>
+      <p class="muted" style="margin:10px 0 0">Sources: canvas page “LL: How to learn anything w/ an Agent” (framework strip, meeting comic) and the “LL1: HOW TO LEARN ANYTHING” frame (Crucial Conversations and presence-based coaching infographics).</p>
+    </div>
+  </div>
+</div>
+</body>
+</html>
