@@ -5,6 +5,7 @@ infographics in the "LL1: HOW TO LEARN ANYTHING" frame on the canvas.
 
 ## What's in this folder
 - `index.html`: the brand guidelines deck (reveal.js). Published to GitHub Pages by `.github/workflows/pages.yml` on every push to `main`. Open it locally in a browser, and use the arrow keys to move between slides.
+- `TODO.md`: brand decisions we still need to make.
 - `kit/`: the Sketchbook kit, with reusable pieces for slides and web pages. Open `kit/index.html` to see them, and read `kit/README.md` for how to use them.
 - `reference/` (not published): the original slides and infographics this style was taken from.
 - `build_kit.py`, `gen_characters.py`: generate the kit. Edit these, not the output.
