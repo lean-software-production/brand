@@ -8,11 +8,11 @@ The Sketchbook brand: a hand-drawn style for our slides, website, courses and po
 
 ## Using the brand from another project (agents)
 
-Install the `sketchbook` skill. It reads the kit's machine-readable index (`kit/index.json`, published at https://lean-software-production.github.io/brand/kit/index.json) and uses the pieces from there.
+Install the `lean-software-production-brand` skill. It points agents at the brand words and style rules below, and at the list of kit elements in `kit/index.json` (published at https://lean-software-production.github.io/brand/kit/index.json).
 
 ```sh
-mkdir -p ~/.claude/skills/sketchbook
-curl -fsSL https://lean-software-production.github.io/brand/skill/sketchbook/SKILL.md -o ~/.claude/skills/sketchbook/SKILL.md
+mkdir -p ~/.claude/skills/lean-software-production-brand
+curl -fsSL https://lean-software-production.github.io/brand/skill/lean-software-production-brand/SKILL.md -o ~/.claude/skills/lean-software-production-brand/SKILL.md
 ```
 
 Use `.claude/skills/` inside a project instead to install it for that project only. Agents without skills can be pointed at the same `SKILL.md`.
