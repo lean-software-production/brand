@@ -5,6 +5,7 @@ The Sketchbook brand: a hand-drawn style for our slides, website, courses and po
 - **Guidelines deck:** `index.html`. Open it in a browser and use the arrow keys. It's published to GitHub Pages on every push to `main`.
 - **Sketchbook kit:** `kit/`. Ready-to-use CSS, icons and characters. Open `kit/index.html` to see every piece, and read `kit/README.md` to use them.
 - **Still to decide:** `TODO.md`.
+- **Agents changing the kit:** read `AGENTS.md`.
 
 ## Warm, whimsical, wise
 
