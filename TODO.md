@@ -10,3 +10,4 @@ Parts of a brand guideline we haven't worked through yet. Each needs a person to
 - [ ] **Photos.** Do we ever use them? If so, how do they sit next to the drawings?
 - [ ] **Accessibility.** Minimum text contrast. Mustard and coral text on paper probably fail, so they may need to stay decorative only.
 - [ ] **Formats.** Templates for social posts and course thumbnails.
+- [ ] **Character variety.** Every person is the same body with different hair, colours and props, so they risk all looking alike, which fights *whimsical*. Add three or four bodies (e.g. tall, short and round, a child, someone sitting) and more poses (leaning, walking, arms crossed).
