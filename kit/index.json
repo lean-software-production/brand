@@ -121,6 +121,26 @@
   },
   {
     "kind": "icon",
+    "name": "robot-scan",
+    "about": "A robot scanning a page. AI reading, research, finding information.",
+    "tags": [
+      "Tech & systems"
+    ],
+    "aspect": 1.0,
+    "url": "https://lean-software-production.github.io/brand/kit/icons/robot-scan.svg"
+  },
+  {
+    "kind": "icon",
+    "name": "robot-report",
+    "about": "A robot sharing a checked result. AI reporting back, completing a task.",
+    "tags": [
+      "Tech & systems"
+    ],
+    "aspect": 1.0,
+    "url": "https://lean-software-production.github.io/brand/kit/icons/robot-report.svg"
+  },
+  {
+    "kind": "icon",
     "name": "sprout",
     "about": "A sprout. Growth, learning, starting small, progress.",
     "tags": [

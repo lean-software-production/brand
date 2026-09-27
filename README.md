@@ -8,6 +8,8 @@
 
 Titles use black marker capitals in Luckiest Guy on a pale-yellow highlighter swash, with burst tick marks; headings and step labels use Patrick Hand SC, and body text uses Patrick Hand. Use the [kit's colours and fonts](kit/README.md#tokens) rather than inventing new ones.
 
+Keep drawings easy to read at small sizes. Objects can overlap, but the object in front must hide the outlines behind it. Avoid visible lines crossing through another object; simplify the composition if the overlap gets cluttered.
+
 ## What's in this repo
 
 - [Brand guidelines deck](index.html): open in a browser and use the arrow keys. Published to GitHub Pages on every push to `main`.

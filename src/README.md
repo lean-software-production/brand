@@ -16,6 +16,8 @@ After a change, rebuild, then **look at it**: screenshot `kit/index.html` (e.g. 
 
 **Draw lopsided.** A mirror-image drawing looks machine-made. Tilt the head (wrap it in `("head-start", "rotate(…)")` … `("head-end",)`), make ears, eyes, hands and paws differ, and put the face or the action off centre. See `cat()` and `dog()` in `src/animals.py`. But don't overdo it: one or two touches per drawing, suggested by what the figure is doing, and feet stay on the ground. If every figure has a wobbly head, that looks machine-made too.
 
+**Show the layering.** When a prop overlaps a character, hide the character's covered outline before drawing the prop. No rear line should show through the object in front, including after the wobble is applied. In an icon, put `("front", path)` before the front object's parts, using the same silhouette path as its coloured shape; the renderer covers the rear drawing before painting the front object. Check the result at the size the icon will actually be used.
+
 ## Add an object icon
 
 In `src/icons.py`, add an entry to `ICONS`. It's a list of `(colour, path)` parts in a 140×140 box, back to front:
@@ -23,8 +25,11 @@ In `src/icons.py`, add an entry to `ICONS`. It's a list of `(colour, path)` part
 - `("teal", "M…")`: a watercolour wash in that palette colour, with a wobbly ink outline.
 - `(None, "M…")`: an ink line only (details, open strokes).
 - `("solid", "M…")`: filled ink (pupils, dots).
+- `("front", "M…")`: a paper-coloured cover for the silhouette of a front object, drawn over earlier parts so their outlines do not show through.
 
-Colour names are the palette keys in `TOKENS` in `src/build_kit.py`. Use one colour for simple objects, and up to three when the object has distinct parts. Also add the name to a list in `GROUPS`, or it won't appear in the gallery, and a one-line description to `ABOUT`. Agents choose icons by that description (it's published in `kit/index.json`), so say what it shows and what it's good for. It's written to `kit/icons/<name>.svg`.
+Colour names are the palette keys in `TOKENS` in `src/build_kit.py`. Use one colour for simple objects, and up to three when the object has distinct parts; variants of an existing icon may reuse that icon's established accents. Also add the name to a list in `GROUPS`, or it won't appear in the gallery, and a one-line description to `ABOUT`. Agents choose icons by that description (it's published in `kit/index.json`), so say what it shows and what it's good for. It's written to `kit/icons/<name>.svg`.
+
+For robot variants, keep the original robot's highlighter-coloured eye discs behind both pupils, coral six-unit antenna tip, and sixteen-unit stem above the head. Change the action or prop without changing those shared features.
 
 ## Add a person
 

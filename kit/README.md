@@ -31,7 +31,7 @@ Without `sketchbook.js`, outlines, badges and bubbles lose their wobble (Chrome)
 
 ## Images (use anywhere: slides, web, Google Slides, docs)
 
-- `icons/`: 18 everyday objects. Brand words: mug (warm), kite (whimsical), owl (wise). Learning: books, page-pencil, magnifier, lightbulb, checklist, headphones. Working together: chat, puzzle, sticky-note, compass. Tech and systems: laptop, robot, gear, sprout, car. Thin wobbly ink over a watercolour wash. **Colour rule:** one colour for simple objects, and up to three when the object has distinct parts, always from the palette. New objects are welcome; add them to `../src/icons.py`.
+- `icons/`: 20 everyday objects. Brand words: mug (warm), kite (whimsical), owl (wise). Learning: books, page-pencil, magnifier, lightbulb, checklist, headphones. Working together: chat, puzzle, sticky-note, compass. Tech and systems: laptop, robot, robot-scan, robot-report, gear, sprout, car. Thin wobbly ink over a watercolour wash. **Colour rule:** one colour for simple objects, and up to three when the object has distinct parts, always from the palette. Variants of an existing icon may reuse its established accents. New objects are welcome; add them to `../src/icons.py`.
 - `characters/`: five people (learner, explainer, waver, coffee, pointer), a `group` of four with a dog, and a `cat` and `dog`. Chunky clean outline with a pastel wash. New people and poses go in `../src/characters.py`, and animals in `../src/animals.py`.
 
 Each SVG is self-contained, with its own effects, so it works as a plain `<img>`.

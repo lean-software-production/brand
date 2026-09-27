@@ -2,6 +2,7 @@
 #   (colour, path)          -> watercolour wash in that palette colour + wobbly ink outline
 #   (None, path)            -> ink outline only (details, open lines)
 #   ("solid", path)         -> filled ink (pupils, dots)
+#   ("front", path)         -> cover earlier outlines with paper before drawing a foreground object
 # Colour rule: one colour for simple objects; up to three when the object has distinct parts.
 import math
 
@@ -86,6 +87,30 @@ ICONS = {
         (None, "M54 84 C 62 90, 78 90, 86 84"),
         ("teal", "M46 104 L94 104 L94 136 L46 136 Z"), (None, "M58 116 L82 116 M58 126 L74 126"),
     ],
+    "robot-scan": [
+        ("coral", "M55 8 a6 6 0 1 0 12 0 a6 6 0 1 0 -12 0 Z"),
+        ("blue", "M30 30 L94 30 C 100 30, 104 34, 104 41 L104 80 C 104 87, 100 91, 94 91 L30 91 C 24 91, 20 87, 20 80 L20 41 C 20 34, 24 30, 30 30 Z"),
+        ("teal", "M41 98 L82 98 L82 131 L41 131 Z"),
+        (None, "M61 14 L61 30 M20 53 L12 53 L12 73 L20 73 M104 53 L111 53 L111 73 L104 73"),
+        ("highlighter", "M34 58 a10 10 0 1 0 20 0 a10 10 0 1 0 -20 0 Z M70 58 a10 10 0 1 0 20 0 a10 10 0 1 0 -20 0 Z"),
+        ("solid", "M44 61 a4 4 0 1 0 8 0 a4 4 0 1 0 -8 0 Z M80 61 a4 4 0 1 0 8 0 a4 4 0 1 0 -8 0 Z"),
+        (None, "M49 77 C 56 83, 68 83, 75 77 M52 111 L72 111"),
+        ("front", "M94 83 L128 78 L135 126 L101 131 Z"),
+        ("highlighter", "M94 83 L128 78 L135 126 L101 131 Z"),
+        (None, "M104 97 L119 94 M106 105 L123 102 M109 113 L125 110"),
+    ],
+    "robot-report": [
+        ("coral", "M51 17 a6 6 0 1 0 12 0 a6 6 0 1 0 -12 0 Z"),
+        ("blue", "M27 39 L91 39 C 97 39, 101 43, 101 50 L101 88 C 101 95, 97 99, 91 99 L27 99 C 21 99, 17 95, 17 88 L17 50 C 17 43, 21 39, 27 39 Z"),
+        ("teal", "M37 105 L81 105 L81 135 L37 135 Z"),
+        (None, "M57 23 L57 39 M17 60 L9 60 L9 80 L17 80 M101 71 L108 71 L108 90 L101 90"),
+        ("highlighter", "M30 69 a10 10 0 1 0 20 0 a10 10 0 1 0 -20 0 Z M64 69 a10 10 0 1 0 20 0 a10 10 0 1 0 -20 0 Z"),
+        ("solid", "M36 69 a4 4 0 1 0 8 0 a4 4 0 1 0 -8 0 Z M70 69 a4 4 0 1 0 8 0 a4 4 0 1 0 -8 0 Z"),
+        (None, "M39 86 C 48 93, 66 93, 76 85 M49 118 L70 118"),
+        ("front", "M105 15 L129 15 C 135 15, 138 19, 138 24 L138 52 C 138 57, 135 60, 129 60 L119 60 L108 69 L111 60 L105 60 C 99 60, 96 56, 96 51 L96 24 C 96 19, 99 15, 105 15 Z"),
+        ("highlighter", "M105 15 L129 15 C 135 15, 138 19, 138 24 L138 52 C 138 57, 135 60, 129 60 L119 60 L108 69 L111 60 L105 60 C 99 60, 96 56, 96 51 L96 24 C 96 19, 99 15, 105 15 Z"),
+        (None, "M108 37 L116 45 L128 29"),
+    ],
     "sprout": [
         ("forest", "M70 58 C 50 58, 36 44, 38 28 C 58 28, 70 42, 70 58 Z M70 48 C 88 48, 104 34, 102 18 C 82 18, 70 32, 70 48 Z"),
         (None, "M70 84 C 70 66, 70 56, 70 44"),
@@ -135,6 +160,8 @@ ABOUT = {
     "compass": "A compass. Direction, strategy, finding your way, goals.",
     "laptop": "A laptop. Computers, coding, working online.",
     "robot": "A friendly robot. AI, agents, automation.",
+    "robot-scan": "A robot scanning a page. AI reading, research, finding information.",
+    "robot-report": "A robot sharing a checked result. AI reporting back, completing a task.",
     "gear": "Gears. Systems, processes, how things work, machinery.",
     "sprout": "A sprout. Growth, learning, starting small, progress.",
     "car": "A car. Travel, a journey, learning on the move, speed.",
@@ -144,10 +171,17 @@ GROUPS = {
     "Brand words": ["mug", "kite", "owl"],
     "Learning": ["books", "page-pencil", "magnifier", "lightbulb", "checklist", "headphones"],
     "Working together": ["chat", "puzzle", "sticky-note", "compass"],
-    "Tech & systems": ["laptop", "robot", "gear", "sprout", "car"],
+    "Tech & systems": ["laptop", "robot", "robot-scan", "robot-report", "gear", "sprout", "car"],
 }
 
 def render(parts, colours, ink, wobble="url(#w)", wash="url(#sk-wash)"):
+    for i, (col, d) in enumerate(parts):
+        if col == "front":
+            # Paint the back object first, then use the front silhouette to hide
+            # its covered lines before adding the front object's wash and ink.
+            cover = f'<path d="{d}" fill="{colours["paper"]}" filter="{wobble}"/>'
+            return (render(parts[:i], colours, ink, wobble, wash) + cover
+                    + render(parts[i + 1:], colours, ink, wobble, wash))
     washes, inks = [], []
     for col, d in parts:
         if col == "solid":
