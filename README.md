@@ -5,7 +5,6 @@ The Sketchbook brand: a hand-drawn style for our slides, website, courses and po
 - **Guidelines deck:** `index.html`. Open it in a browser and use the arrow keys. It's published to GitHub Pages on every push to `main`.
 - **Sketchbook kit:** `kit/`. Ready-to-use CSS, icons and characters. Open `kit/index.html` to see every piece, and read `kit/README.md` to use them.
 - **Still to decide:** `TODO.md`.
-- **Agents changing the kit:** read `AGENTS.md`.
 
 ## Warm, whimsical, wise
 
@@ -26,13 +25,4 @@ The Sketchbook brand: a hand-drawn style for our slides, website, courses and po
 
 ## Changing the kit
 
-Everything in `kit/` except `kit/README.md` is generated. Edit the files in `src/` and rebuild:
-
-```sh
-python3 src/build_kit.py
-```
-
-- `src/build_kit.py`: tokens, CSS, the wobble filters and the kit gallery page.
-- `src/icons.py`: object doodles.
-- `src/characters.py`: people.
-- `src/animals.py`: animals.
+Everything in `kit/` except `kit/README.md` is generated from `src/`. Rebuild with `python3 src/build_kit.py`. How to add icons, people and other pieces: `src/README.md`.
