@@ -23,7 +23,7 @@ A list of every element in the kit. Choose by reading each `about`.
 
 - `icon`, `character`: images, for anything (slides, docs, posts, web pages). Use them as whole files; never edit, recolour or redraw them. `aspect` is width ÷ height.
 - `colour`, `font`: the palette and type. Don't use other colours or fonts.
-- `role`: what the pieces paint with (page, text, heading, the `-text` colours). Each has a light and a dark value. Use roles for anything you style yourself.
+- `role`: what the pieces paint with (page, text, heading, the `-text` colours). Use roles for anything you style yourself.
 - `piece`: ready-made HTML (titles, headings, step panels, bubbles, ribbons, arrows, buttons, ticks, meters, a whole slide), for HTML pages and slides only.
 
 To see how everything looks, open https://lean-software-production.github.io/brand/kit/index.html.
@@ -38,8 +38,6 @@ Put these in the page `<head>`, then paste in `piece`s and change the words. Sta
 ```
 
 Always include both: without the script, outlines lose their wobble or disappear.
-
-For dark mode, put `dark` or `sk-dark` on `<html>`, and wrap every icon and character in `<span class="sk-patch">` so it sits on paper.
 
 ## 4. When something is missing
 

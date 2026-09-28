@@ -3,24 +3,13 @@
 <title>Sketchbook Kit</title>
 <link rel="stylesheet" href="sketchbook.css">
 <script src="sketchbook.js" defer></script>
-<script>
-  // ?dark shows every piece in dark mode (.sk-dark on the page); ?light forces light.
-  (function () {
-    var q = location.search, r = document.documentElement;
-    if (/[?&]dark\b/.test(q)) { r.classList.add("sk-dark"); r.dataset.theme = "dark"; }
-    else if (/[?&]light\b/.test(q)) r.dataset.theme = "light";
-  })();
-</script>
 <style>
   :root { --g-bg:#efeae0; --g-fg:#2a2a2a; --g-muted:#6b665c; --g-card:#fff; --g-line:#d9d2c3; }
-  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --g-bg:#1c1b19; --g-fg:#ece7dc; --g-muted:#a39d90; --g-card:#262521; --g-line:#3a3833; } }
-  :root[data-theme="dark"] { --g-bg:#1c1b19; --g-fg:#ece7dc; --g-muted:#a39d90; --g-card:#262521; --g-line:#3a3833; }
   * { box-sizing: border-box; }
   body { margin:0; background:var(--g-bg); color:var(--g-fg); font:15px/1.5 system-ui,sans-serif; padding:24px 16px 60px; }
   .wrap { max-width:1120px; margin:0 auto; }
   header h1 { font-family:var(--sk-font-title); font-weight:400; font-size:44px; margin:0; color:var(--sk-title-text); display:inline-block;
                background:var(--sk-swash); padding:6px 16px 0; border-radius:4px 14px 6px 12px; }
-  .modes { font-size:13.5px; color:var(--g-muted); } .modes a, .desc a { color:inherit; } .modes b { color:var(--g-fg); }
   header p { color:var(--g-muted); max-width:760px; }
   h2.g { font:700 13px/1 system-ui; letter-spacing:.08em; text-transform:uppercase; color:var(--g-muted); margin:36px 0 12px; }
   .chunks { display:grid; grid-template-columns:repeat(2,1fr); gap:16px; }
@@ -34,7 +23,6 @@
   pre { background:#1f1e1c; color:#ece7dc; padding:10px 12px; border-radius:6px; overflow:auto; font-size:12px; white-space:pre-wrap; word-break:break-word; }
   .row { display:grid; grid-template-columns:repeat(auto-fill,minmax(150px,1fr)); gap:12px; }
   figure { margin:0; background:var(--sk-page); border-radius:8px; padding:14px 12px 12px; text-align:center; }
-  figure .sk-patch { max-width:84%; margin:4px 0 8px; }
   figure img { width:80px; height:80px; } figure.char img { width:auto; height:200px; max-width:100%; object-fit:contain; }
   figcaption { font:12.5px/1.35 system-ui,sans-serif; color:var(--sk-text); margin-top:8px; text-align:left; }
   figcaption code, .fonts code { display:block; font:11px ui-monospace,monospace; color:color-mix(in oklab, var(--sk-text) 75%, var(--sk-page)); margin-top:4px; overflow-wrap:anywhere; }
@@ -48,8 +36,7 @@
 <body><div class="wrap">
 <header><h1>SKETCHBOOK KIT</h1>
 <p>Reusable pieces for slides and static web content in the style of the “learn anything” lightning-lesson slides. Every piece is plain HTML, CSS or SVG.
-Add <code>sketchbook.css</code> and <code>sketchbook.js</code> to a page, then paste in any chunk. Drop the icons and characters in as images anywhere.</p>
-<p class="modes">Dark mode: put <code>.dark</code> or <code>.sk-dark</code> on the page. View the kit <a href="?light">in light</a> or <a href="?dark">in dark</a>.</p></header>
+Add <code>sketchbook.css</code> and <code>sketchbook.js</code> to a page, then paste in any chunk. Drop the icons and characters in as images anywhere.</p></header>
 
 <h2 class="g">Example: a whole slide built only from kit pieces</h2>
 <div class="sk-slide sk-paper"><div class="sk-slide-body">
@@ -58,38 +45,38 @@ Add <code>sketchbook.css</code> and <code>sketchbook.js</code> to a page, then p
   <div class="sk-row" style="font-size:.78em">
     <div class="sk-panel sk-mustard">
   <div class="sk-step"><span class="sk-num">1</span><span class="sk-label">Add sources</span></div>
-  <span class="sk-patch"><img src="icons/books.svg" alt=""></span>
+  <img src="icons/books.svg" alt="">
   <p>books, manuals, transcripts, code</p>
 </div>
     <svg class="sk-arrow" viewBox="0 0 40 20" aria-hidden="true"><line x1="4" y1="10" x2="30" y2="10" stroke-width="4" stroke-linecap="round" marker-end="url(#sk-head)" filter="url(#sk-wobble-line)"/></svg>
     <div class="sk-panel sk-teal">
   <div class="sk-step"><span class="sk-num">2</span><span class="sk-label">Filter + focus</span></div>
-  <span class="sk-patch"><img src="icons/magnifier.svg" alt=""></span>
+  <img src="icons/magnifier.svg" alt="">
   <p>use a lens: <span class="sk-em">“what do I care about?”</span></p>
 </div>
     <svg class="sk-arrow" viewBox="0 0 40 20" aria-hidden="true"><line x1="4" y1="10" x2="30" y2="10" stroke-width="4" stroke-linecap="round" marker-end="url(#sk-head)" filter="url(#sk-wobble-line)"/></svg>
     <div class="sk-panel sk-forest sk-dashed">
   <div class="sk-step"><span class="sk-num">3</span><span class="sk-label">Create new source</span></div>
-  <span class="sk-patch"><img src="icons/page-pencil.svg" alt=""></span>
+  <img src="icons/page-pencil.svg" alt="">
   <p>pull out just the parts that matter</p>
 </div>
     <svg class="sk-arrow" viewBox="0 0 40 20" aria-hidden="true"><line x1="4" y1="10" x2="30" y2="10" stroke-width="4" stroke-linecap="round" marker-end="url(#sk-head)" filter="url(#sk-wobble-line)"/></svg>
     <div class="sk-panel sk-coral">
   <div class="sk-step"><span class="sk-num">4</span><span class="sk-label">Create a projection</span></div>
-  <span class="sk-patch"><img src="icons/headphones.svg" alt=""></span>
+  <img src="icons/headphones.svg" alt="">
   <p>audio summary, infographic, quiz</p>
 </div>
     <svg class="sk-arrow" viewBox="0 0 40 20" aria-hidden="true"><line x1="4" y1="10" x2="30" y2="10" stroke-width="4" stroke-linecap="round" marker-end="url(#sk-head)" filter="url(#sk-wobble-line)"/></svg>
     <div class="sk-panel sk-blue">
   <div class="sk-step"><span class="sk-num">5</span><span class="sk-label">Validate + iterate</span></div>
-  <span class="sk-patch"><img src="icons/checklist.svg" alt=""></span>
+  <img src="icons/checklist.svg" alt="">
   <p>teach back, quiz me, spaced repetition</p>
 </div>
   </div>
   <div style="margin:0 7% 0 7%"><svg class="sk-loop" viewBox="0 0 1000 70" aria-hidden="true"><path d="M960 6 C 950 50, 820 54, 500 54 C 180 54, 50 50, 40 8" fill="none" stroke-width="5" stroke-linecap="round" marker-end="url(#sk-head)" filter="url(#sk-wobble-soft)"/></svg></div>
   <div style="display:flex;align-items:center;justify-content:center;gap:1.5em;margin-top:-.6em">
     <div class="sk-ribbon" style="font-size:1.3em"><img src="icons/car.svg" alt=""><span class="sk-kicker">Insight:</span> “I want to learn a book while driving.”</div>
-    <span class="sk-patch" style="margin-top:.6em"><img src="characters/learner.svg" alt="" style="height:6.2em"></span>
+    <img src="characters/learner.svg" alt="" style="height:6.2em;margin-top:.6em">
   </div>
 </div></div>
 <details><summary>Copy the code</summary><pre><code>&lt;div class=&quot;sk-slide sk-paper&quot;&gt;&lt;div class=&quot;sk-slide-body&quot;&gt;
@@ -98,92 +85,92 @@ Add <code>sketchbook.css</code> and <code>sketchbook.js</code> to a page, then p
   &lt;div class=&quot;sk-row&quot; style=&quot;font-size:.78em&quot;&gt;
     &lt;div class=&quot;sk-panel sk-mustard&quot;&gt;
   &lt;div class=&quot;sk-step&quot;&gt;&lt;span class=&quot;sk-num&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;sk-label&quot;&gt;Add sources&lt;/span&gt;&lt;/div&gt;
-  &lt;span class=&quot;sk-patch&quot;&gt;&lt;img src=&quot;icons/books.svg&quot; alt=&quot;&quot;&gt;&lt;/span&gt;
+  &lt;img src=&quot;icons/books.svg&quot; alt=&quot;&quot;&gt;
   &lt;p&gt;books, manuals, transcripts, code&lt;/p&gt;
 &lt;/div&gt;
     &lt;svg class=&quot;sk-arrow&quot; viewBox=&quot;0 0 40 20&quot; aria-hidden=&quot;true&quot;&gt;&lt;line x1=&quot;4&quot; y1=&quot;10&quot; x2=&quot;30&quot; y2=&quot;10&quot; stroke-width=&quot;4&quot; stroke-linecap=&quot;round&quot; marker-end=&quot;url(#sk-head)&quot; filter=&quot;url(#sk-wobble-line)&quot;/&gt;&lt;/svg&gt;
     &lt;div class=&quot;sk-panel sk-teal&quot;&gt;
   &lt;div class=&quot;sk-step&quot;&gt;&lt;span class=&quot;sk-num&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;sk-label&quot;&gt;Filter + focus&lt;/span&gt;&lt;/div&gt;
-  &lt;span class=&quot;sk-patch&quot;&gt;&lt;img src=&quot;icons/magnifier.svg&quot; alt=&quot;&quot;&gt;&lt;/span&gt;
+  &lt;img src=&quot;icons/magnifier.svg&quot; alt=&quot;&quot;&gt;
   &lt;p&gt;use a lens: &lt;span class=&quot;sk-em&quot;&gt;“what do I care about?”&lt;/span&gt;&lt;/p&gt;
 &lt;/div&gt;
     &lt;svg class=&quot;sk-arrow&quot; viewBox=&quot;0 0 40 20&quot; aria-hidden=&quot;true&quot;&gt;&lt;line x1=&quot;4&quot; y1=&quot;10&quot; x2=&quot;30&quot; y2=&quot;10&quot; stroke-width=&quot;4&quot; stroke-linecap=&quot;round&quot; marker-end=&quot;url(#sk-head)&quot; filter=&quot;url(#sk-wobble-line)&quot;/&gt;&lt;/svg&gt;
     &lt;div class=&quot;sk-panel sk-forest sk-dashed&quot;&gt;
   &lt;div class=&quot;sk-step&quot;&gt;&lt;span class=&quot;sk-num&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;sk-label&quot;&gt;Create new source&lt;/span&gt;&lt;/div&gt;
-  &lt;span class=&quot;sk-patch&quot;&gt;&lt;img src=&quot;icons/page-pencil.svg&quot; alt=&quot;&quot;&gt;&lt;/span&gt;
+  &lt;img src=&quot;icons/page-pencil.svg&quot; alt=&quot;&quot;&gt;
   &lt;p&gt;pull out just the parts that matter&lt;/p&gt;
 &lt;/div&gt;
     &lt;svg class=&quot;sk-arrow&quot; viewBox=&quot;0 0 40 20&quot; aria-hidden=&quot;true&quot;&gt;&lt;line x1=&quot;4&quot; y1=&quot;10&quot; x2=&quot;30&quot; y2=&quot;10&quot; stroke-width=&quot;4&quot; stroke-linecap=&quot;round&quot; marker-end=&quot;url(#sk-head)&quot; filter=&quot;url(#sk-wobble-line)&quot;/&gt;&lt;/svg&gt;
     &lt;div class=&quot;sk-panel sk-coral&quot;&gt;
   &lt;div class=&quot;sk-step&quot;&gt;&lt;span class=&quot;sk-num&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;sk-label&quot;&gt;Create a projection&lt;/span&gt;&lt;/div&gt;
-  &lt;span class=&quot;sk-patch&quot;&gt;&lt;img src=&quot;icons/headphones.svg&quot; alt=&quot;&quot;&gt;&lt;/span&gt;
+  &lt;img src=&quot;icons/headphones.svg&quot; alt=&quot;&quot;&gt;
   &lt;p&gt;audio summary, infographic, quiz&lt;/p&gt;
 &lt;/div&gt;
     &lt;svg class=&quot;sk-arrow&quot; viewBox=&quot;0 0 40 20&quot; aria-hidden=&quot;true&quot;&gt;&lt;line x1=&quot;4&quot; y1=&quot;10&quot; x2=&quot;30&quot; y2=&quot;10&quot; stroke-width=&quot;4&quot; stroke-linecap=&quot;round&quot; marker-end=&quot;url(#sk-head)&quot; filter=&quot;url(#sk-wobble-line)&quot;/&gt;&lt;/svg&gt;
     &lt;div class=&quot;sk-panel sk-blue&quot;&gt;
   &lt;div class=&quot;sk-step&quot;&gt;&lt;span class=&quot;sk-num&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;sk-label&quot;&gt;Validate + iterate&lt;/span&gt;&lt;/div&gt;
-  &lt;span class=&quot;sk-patch&quot;&gt;&lt;img src=&quot;icons/checklist.svg&quot; alt=&quot;&quot;&gt;&lt;/span&gt;
+  &lt;img src=&quot;icons/checklist.svg&quot; alt=&quot;&quot;&gt;
   &lt;p&gt;teach back, quiz me, spaced repetition&lt;/p&gt;
 &lt;/div&gt;
   &lt;/div&gt;
   &lt;div style=&quot;margin:0 7% 0 7%&quot;&gt;&lt;svg class=&quot;sk-loop&quot; viewBox=&quot;0 0 1000 70&quot; aria-hidden=&quot;true&quot;&gt;&lt;path d=&quot;M960 6 C 950 50, 820 54, 500 54 C 180 54, 50 50, 40 8&quot; fill=&quot;none&quot; stroke-width=&quot;5&quot; stroke-linecap=&quot;round&quot; marker-end=&quot;url(#sk-head)&quot; filter=&quot;url(#sk-wobble-soft)&quot;/&gt;&lt;/svg&gt;&lt;/div&gt;
   &lt;div style=&quot;display:flex;align-items:center;justify-content:center;gap:1.5em;margin-top:-.6em&quot;&gt;
     &lt;div class=&quot;sk-ribbon&quot; style=&quot;font-size:1.3em&quot;&gt;&lt;img src=&quot;icons/car.svg&quot; alt=&quot;&quot;&gt;&lt;span class=&quot;sk-kicker&quot;&gt;Insight:&lt;/span&gt; “I want to learn a book while driving.”&lt;/div&gt;
-    &lt;span class=&quot;sk-patch&quot; style=&quot;margin-top:.6em&quot;&gt;&lt;img src=&quot;characters/learner.svg&quot; alt=&quot;&quot; style=&quot;height:6.2em&quot;&gt;&lt;/span&gt;
+    &lt;img src=&quot;characters/learner.svg&quot; alt=&quot;&quot; style=&quot;height:6.2em;margin-top:.6em&quot;&gt;
   &lt;/div&gt;
 &lt;/div&gt;&lt;/div&gt;</code></pre></details>
 
 <h2 class="g">Chunks</h2>
 <div class="chunks"><section class="chunk"><h3>Title on highlighter</h3><p class="desc">Big marker caps on a yellow highlighter swash. Wrap each line's words in <code>.sk-hl</code>; add <code>.sk-burst</code> for the tick marks.</p><div class="demo sk-paper"><h1 class="sk-title"><span class="sk-burst"><span class="sk-hl">How to get the agent</span><br><span class="sk-hl">to teach you anything</span></span></h1></div><details><summary>Copy the code</summary><pre><code>&lt;h1 class=&quot;sk-title&quot;&gt;&lt;span class=&quot;sk-burst&quot;&gt;&lt;span class=&quot;sk-hl&quot;&gt;How to get the agent&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;sk-hl&quot;&gt;to teach you anything&lt;/span&gt;&lt;/span&gt;&lt;/h1&gt;</code></pre></details></section>
 <section class="chunk"><h3>Section heading</h3><p class="desc">Label caps in deep teal with a rule either side.</p><div class="demo sk-paper"><h2 class="sk-section">The learning loop</h2></div><details><summary>Copy the code</summary><pre><code>&lt;h2 class=&quot;sk-section&quot;&gt;The learning loop&lt;/h2&gt;</code></pre></details></section>
-<section class="chunk"><h3>Step panel</h3><p class="desc">A numbered step in one of the five main colours. Add <code>.sk-dashed</code> for a dotted outline, to highlight the step you're talking about. Use <code>.sk-em</code> for accent text. The icon sits in a <code>.sk-patch</code> so it reads in dark mode.</p><div class="demo sk-paper"><div class="sk-row">
+<section class="chunk"><h3>Step panel</h3><p class="desc">A numbered step in one of the five main colours. Add <code>.sk-dashed</code> for a dotted outline, to highlight the step you're talking about. Use <code>.sk-em</code> for accent text.</p><div class="demo sk-paper"><div class="sk-row">
 <div class="sk-panel sk-teal">
   <div class="sk-step"><span class="sk-num">2</span><span class="sk-label">Filter + focus</span></div>
-  <span class="sk-patch"><img src="icons/magnifier.svg" alt=""></span>
+  <img src="icons/magnifier.svg" alt="">
   <p>use a lens: <span class="sk-em">“what do I care about?”</span></p>
 </div>
 <div class="sk-panel sk-forest sk-dashed">
   <div class="sk-step"><span class="sk-num">3</span><span class="sk-label">Create new source</span></div>
-  <span class="sk-patch"><img src="icons/page-pencil.svg" alt=""></span>
+  <img src="icons/page-pencil.svg" alt="">
   <p>pull out just the parts that matter</p>
 </div>
 </div></div><details><summary>Copy the code</summary><pre><code>&lt;div class=&quot;sk-row&quot;&gt;
 &lt;div class=&quot;sk-panel sk-teal&quot;&gt;
   &lt;div class=&quot;sk-step&quot;&gt;&lt;span class=&quot;sk-num&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;sk-label&quot;&gt;Filter + focus&lt;/span&gt;&lt;/div&gt;
-  &lt;span class=&quot;sk-patch&quot;&gt;&lt;img src=&quot;icons/magnifier.svg&quot; alt=&quot;&quot;&gt;&lt;/span&gt;
+  &lt;img src=&quot;icons/magnifier.svg&quot; alt=&quot;&quot;&gt;
   &lt;p&gt;use a lens: &lt;span class=&quot;sk-em&quot;&gt;“what do I care about?”&lt;/span&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;sk-panel sk-forest sk-dashed&quot;&gt;
   &lt;div class=&quot;sk-step&quot;&gt;&lt;span class=&quot;sk-num&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;sk-label&quot;&gt;Create new source&lt;/span&gt;&lt;/div&gt;
-  &lt;span class=&quot;sk-patch&quot;&gt;&lt;img src=&quot;icons/page-pencil.svg&quot; alt=&quot;&quot;&gt;&lt;/span&gt;
+  &lt;img src=&quot;icons/page-pencil.svg&quot; alt=&quot;&quot;&gt;
   &lt;p&gt;pull out just the parts that matter&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;</code></pre></details></section>
 <section class="chunk"><h3>Speech bubble</h3><p class="desc">Something a person says or asks. Add <code>.sk-tail-right</code> to move the tail to the right.</p><div class="demo sk-paper"><div class="sk-bubble">“I want to learn <span class="sk-em">Chapter 1 of Shape Up</span>, while I’m driving.”</div></div><details><summary>Copy the code</summary><pre><code>&lt;div class=&quot;sk-bubble&quot;&gt;“I want to learn &lt;span class=&quot;sk-em&quot;&gt;Chapter 1 of Shape Up&lt;/span&gt;, while I’m driving.”&lt;/div&gt;</code></pre></details></section>
 <section class="chunk"><h3>Ribbon banner</h3><p class="desc">An insight or takeaway. The kicker word goes in <code>.sk-kicker</code>, and an icon is optional.</p><div class="demo sk-paper"><div class="sk-ribbon"><img src="icons/car.svg" alt=""><span class="sk-kicker">Insight:</span> “I want to learn a book while driving.”</div></div><details><summary>Copy the code</summary><pre><code>&lt;div class=&quot;sk-ribbon&quot;&gt;&lt;img src=&quot;icons/car.svg&quot; alt=&quot;&quot;&gt;&lt;span class=&quot;sk-kicker&quot;&gt;Insight:&lt;/span&gt; “I want to learn a book while driving.”&lt;/div&gt;</code></pre></details></section>
-<section class="chunk"><h3>Arrows</h3><p class="desc">A short slate connector between steps, and the blue loop-back arrow that sits under a row of panels. Their colours come from the CSS, so they follow dark mode.</p><div class="demo sk-paper"><svg class="sk-arrow" viewBox="0 0 40 20" aria-hidden="true"><line x1="4" y1="10" x2="30" y2="10" stroke-width="4" stroke-linecap="round" marker-end="url(#sk-head)" filter="url(#sk-wobble-line)"/></svg>
+<section class="chunk"><h3>Arrows</h3><p class="desc">A short slate connector between steps, and the blue loop-back arrow that sits under a row of panels. Their colours come from the CSS.</p><div class="demo sk-paper"><svg class="sk-arrow" viewBox="0 0 40 20" aria-hidden="true"><line x1="4" y1="10" x2="30" y2="10" stroke-width="4" stroke-linecap="round" marker-end="url(#sk-head)" filter="url(#sk-wobble-line)"/></svg>
 <svg class="sk-loop" viewBox="0 0 1000 70" aria-hidden="true"><path d="M960 6 C 950 50, 820 54, 500 54 C 180 54, 50 50, 40 8" fill="none" stroke-width="5" stroke-linecap="round" marker-end="url(#sk-head)" filter="url(#sk-wobble-soft)"/></svg></div><details><summary>Copy the code</summary><pre><code>&lt;svg class=&quot;sk-arrow&quot; viewBox=&quot;0 0 40 20&quot; aria-hidden=&quot;true&quot;&gt;&lt;line x1=&quot;4&quot; y1=&quot;10&quot; x2=&quot;30&quot; y2=&quot;10&quot; stroke-width=&quot;4&quot; stroke-linecap=&quot;round&quot; marker-end=&quot;url(#sk-head)&quot; filter=&quot;url(#sk-wobble-line)&quot;/&gt;&lt;/svg&gt;
 &lt;svg class=&quot;sk-loop&quot; viewBox=&quot;0 0 1000 70&quot; aria-hidden=&quot;true&quot;&gt;&lt;path d=&quot;M960 6 C 950 50, 820 54, 500 54 C 180 54, 50 50, 40 8&quot; fill=&quot;none&quot; stroke-width=&quot;5&quot; stroke-linecap=&quot;round&quot; marker-end=&quot;url(#sk-head)&quot; filter=&quot;url(#sk-wobble-soft)&quot;/&gt;&lt;/svg&gt;</code></pre></details></section>
-<section class="chunk"><h3>Panel wash</h3><p class="desc">Add <code>.sk-wash</code> to a panel for a pale wash of its accent colour mixed with the page: about 9% in light mode, 10% in dark. Use it to set a card apart from the page.</p><div class="demo sk-paper"><div class="sk-row">
+<section class="chunk"><h3>Panel wash</h3><p class="desc">Add <code>.sk-wash</code> to a panel for a pale wash of its accent colour mixed with the page, about 9%. Use it to set a card apart from the page.</p><div class="demo sk-paper"><div class="sk-row">
 <div class="sk-panel sk-mustard sk-wash">
   <div class="sk-step"><span class="sk-num">1</span><span class="sk-label">Add sources</span></div>
-  <span class="sk-patch"><img src="icons/books.svg" alt=""></span>
+  <img src="icons/books.svg" alt="">
   <p>books, manuals, transcripts, code</p>
 </div>
 <div class="sk-panel sk-teal sk-wash">
   <div class="sk-step"><span class="sk-num">2</span><span class="sk-label">Filter + focus</span></div>
-  <span class="sk-patch"><img src="icons/magnifier.svg" alt=""></span>
+  <img src="icons/magnifier.svg" alt="">
   <p>use a lens: <span class="sk-em">“what do I care about?”</span></p>
 </div>
 </div></div><details><summary>Copy the code</summary><pre><code>&lt;div class=&quot;sk-row&quot;&gt;
 &lt;div class=&quot;sk-panel sk-mustard sk-wash&quot;&gt;
   &lt;div class=&quot;sk-step&quot;&gt;&lt;span class=&quot;sk-num&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;sk-label&quot;&gt;Add sources&lt;/span&gt;&lt;/div&gt;
-  &lt;span class=&quot;sk-patch&quot;&gt;&lt;img src=&quot;icons/books.svg&quot; alt=&quot;&quot;&gt;&lt;/span&gt;
+  &lt;img src=&quot;icons/books.svg&quot; alt=&quot;&quot;&gt;
   &lt;p&gt;books, manuals, transcripts, code&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;sk-panel sk-teal sk-wash&quot;&gt;
   &lt;div class=&quot;sk-step&quot;&gt;&lt;span class=&quot;sk-num&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;sk-label&quot;&gt;Filter + focus&lt;/span&gt;&lt;/div&gt;
-  &lt;span class=&quot;sk-patch&quot;&gt;&lt;img src=&quot;icons/magnifier.svg&quot; alt=&quot;&quot;&gt;&lt;/span&gt;
+  &lt;img src=&quot;icons/magnifier.svg&quot; alt=&quot;&quot;&gt;
   &lt;p&gt;use a lens: &lt;span class=&quot;sk-em&quot;&gt;“what do I care about?”&lt;/span&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;</code></pre></details></section>
@@ -201,7 +188,7 @@ Add <code>sketchbook.css</code> and <code>sketchbook.js</code> to a page, then p
 <section class="chunk"><h3>Tick</h3><p class="desc">A hand-drawn tick for something done or passing. It takes the size of the text around it, and the forest text colour; set <code>color</code> to change it. Give it a label when it stands alone.</p><div class="demo sk-paper"><p style="font-size:1.4em;margin:0"><span class="sk-tick" role="img" aria-label="done"></span> Three Examples hold.</p>
 <p style="font-size:2.6em;margin:0"><span class="sk-tick" role="img" aria-label="passing"></span></p></div><details><summary>Copy the code</summary><pre><code>&lt;p style=&quot;font-size:1.4em;margin:0&quot;&gt;&lt;span class=&quot;sk-tick&quot; role=&quot;img&quot; aria-label=&quot;done&quot;&gt;&lt;/span&gt; Three Examples hold.&lt;/p&gt;
 &lt;p style=&quot;font-size:2.6em;margin:0&quot;&gt;&lt;span class=&quot;sk-tick&quot; role=&quot;img&quot; aria-label=&quot;passing&quot;&gt;&lt;/span&gt;&lt;/p&gt;</code></pre></details></section>
-<section class="chunk"><h3>Buttons</h3><p class="desc"><code>.sk-btn</code> is the one main action on a screen: deep teal with paper lettering (the lighter teal with ink in dark mode). Add <code>.sk-secondary</code> for the others: an ink outline.</p><div class="demo sk-paper"><button class="sk-btn" type="button">Start the course →</button>
+<section class="chunk"><h3>Buttons</h3><p class="desc"><code>.sk-btn</code> is the one main action on a screen: deep teal with paper lettering. Add <code>.sk-secondary</code> for the others: an ink outline.</p><div class="demo sk-paper"><button class="sk-btn" type="button">Start the course →</button>
 <button class="sk-btn sk-secondary" type="button">Use a different project</button></div><details><summary>Copy the code</summary><pre><code>&lt;button class=&quot;sk-btn&quot; type=&quot;button&quot;&gt;Start the course →&lt;/button&gt;
 &lt;button class=&quot;sk-btn sk-secondary&quot; type=&quot;button&quot;&gt;Use a different project&lt;/button&gt;</code></pre></details></section>
 <section class="chunk"><h3>Progress meter</h3><p class="desc">A wobbly bar. Set <code>--sk-value</code> from 0% to 100%; the fill takes the accent, so a colour modifier changes it. Put the count in words next to it.</p><div class="demo sk-paper"><div style="display:flex;align-items:center;gap:.8em;font-size:1.3em">
@@ -212,36 +199,31 @@ Add <code>sketchbook.css</code> and <code>sketchbook.js</code> to a page, then p
   &lt;div class=&quot;sk-meter&quot; role=&quot;progressbar&quot; aria-label=&quot;Examples that hold&quot; aria-valuemin=&quot;0&quot; aria-valuemax=&quot;10&quot; aria-valuenow=&quot;3&quot; style=&quot;--sk-value:30%;width:10em&quot;&gt;&lt;/div&gt;
   &lt;span&gt;3 of 10 Examples hold&lt;/span&gt;
 &lt;/div&gt;
-&lt;div class=&quot;sk-meter sk-mustard&quot; role=&quot;progressbar&quot; aria-label=&quot;Lessons done&quot; aria-valuemin=&quot;0&quot; aria-valuemax=&quot;9&quot; aria-valuenow=&quot;6&quot; style=&quot;--sk-value:66%;width:10em;margin-top:1em&quot;&gt;&lt;/div&gt;</code></pre></details></section>
-<section class="chunk"><h3>Paper patch</h3><p class="desc">Wrap an icon or character in <code>.sk-patch</code>. In dark mode it sits on a small wobbly patch of cream paper so its ink outlines read; in light mode the patch is invisible. The drawing itself never changes. See it with <a href="?dark">?dark</a>.</p><div class="demo sk-paper"><span class="sk-patch"><img src="icons/robot.svg" alt="" style="width:90px"></span>
-<span class="sk-patch"><img src="icons/chat.svg" alt="" style="width:60px"></span>
-<span class="sk-patch"><img src="characters/waver.svg" alt="" style="height:150px"></span></div><details><summary>Copy the code</summary><pre><code>&lt;span class=&quot;sk-patch&quot;&gt;&lt;img src=&quot;icons/robot.svg&quot; alt=&quot;&quot; style=&quot;width:90px&quot;&gt;&lt;/span&gt;
-&lt;span class=&quot;sk-patch&quot;&gt;&lt;img src=&quot;icons/chat.svg&quot; alt=&quot;&quot; style=&quot;width:60px&quot;&gt;&lt;/span&gt;
-&lt;span class=&quot;sk-patch&quot;&gt;&lt;img src=&quot;characters/waver.svg&quot; alt=&quot;&quot; style=&quot;height:150px&quot;&gt;&lt;/span&gt;</code></pre></details></section></div>
+&lt;div class=&quot;sk-meter sk-mustard&quot; role=&quot;progressbar&quot; aria-label=&quot;Lessons done&quot; aria-valuemin=&quot;0&quot; aria-valuemax=&quot;9&quot; aria-valuenow=&quot;6&quot; style=&quot;--sk-value:66%;width:10em;margin-top:1em&quot;&gt;&lt;/div&gt;</code></pre></details></section></div>
 
 <h2 class="g">Characters</h2>
-<div class="row"><figure class="char"><span class="sk-patch"><img src="characters/learner.svg" alt=""></span><figcaption>A person reading a book with headphones on. Studying, learning, taking something in.<code>characters/learner.svg</code></figcaption></figure>
-<figure class="char"><span class="sk-patch"><img src="characters/explainer.svg" alt=""></span><figcaption>A person pointing up with an idea. Explaining, teaching, a tip or insight.<code>characters/explainer.svg</code></figcaption></figure>
-<figure class="char"><span class="sk-patch"><img src="characters/waver.svg" alt=""></span><figcaption>A person waving. Hello, welcome, getting someone&#x27;s attention, goodbye.<code>characters/waver.svg</code></figcaption></figure>
-<figure class="char"><span class="sk-patch"><img src="characters/coffee.svg" alt=""></span><figcaption>A person holding a mug of coffee. Relaxed, a break, informal chat.<code>characters/coffee.svg</code></figcaption></figure>
-<figure class="char"><span class="sk-patch"><img src="characters/pointer.svg" alt=""></span><figcaption>A person pointing up with an idea. An alternative to the explainer.<code>characters/pointer.svg</code></figcaption></figure>
-<figure class="char"><span class="sk-patch"><img src="characters/cat.svg" alt=""></span><figcaption>A sitting cat, winking. Playful aside, a light moment.<code>characters/cat.svg</code></figcaption></figure>
-<figure class="char"><span class="sk-patch"><img src="characters/dog.svg" alt=""></span><figcaption>A sitting dog with its head tilted. Curiosity, a question, loyalty.<code>characters/dog.svg</code></figcaption></figure>
-<figure class="char"><span class="sk-patch"><img src="characters/group.svg" alt=""></span><figcaption>Four people and a dog side by side. A team, a community, working together.<code>characters/group.svg</code></figcaption></figure></div>
+<div class="row"><figure class="char"><img src="characters/learner.svg" alt=""><figcaption>A person reading a book with headphones on. Studying, learning, taking something in.<code>characters/learner.svg</code></figcaption></figure>
+<figure class="char"><img src="characters/explainer.svg" alt=""><figcaption>A person pointing up with an idea. Explaining, teaching, a tip or insight.<code>characters/explainer.svg</code></figcaption></figure>
+<figure class="char"><img src="characters/waver.svg" alt=""><figcaption>A person waving. Hello, welcome, getting someone&#x27;s attention, goodbye.<code>characters/waver.svg</code></figcaption></figure>
+<figure class="char"><img src="characters/coffee.svg" alt=""><figcaption>A person holding a mug of coffee. Relaxed, a break, informal chat.<code>characters/coffee.svg</code></figcaption></figure>
+<figure class="char"><img src="characters/pointer.svg" alt=""><figcaption>A person pointing up with an idea. An alternative to the explainer.<code>characters/pointer.svg</code></figcaption></figure>
+<figure class="char"><img src="characters/cat.svg" alt=""><figcaption>A sitting cat, winking. Playful aside, a light moment.<code>characters/cat.svg</code></figcaption></figure>
+<figure class="char"><img src="characters/dog.svg" alt=""><figcaption>A sitting dog with its head tilted. Curiosity, a question, loyalty.<code>characters/dog.svg</code></figcaption></figure>
+<figure class="char"><img src="characters/group.svg" alt=""><figcaption>Four people and a dog side by side. A team, a community, working together.<code>characters/group.svg</code></figcaption></figure></div>
 
 <h2 class="g">Doodle icons</h2>
 <p class="desc">One colour for simple objects; up to three when the object has distinct parts. Always from the palette.</p>
-<h3 class="grp">Brand words</h3><div class="row"><figure><span class="sk-patch"><img src="icons/mug.svg" alt=""></span><figcaption>A steaming mug with a heart. Warmth, welcome, a break, a chat over coffee. Stands for &#x27;warm&#x27;.<code>icons/mug.svg</code></figcaption></figure><figure><span class="sk-patch"><img src="icons/kite.svg" alt=""></span><figcaption>A colourful kite. Play, curiosity, freedom, trying things out. Stands for &#x27;whimsical&#x27;.<code>icons/kite.svg</code></figcaption></figure><figure><span class="sk-patch"><img src="icons/owl.svg" alt=""></span><figcaption>An owl. Knowledge, good judgement, a wise guide. Stands for &#x27;wise&#x27;.<code>icons/owl.svg</code></figcaption></figure></div>
-<h3 class="grp">Learning</h3><div class="row"><figure><span class="sk-patch"><img src="icons/books.svg" alt=""></span><figcaption>A stack of books. Sources, reading, research, a body of knowledge.<code>icons/books.svg</code></figcaption></figure><figure><span class="sk-patch"><img src="icons/page-pencil.svg" alt=""></span><figcaption>A page with a pencil. Writing, notes, drafting, creating something new.<code>icons/page-pencil.svg</code></figcaption></figure><figure><span class="sk-patch"><img src="icons/magnifier.svg" alt=""></span><figcaption>A magnifying glass. Looking closely, searching, focusing, filtering.<code>icons/magnifier.svg</code></figcaption></figure><figure><span class="sk-patch"><img src="icons/lightbulb.svg" alt=""></span><figcaption>A lightbulb. An idea, an insight, a moment of understanding.<code>icons/lightbulb.svg</code></figcaption></figure><figure><span class="sk-patch"><img src="icons/checklist.svg" alt=""></span><figcaption>A checklist with ticks. Steps done, validation, testing, a plan.<code>icons/checklist.svg</code></figcaption></figure><figure><span class="sk-patch"><img src="icons/headphones.svg" alt=""></span><figcaption>Headphones. Listening, audio, podcasts, learning on the go.<code>icons/headphones.svg</code></figcaption></figure></div>
-<h3 class="grp">Working together</h3><div class="row"><figure><span class="sk-patch"><img src="icons/chat.svg" alt=""></span><figcaption>Two speech bubbles. Conversation, feedback, asking questions.<code>icons/chat.svg</code></figcaption></figure><figure><span class="sk-patch"><img src="icons/puzzle.svg" alt=""></span><figcaption>Two puzzle pieces fitting together. Collaboration, integration, parts of a solution.<code>icons/puzzle.svg</code></figcaption></figure><figure><span class="sk-patch"><img src="icons/sticky-note.svg" alt=""></span><figcaption>A sticky note. Ideas on a wall, workshops, capturing a thought.<code>icons/sticky-note.svg</code></figcaption></figure><figure><span class="sk-patch"><img src="icons/compass.svg" alt=""></span><figcaption>A compass. Direction, strategy, finding your way, goals.<code>icons/compass.svg</code></figcaption></figure></div>
-<h3 class="grp">Tech & systems</h3><div class="row"><figure><span class="sk-patch"><img src="icons/laptop.svg" alt=""></span><figcaption>A laptop. Computers, coding, working online.<code>icons/laptop.svg</code></figcaption></figure><figure><span class="sk-patch"><img src="icons/robot.svg" alt=""></span><figcaption>A friendly robot. AI, agents, automation.<code>icons/robot.svg</code></figcaption></figure><figure><span class="sk-patch"><img src="icons/robot-scan.svg" alt=""></span><figcaption>A robot scanning a page. AI reading, research, finding information.<code>icons/robot-scan.svg</code></figcaption></figure><figure><span class="sk-patch"><img src="icons/robot-report.svg" alt=""></span><figcaption>A robot sharing a checked result. AI reporting back, completing a task.<code>icons/robot-report.svg</code></figcaption></figure><figure><span class="sk-patch"><img src="icons/gear.svg" alt=""></span><figcaption>Gears. Systems, processes, how things work, machinery.<code>icons/gear.svg</code></figcaption></figure><figure><span class="sk-patch"><img src="icons/sprout.svg" alt=""></span><figcaption>A sprout. Growth, learning, starting small, progress.<code>icons/sprout.svg</code></figcaption></figure><figure><span class="sk-patch"><img src="icons/car.svg" alt=""></span><figcaption>A car. Travel, a journey, learning on the move, speed.<code>icons/car.svg</code></figcaption></figure></div>
+<h3 class="grp">Brand words</h3><div class="row"><figure><img src="icons/mug.svg" alt=""><figcaption>A steaming mug with a heart. Warmth, welcome, a break, a chat over coffee. Stands for &#x27;warm&#x27;.<code>icons/mug.svg</code></figcaption></figure><figure><img src="icons/kite.svg" alt=""><figcaption>A colourful kite. Play, curiosity, freedom, trying things out. Stands for &#x27;whimsical&#x27;.<code>icons/kite.svg</code></figcaption></figure><figure><img src="icons/owl.svg" alt=""><figcaption>An owl. Knowledge, good judgement, a wise guide. Stands for &#x27;wise&#x27;.<code>icons/owl.svg</code></figcaption></figure></div>
+<h3 class="grp">Learning</h3><div class="row"><figure><img src="icons/books.svg" alt=""><figcaption>A stack of books. Sources, reading, research, a body of knowledge.<code>icons/books.svg</code></figcaption></figure><figure><img src="icons/page-pencil.svg" alt=""><figcaption>A page with a pencil. Writing, notes, drafting, creating something new.<code>icons/page-pencil.svg</code></figcaption></figure><figure><img src="icons/magnifier.svg" alt=""><figcaption>A magnifying glass. Looking closely, searching, focusing, filtering.<code>icons/magnifier.svg</code></figcaption></figure><figure><img src="icons/lightbulb.svg" alt=""><figcaption>A lightbulb. An idea, an insight, a moment of understanding.<code>icons/lightbulb.svg</code></figcaption></figure><figure><img src="icons/checklist.svg" alt=""><figcaption>A checklist with ticks. Steps done, validation, testing, a plan.<code>icons/checklist.svg</code></figcaption></figure><figure><img src="icons/headphones.svg" alt=""><figcaption>Headphones. Listening, audio, podcasts, learning on the go.<code>icons/headphones.svg</code></figcaption></figure></div>
+<h3 class="grp">Working together</h3><div class="row"><figure><img src="icons/chat.svg" alt=""><figcaption>Two speech bubbles. Conversation, feedback, asking questions.<code>icons/chat.svg</code></figcaption></figure><figure><img src="icons/puzzle.svg" alt=""><figcaption>Two puzzle pieces fitting together. Collaboration, integration, parts of a solution.<code>icons/puzzle.svg</code></figcaption></figure><figure><img src="icons/sticky-note.svg" alt=""><figcaption>A sticky note. Ideas on a wall, workshops, capturing a thought.<code>icons/sticky-note.svg</code></figcaption></figure><figure><img src="icons/compass.svg" alt=""><figcaption>A compass. Direction, strategy, finding your way, goals.<code>icons/compass.svg</code></figcaption></figure></div>
+<h3 class="grp">Tech & systems</h3><div class="row"><figure><img src="icons/laptop.svg" alt=""><figcaption>A laptop. Computers, coding, working online.<code>icons/laptop.svg</code></figcaption></figure><figure><img src="icons/robot.svg" alt=""><figcaption>A friendly robot. AI, agents, automation.<code>icons/robot.svg</code></figcaption></figure><figure><img src="icons/robot-scan.svg" alt=""><figcaption>A robot scanning a page. AI reading, research, finding information.<code>icons/robot-scan.svg</code></figcaption></figure><figure><img src="icons/robot-report.svg" alt=""><figcaption>A robot sharing a checked result. AI reporting back, completing a task.<code>icons/robot-report.svg</code></figcaption></figure><figure><img src="icons/gear.svg" alt=""><figcaption>Gears. Systems, processes, how things work, machinery.<code>icons/gear.svg</code></figcaption></figure><figure><img src="icons/sprout.svg" alt=""><figcaption>A sprout. Growth, learning, starting small, progress.<code>icons/sprout.svg</code></figcaption></figure><figure><img src="icons/car.svg" alt=""><figcaption>A car. Travel, a journey, learning on the move, speed.<code>icons/car.svg</code></figcaption></figure></div>
 
 <h2 class="g">Tokens: colours (CSS variables in sketchbook.css; also tokens.json)</h2>
 <div class="row"><div class="sw"><i style="background:#EEA306"></i><b>--sk-mustard</b><span>#EEA306</span><em>Step colour 1. Panels, icon washes, warm accents.</em></div><div class="sw"><i style="background:#039695"></i><b>--sk-teal</b><span>#039695</span><em>Step colour 2. Panels, icon washes.</em></div><div class="sw"><i style="background:#4A7D4B"></i><b>--sk-forest</b><span>#4A7D4B</span><em>Step colour 3. Panels, icon washes.</em></div><div class="sw"><i style="background:#F76C37"></i><b>--sk-coral</b><span>#F76C37</span><em>Step colour 4. Panels, icon washes.</em></div><div class="sw"><i style="background:#1F78A8"></i><b>--sk-blue</b><span>#1F78A8</span><em>Step colour 5. Panels, icon washes, the loop-back arrow.</em></div><div class="sw"><i style="background:#36545C"></i><b>--sk-slate</b><span>#36545C</span><em>Connector arrows between steps.</em></div><div class="sw"><i style="background:#D6631C"></i><b>--sk-rust</b><span>#D6631C</span><em>Accent text in speech bubbles, and ribbon kickers.</em></div><div class="sw"><i style="background:#094854"></i><b>--sk-deep-teal</b><span>#094854</span><em>Section headings and their rules.</em></div><div class="sw"><i style="background:#FFEEB8"></i><b>--sk-highlighter</b><span>#FFEEB8</span><em>The swash behind big titles.</em></div><div class="sw"><i style="background:#FCF9F3"></i><b>--sk-paper</b><span>#FCF9F3</span><em>The page background.</em></div><div class="sw"><i style="background:#FAEED3"></i><b>--sk-ribbon</b><span>#FAEED3</span><em>Ribbon banner fill.</em></div><div class="sw"><i style="background:#EEF4F5"></i><b>--sk-bubble</b><span>#EEF4F5</span><em>Speech bubble fill.</em></div><div class="sw"><i style="background:#2A2724"></i><b>--sk-ink</b><span>#2A2724</span><em>Outlines and line drawing.</em></div><div class="sw"><i style="background:#1B1B1B"></i><b>--sk-ink-title</b><span>#1B1B1B</span><em>Big title lettering.</em></div><div class="sw"><i style="background:#3A3631"></i><b>--sk-body-text</b><span>#3A3631</span><em>Sentences and captions.</em></div></div>
 
-<h2 class="g">Tokens: roles (what the pieces paint with; they switch in dark mode)</h2>
-<p class="desc">Use these rather than the palette when you build something new, and it follows dark mode for free. The swatches show the mode you're viewing.</p>
-<div class="row roles"><div class="sw"><i style="background:var(--sk-page)"></i><b>--sk-page</b><span>light: var(--sk-paper)<br>dark: var(--sk-ink)</span><em>The page behind everything.</em></div><div class="sw"><i style="background:var(--sk-text)"></i><b>--sk-text</b><span>light: var(--sk-body-text)<br>dark: var(--sk-paper)</span><em>Sentences and captions.</em></div><div class="sw"><i style="background:var(--sk-title-text)"></i><b>--sk-title-text</b><span>light: var(--sk-ink-title)<br>dark: var(--sk-paper)</span><em>Big title lettering and its burst ticks.</em></div><div class="sw"><i style="background:var(--sk-line)"></i><b>--sk-line</b><span>light: var(--sk-ink)<br>dark: color-mix(in oklab, var(--sk-paper) 85%, var(--sk-ink))</span><em>Outlines of bubbles and secondary buttons.</em></div><div class="sw"><i style="background:var(--sk-heading)"></i><b>--sk-heading</b><span>light: var(--sk-deep-teal)<br>dark: color-mix(in oklch, var(--sk-teal) 80%, var(--sk-paper))</span><em>Section headings and their rules, primary buttons. The lighter teal in dark mode.</em></div><div class="sw"><i style="background:var(--sk-on-heading)"></i><b>--sk-on-heading</b><span>light: var(--sk-paper)<br>dark: var(--sk-ink)</span><em>Text on a primary button.</em></div><div class="sw"><i style="background:var(--sk-connector)"></i><b>--sk-connector</b><span>light: var(--sk-slate)<br>dark: color-mix(in oklch, var(--sk-slate) 60%, var(--sk-paper))</span><em>Connector arrows between steps.</em></div><div class="sw"><i style="background:var(--sk-loop)"></i><b>--sk-loop</b><span>light: var(--sk-blue)<br>dark: color-mix(in oklch, var(--sk-blue) 75%, var(--sk-paper))</span><em>The loop-back arrow.</em></div><div class="sw"><i style="background:var(--sk-bubble-fill)"></i><b>--sk-bubble-fill</b><span>light: var(--sk-bubble)<br>dark: color-mix(in oklab, var(--sk-bubble) 12%, var(--sk-ink))</span><em>Speech bubble fill.</em></div><div class="sw"><i style="background:var(--sk-swash)"></i><b>--sk-swash</b><span>light: var(--sk-highlighter)<br>dark: color-mix(in srgb, var(--sk-heading) 32%, var(--sk-ink))</span><em>What the highlighter swash reads as: a solid colour for tints and contrast checks. A pale-teal tint in dark mode.</em></div><div class="sw"><i style="background:var(--sk-track)"></i><b>--sk-track</b><span>light: color-mix(in oklab, var(--sk-ink) 12%, var(--sk-paper))<br>dark: color-mix(in oklab, var(--sk-paper) 16%, var(--sk-ink))</span><em>The empty part of a progress meter.</em></div><div class="sw"><i style="background:var(--sk-patch)"></i><b>--sk-patch</b><span>light: transparent<br>dark: var(--sk-paper)</span><em>The paper patch behind a drawing: nothing in light mode, cream paper in dark mode.</em></div><div class="sw"><i style="background:var(--sk-mustard-text)"></i><b>--sk-mustard-text</b><span>light: color-mix(in oklch, var(--sk-mustard) 55%, var(--sk-ink))<br>dark: var(--sk-mustard)</span><em>Mustard that reads as text.</em></div><div class="sw"><i style="background:var(--sk-teal-text)"></i><b>--sk-teal-text</b><span>light: color-mix(in oklch, var(--sk-teal) 70%, var(--sk-ink))<br>dark: color-mix(in oklch, var(--sk-teal) 80%, var(--sk-paper))</span><em>Teal that reads as text.</em></div><div class="sw"><i style="background:var(--sk-forest-text)"></i><b>--sk-forest-text</b><span>light: color-mix(in oklch, var(--sk-forest) 85%, var(--sk-ink))<br>dark: color-mix(in oklch, var(--sk-forest) 60%, var(--sk-paper))</span><em>Forest that reads as text. Ticks.</em></div><div class="sw"><i style="background:var(--sk-coral-text)"></i><b>--sk-coral-text</b><span>light: color-mix(in oklch, var(--sk-coral) 55%, var(--sk-ink))<br>dark: color-mix(in oklch, var(--sk-coral) 80%, var(--sk-paper))</span><em>Coral that reads as text.</em></div><div class="sw"><i style="background:var(--sk-blue-text)"></i><b>--sk-blue-text</b><span>light: color-mix(in oklch, var(--sk-blue) 85%, var(--sk-ink))<br>dark: color-mix(in oklch, var(--sk-blue) 60%, var(--sk-paper))</span><em>Blue that reads as text.</em></div><div class="sw"><i style="background:var(--sk-rust-text)"></i><b>--sk-rust-text</b><span>light: color-mix(in oklch, var(--sk-rust) 70%, var(--sk-ink))<br>dark: color-mix(in oklch, var(--sk-rust) 65%, var(--sk-paper))</span><em>Rust that reads as text: bubble accents, ribbon kickers.</em></div><div class="sw"><i style="background:var(--sk-deep-teal-text)"></i><b>--sk-deep-teal-text</b><span>light: var(--sk-deep-teal)<br>dark: color-mix(in oklch, var(--sk-teal) 80%, var(--sk-paper))</span><em>Deep teal that reads as text. The lighter teal in dark mode.</em></div></div>
+<h2 class="g">Tokens: roles (what the pieces paint with)</h2>
+<p class="desc">Use these rather than the palette when you build something new.</p>
+<div class="row roles"><div class="sw"><i style="background:var(--sk-page)"></i><b>--sk-page</b><span>var(--sk-paper)</span><em>The page behind everything.</em></div><div class="sw"><i style="background:var(--sk-text)"></i><b>--sk-text</b><span>var(--sk-body-text)</span><em>Sentences and captions.</em></div><div class="sw"><i style="background:var(--sk-title-text)"></i><b>--sk-title-text</b><span>var(--sk-ink-title)</span><em>Big title lettering and its burst ticks.</em></div><div class="sw"><i style="background:var(--sk-line)"></i><b>--sk-line</b><span>var(--sk-ink)</span><em>Outlines of bubbles and secondary buttons.</em></div><div class="sw"><i style="background:var(--sk-heading)"></i><b>--sk-heading</b><span>var(--sk-deep-teal)</span><em>Section headings and their rules, primary buttons.</em></div><div class="sw"><i style="background:var(--sk-on-heading)"></i><b>--sk-on-heading</b><span>var(--sk-paper)</span><em>Text on a primary button.</em></div><div class="sw"><i style="background:var(--sk-connector)"></i><b>--sk-connector</b><span>var(--sk-slate)</span><em>Connector arrows between steps.</em></div><div class="sw"><i style="background:var(--sk-loop)"></i><b>--sk-loop</b><span>var(--sk-blue)</span><em>The loop-back arrow.</em></div><div class="sw"><i style="background:var(--sk-bubble-fill)"></i><b>--sk-bubble-fill</b><span>var(--sk-bubble)</span><em>Speech bubble fill.</em></div><div class="sw"><i style="background:var(--sk-swash)"></i><b>--sk-swash</b><span>var(--sk-highlighter)</span><em>What the highlighter swash reads as: a solid colour for tints and contrast checks.</em></div><div class="sw"><i style="background:var(--sk-track)"></i><b>--sk-track</b><span>color-mix(in oklab, var(--sk-ink) 12%, var(--sk-paper))</span><em>The empty part of a progress meter.</em></div><div class="sw"><i style="background:var(--sk-mustard-text)"></i><b>--sk-mustard-text</b><span>color-mix(in oklch, var(--sk-mustard) 55%, var(--sk-ink))</span><em>Mustard that reads as text.</em></div><div class="sw"><i style="background:var(--sk-teal-text)"></i><b>--sk-teal-text</b><span>color-mix(in oklch, var(--sk-teal) 70%, var(--sk-ink))</span><em>Teal that reads as text.</em></div><div class="sw"><i style="background:var(--sk-forest-text)"></i><b>--sk-forest-text</b><span>color-mix(in oklch, var(--sk-forest) 85%, var(--sk-ink))</span><em>Forest that reads as text. Ticks.</em></div><div class="sw"><i style="background:var(--sk-coral-text)"></i><b>--sk-coral-text</b><span>color-mix(in oklch, var(--sk-coral) 55%, var(--sk-ink))</span><em>Coral that reads as text.</em></div><div class="sw"><i style="background:var(--sk-blue-text)"></i><b>--sk-blue-text</b><span>color-mix(in oklch, var(--sk-blue) 85%, var(--sk-ink))</span><em>Blue that reads as text.</em></div><div class="sw"><i style="background:var(--sk-rust-text)"></i><b>--sk-rust-text</b><span>color-mix(in oklch, var(--sk-rust) 70%, var(--sk-ink))</span><em>Rust that reads as text: bubble accents, ribbon kickers.</em></div><div class="sw"><i style="background:var(--sk-deep-teal-text)"></i><b>--sk-deep-teal-text</b><span>var(--sk-deep-teal)</span><em>Deep teal that reads as text.</em></div></div>
 
 <h2 class="g">Tokens: type</h2>
 <div class="fonts"><div><div style="font-family:var(--sk-font-title);font-size:28px">Luckiest Guy</div>Big titles only, always in capitals.<code>--sk-font-title</code></div><div><div style="font-family:var(--sk-font-label);font-size:28px">Patrick Hand SC</div>Step labels and section headings.<code>--sk-font-label</code></div><div><div style="font-family:var(--sk-font-body);font-size:28px">Patrick Hand</div>Sentences and captions.<code>--sk-font-body</code></div></div>

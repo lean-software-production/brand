@@ -59,10 +59,9 @@ FONT_ABOUT = {
 assert set(COLOUR_ABOUT) == set(C) and set(FONT_ABOUT) == set(TOKENS["font"]), "every colour and font needs a line in COLOUR_ABOUT / FONT_ABOUT"
 INK = C["ink"]
 
-# ------------------------------------------------ colour mixing, as CSS color-mix() does it
-# Used only where a mix has to be baked into a data-URI image (the dark swash, the ribbon
-# tails). Pages mix with color-mix() instead. A near-grey (paper, ink) has no hue of its own,
-# so the other colour keeps its hue, as in Chrome.
+# ------------------------------------------------ colour mixing, as CSS color-mix(in oklab) does it
+# Used only where a mix has to be baked into a data-URI image (the ribbon tails). Pages mix
+# with color-mix() instead.
 def _lin(c): return c / 12.92 if c <= 0.04045 else ((c + 0.055) / 1.055) ** 2.4
 def _delin(c): return 12.92 * c if c <= 0.0031308 else 1.055 * c ** (1 / 2.4) - 0.055
 def _oklab(hexc):
@@ -79,49 +78,33 @@ def _hex(L, a, b):
     rgb = (4.0767416621 * l - 3.3077115913 * m + 0.2309699292 * s, -1.2684380046 * l + 2.6097574011 * m - 0.3413193965 * s,
            -0.0041960863 * l - 0.7034186147 * m + 1.7076147010 * s)
     return "#" + "".join(f"{round(min(1, max(0, _delin(v))) * 255):02X}" for v in rgb)
-def mix(c1, share, c2, space="oklch"):
-    """color-mix(in <space>, c1 <share>, c2), share as 0..1."""
-    import math
-    A, B = _oklab(c1), _oklab(c2)
-    if space == "oklab":
-        return _hex(*(x * share + y * (1 - share) for x, y in zip(A, B)))
-    (L1, C1, H1), (L2, C2, H2) = ((v[0], math.hypot(v[1], v[2]), math.degrees(math.atan2(v[2], v[1]))) for v in (A, B))
-    if C1 < 0.02: H1 = H2
-    if C2 < 0.02: H2 = H1
-    d = (H2 - H1 + 180) % 360 - 180
-    L, Ch, H = L1 * share + L2 * (1 - share), C1 * share + C2 * (1 - share), math.radians(H1 + d * (1 - share))
-    return _hex(L, Ch * math.cos(H), Ch * math.sin(H))
+def mix(c1, share, c2):
+    """color-mix(in oklab, c1 <share>, c2), share as 0..1."""
+    return _hex(*(x * share + y * (1 - share) for x, y in zip(_oklab(c1), _oklab(c2))))
 
 # ------------------------------------------------ roles: what the pieces paint with
-# Each role is a CSS value for light mode and one for dark mode (.dark or .sk-dark on an
-# ancestor). They only point at palette colours or mix them; there are no new colours.
-# Dark mode follows README.md: an ink page, paper text, a lighter teal, and a pale-teal tint
-# where light mode uses the highlighter.
-LIGHT_TEAL = "color-mix(in oklch, var(--sk-teal) 80%, var(--sk-paper))"
+# Each role is a CSS value that points at palette colours or mixes them; there are no new
+# colours. The brand is light mode only (README.md): a paper page with ink text.
 ROLES = {
-    "page": ("var(--sk-paper)", "var(--sk-ink)", "The page behind everything."),
-    "text": ("var(--sk-body-text)", "var(--sk-paper)", "Sentences and captions."),
-    "title-text": ("var(--sk-ink-title)", "var(--sk-paper)", "Big title lettering and its burst ticks."),
-    "line": ("var(--sk-ink)", "color-mix(in oklab, var(--sk-paper) 85%, var(--sk-ink))", "Outlines of bubbles and secondary buttons."),
-    "heading": ("var(--sk-deep-teal)", LIGHT_TEAL, "Section headings and their rules, primary buttons. The lighter teal in dark mode."),
-    "on-heading": ("var(--sk-paper)", "var(--sk-ink)", "Text on a primary button."),
-    "connector": ("var(--sk-slate)", "color-mix(in oklch, var(--sk-slate) 60%, var(--sk-paper))", "Connector arrows between steps."),
-    "loop": ("var(--sk-blue)", "color-mix(in oklch, var(--sk-blue) 75%, var(--sk-paper))", "The loop-back arrow."),
-    "bubble-fill": ("var(--sk-bubble)", "color-mix(in oklab, var(--sk-bubble) 12%, var(--sk-ink))", "Speech bubble fill."),
-    "swash": ("var(--sk-highlighter)", "color-mix(in srgb, var(--sk-heading) 32%, var(--sk-ink))",
-              "What the highlighter swash reads as: a solid colour for tints and contrast checks. A pale-teal tint in dark mode."),
-    "track": ("color-mix(in oklab, var(--sk-ink) 12%, var(--sk-paper))", "color-mix(in oklab, var(--sk-paper) 16%, var(--sk-ink))",
-              "The empty part of a progress meter."),
-    "patch": ("transparent", "var(--sk-paper)", "The paper patch behind a drawing: nothing in light mode, cream paper in dark mode."),
-    "wash-amount": ("9%", "10%", "How much of the accent goes into a panel wash."),
-    # Palette colours as text: mixed with ink (light) or paper (dark) until they reach 4.5:1.
-    "mustard-text": ("color-mix(in oklch, var(--sk-mustard) 55%, var(--sk-ink))", "var(--sk-mustard)", "Mustard that reads as text."),
-    "teal-text": ("color-mix(in oklch, var(--sk-teal) 70%, var(--sk-ink))", LIGHT_TEAL, "Teal that reads as text."),
-    "forest-text": ("color-mix(in oklch, var(--sk-forest) 85%, var(--sk-ink))", "color-mix(in oklch, var(--sk-forest) 60%, var(--sk-paper))", "Forest that reads as text. Ticks."),
-    "coral-text": ("color-mix(in oklch, var(--sk-coral) 55%, var(--sk-ink))", "color-mix(in oklch, var(--sk-coral) 80%, var(--sk-paper))", "Coral that reads as text."),
-    "blue-text": ("color-mix(in oklch, var(--sk-blue) 85%, var(--sk-ink))", "color-mix(in oklch, var(--sk-blue) 60%, var(--sk-paper))", "Blue that reads as text."),
-    "rust-text": ("color-mix(in oklch, var(--sk-rust) 70%, var(--sk-ink))", "color-mix(in oklch, var(--sk-rust) 65%, var(--sk-paper))", "Rust that reads as text: bubble accents, ribbon kickers."),
-    "deep-teal-text": ("var(--sk-deep-teal)", LIGHT_TEAL, "Deep teal that reads as text. The lighter teal in dark mode."),
+    "page": ("var(--sk-paper)", "The page behind everything."),
+    "text": ("var(--sk-body-text)", "Sentences and captions."),
+    "title-text": ("var(--sk-ink-title)", "Big title lettering and its burst ticks."),
+    "line": ("var(--sk-ink)", "Outlines of bubbles and secondary buttons."),
+    "heading": ("var(--sk-deep-teal)", "Section headings and their rules, primary buttons."),
+    "on-heading": ("var(--sk-paper)", "Text on a primary button."),
+    "connector": ("var(--sk-slate)", "Connector arrows between steps."),
+    "loop": ("var(--sk-blue)", "The loop-back arrow."),
+    "bubble-fill": ("var(--sk-bubble)", "Speech bubble fill."),
+    "swash": ("var(--sk-highlighter)", "What the highlighter swash reads as: a solid colour for tints and contrast checks."),
+    "track": ("color-mix(in oklab, var(--sk-ink) 12%, var(--sk-paper))", "The empty part of a progress meter."),
+    # Palette colours as text: mixed with ink until they reach 4.5:1 on paper.
+    "mustard-text": ("color-mix(in oklch, var(--sk-mustard) 55%, var(--sk-ink))", "Mustard that reads as text."),
+    "teal-text": ("color-mix(in oklch, var(--sk-teal) 70%, var(--sk-ink))", "Teal that reads as text."),
+    "forest-text": ("color-mix(in oklch, var(--sk-forest) 85%, var(--sk-ink))", "Forest that reads as text. Ticks."),
+    "coral-text": ("color-mix(in oklch, var(--sk-coral) 55%, var(--sk-ink))", "Coral that reads as text."),
+    "blue-text": ("color-mix(in oklch, var(--sk-blue) 85%, var(--sk-ink))", "Blue that reads as text."),
+    "rust-text": ("color-mix(in oklch, var(--sk-rust) 70%, var(--sk-ink))", "Rust that reads as text: bubble accents, ribbon kickers."),
+    "deep-teal-text": ("var(--sk-deep-teal)", "Deep teal that reads as text."),
 }
 
 def svg_uri(svg):
@@ -153,16 +136,12 @@ open(os.path.join(KIT, "sketchbook.js"), "w").write(
     "  if (document.body) go(); else document.addEventListener('DOMContentLoaded', go);\n})();\n")
 
 # ------------------------------------------------ small data-URI images used by the CSS
-# Single-colour shapes are masks: the page paints them with a role colour (background-color),
-# so they follow dark mode. Only two images keep their colours inside: the highlighter swash
-# (one per mode, below) and the ribbon tails (two colours; the ribbon is paper in both modes).
-def swash_svg(fill, opacity=1):
-    op = f' fill-opacity="{opacity}"' if opacity != 1 else ""
-    return ('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 100" preserveAspectRatio="none"><defs>'
-            + filt("f", 0.02, 7, "-20 -20 440 140") + '</defs>'
-            f'<path filter="url(#f)" fill="{fill}"{op} d="M10 16 C 120 4, 280 6, 392 14 L 394 84 C 280 96, 120 94, 6 88 Z"/></svg>')
-swash_light = swash_svg(C["highlighter"])
-swash_dark = swash_svg(mix(C["teal"], .8, C["paper"]), .32)   # the lighter teal, 32% over ink
+# Single-colour shapes are masks: the page paints them with a role colour (background-color).
+# Only two images keep their colours inside: the highlighter swash and the ribbon tails
+# (two colours each).
+swash = ('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 100" preserveAspectRatio="none"><defs>'
+         + filt("f", 0.02, 7, "-20 -20 440 140") + '</defs>'
+         f'<path filter="url(#f)" fill="{C["highlighter"]}" d="M10 16 C 120 4, 280 6, 392 14 L 394 84 C 280 96, 120 94, 6 88 Z"/></svg>')
 ticks_l = ('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 100"><defs>' + filt("f", 0.035, 3.5, "-10 -10 80 120") + '</defs>'
            '<g filter="url(#f)" stroke="#000" stroke-width="7" stroke-linecap="round">'
            '<line x1="14" y1="14" x2="46" y2="34"/><line x1="6" y1="52" x2="50" y2="54"/><line x1="14" y1="92" x2="46" y2="74"/></g></svg>')
@@ -174,7 +153,7 @@ tick = ('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs>' +
         '<path filter="url(#f)" d="M12 58 C 22 61, 31 70, 39 84 C 50 58, 66 34, 89 13" fill="none" stroke="#000" '
         'stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/></svg>')
 # Ribbon tails: the ribbon's cream with a little mustard and ink, so the fold reads as its underside.
-TAIL = mix(mix(C["ribbon"], .8, C["mustard"], "oklab"), .97, INK, "oklab")
+TAIL = mix(mix(C["ribbon"], .8, C["mustard"]), .97, INK)
 end_l = ('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 92 92"><defs>' + filt("f", 0.02, 6, "-10 -10 112 112") + '</defs>'
          f'<path filter="url(#f)" d="M40 12 L 3 40 L 40 66 L 24 82 L 90 82 L 90 12 Z" fill="{TAIL}" stroke="{INK}" stroke-width="2.5" stroke-linejoin="round"/></svg>')
 end_r = end_l.replace('<path filter', '<g transform="translate(92 0) scale(-1 1)"><path filter').replace('/></svg>', '/></g></svg>')
@@ -186,8 +165,7 @@ def mask(uri, rest):
 
 # ------------------------------------------------ sketchbook.css
 F = TOKENS["font"]
-role_light = "\n".join(f"  --sk-{k}: {v[0]};" for k, v in ROLES.items())
-role_dark = "\n".join(f"  --sk-{k}: {v[1]};" for k, v in ROLES.items())
+roles = "\n".join(f"  --sk-{k}: {v};" for k, (v, _) in ROLES.items())
 # (colour, numeral colour on its badge). White numerals only where they reach 4.5:1.
 ACCENTS = [("mustard", "var(--sk-ink-title)"), ("teal", "var(--sk-ink-title)"), ("forest", "#fff"), ("coral", "var(--sk-ink-title)"),
            ("blue", "#fff"), ("rust", "var(--sk-ink-title)"), ("deep-teal", "#fff")]
@@ -195,7 +173,7 @@ modifiers = "\n".join(f".sk-{c} {{ --sk-accent: var(--sk-{c}); --sk-accent-text:
 css = f"""/* Sketchbook kit: tokens + reusable chunks. Spec: README.md. Also include sketchbook.js (wobble filters). */
 @import url("https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Patrick+Hand&family=Patrick+Hand+SC&display=swap");
 
-/* Palette and fonts. These never change; the roles below point at them. */
+/* Palette and fonts. The roles below point at them. */
 :root {{
 {chr(10).join(f"  --sk-{k}: {v};" for k, v in C.items())}
   --sk-font-title: {F["title"]};
@@ -205,18 +183,9 @@ css = f"""/* Sketchbook kit: tokens + reusable chunks. Spec: README.md. Also inc
   --sk-line-chunky: 5px;
 }}
 
-/* Roles: what the pieces paint with. Light mode here; dark mode below. */
+/* Roles: what the pieces paint with. */
 :root {{
-{role_light}
-  --sk-swash-img: {svg_uri(swash_light)};
-  --sk-accent: var(--sk-teal); --sk-accent-text: var(--sk-teal-text); --sk-on-accent: var(--sk-ink-title);
-}}
-
-/* Dark mode: put .dark (bb's class) or .sk-dark on <html> or any ancestor.
-   An ink page, paper text, a lighter teal, and a pale-teal tint instead of the highlighter. */
-.dark, .sk-dark {{
-{role_dark}
-  --sk-swash-img: {svg_uri(swash_dark)};
+{roles}
   --sk-accent: var(--sk-teal); --sk-accent-text: var(--sk-teal-text); --sk-on-accent: var(--sk-ink-title);
 }}
 
@@ -224,8 +193,6 @@ css = f"""/* Sketchbook kit: tokens + reusable chunks. Spec: README.md. Also inc
    Each sets the accent (outlines, badges, washes), a version of it that reads as text,
    and the numeral colour for a badge filled with it. */
 {modifiers}
-/* deep teal disappears on ink, so in dark mode it becomes the lighter teal */
-:is(.dark, .sk-dark) .sk-deep-teal, .sk-deep-teal:is(.dark, .sk-dark) {{ --sk-accent: var(--sk-heading); --sk-on-accent: var(--sk-ink-title); }}
 
 /* ---------- paper: a 16:9 slide, or any paper-backed block ---------- */
 .sk-paper {{
@@ -259,7 +226,7 @@ css = f"""/* Sketchbook kit: tokens + reusable chunks. Spec: README.md. Also inc
 
 /* ---------- highlighter swash: in a title, on a phrase, or on a whole row ---------- */
 .sk-hl {{
-  background: var(--sk-swash-img) center / 100% 100% no-repeat;
+  background: {svg_uri(swash)} center / 100% 100% no-repeat;
   -webkit-box-decoration-break: clone; box-decoration-break: clone;
   padding: .08em .4em 0; margin: 0 -.25em;
 }}
@@ -299,22 +266,10 @@ css = f"""/* Sketchbook kit: tokens + reusable chunks. Spec: README.md. Also inc
 }}
 .sk-panel.sk-dashed::before {{ border-style: dashed; }}
 /* .sk-wash: a pale wash of the accent mixed with the page */
-.sk-panel.sk-wash::before {{ background: color-mix(in oklab, var(--sk-accent) var(--sk-wash-amount), var(--sk-page)); }}
-.sk-panel > img, .sk-panel > .sk-icon, .sk-panel > .sk-patch {{ width: 42%; align-self: center; }}
-.sk-panel > .sk-patch > img {{ width: 100%; height: auto; }}
+.sk-panel.sk-wash::before {{ background: color-mix(in oklab, var(--sk-accent) 9%, var(--sk-page)); }}
+.sk-panel > img, .sk-panel > .sk-icon {{ width: 42%; align-self: center; }}
 .sk-panel p {{ margin: 0; font-size: 1.25em; line-height: 1.2; color: var(--sk-text); }}
 .sk-panel .sk-em {{ color: var(--sk-accent-text); }}
-
-/* ---------- paper patch: a drawing on a small wobbly patch of cream paper ----------
-   Nothing in light mode. In dark mode the drawing's ink outlines need paper behind them. */
-.sk-patch {{ position: relative; isolation: isolate; display: inline-block; line-height: 0; vertical-align: middle; }}
-.sk-patch > img, .sk-patch > svg {{ display: block; max-width: 100%; }}
-/* the patch reaches a little past the drawing, so keep neighbours apart */
-.sk-patch + .sk-patch {{ margin-left: 1em; }}
-.sk-patch::before {{
-  content: ""; position: absolute; inset: -5% -7%; z-index: -1; background: var(--sk-patch);
-  border-radius: 22% 18% 24% 17% / 18% 23% 16% 21%; filter: url(#sk-wobble-line);
-}}
 
 /* ---------- tick: a hand-drawn tick, sized and coloured like text ---------- */
 .sk-tick {{
@@ -360,7 +315,7 @@ css = f"""/* Sketchbook kit: tokens + reusable chunks. Spec: README.md. Also inc
 .sk-bubble.sk-tail-right::after {{ left: auto; right: 2em; }}
 .sk-bubble .sk-em {{ color: var(--sk-rust-text); font-weight: 700; }}
 
-/* ---------- ribbon banner: a paper banner, so it stays cream with ink in dark mode ---------- */
+/* ---------- ribbon banner ---------- */
 .sk-ribbon {{
   position: relative; isolation: isolate; display: inline-flex; align-items: center; gap: .5em;
   padding: .45em 1.4em .35em; margin: 0 2.4em;
@@ -374,7 +329,7 @@ css = f"""/* Sketchbook kit: tokens + reusable chunks. Spec: README.md. Also inc
   content: ""; position: absolute; inset: .45em -2.2em -.45em; z-index: -2;
   background: {svg_uri(end_l)} left center / auto 100% no-repeat, {svg_uri(end_r)} right center / auto 100% no-repeat;
 }}
-.sk-ribbon .sk-kicker {{ font-family: var(--sk-font-label); color: {ROLES["rust-text"][0]}; }}
+.sk-ribbon .sk-kicker {{ font-family: var(--sk-font-label); color: var(--sk-rust-text); }}
 .sk-ribbon img {{ height: 1.4em; }}
 
 /* ---------- step row: equal-width panels with arrows between ---------- */
@@ -389,7 +344,7 @@ css = f"""/* Sketchbook kit: tokens + reusable chunks. Spec: README.md. Also inc
 .sk-icon {{ display: block; }}
 """
 open(os.path.join(KIT, "sketchbook.css"), "w").write(css)
-json.dump({**TOKENS, "role": {k: {"light": l, "dark": d, "use": u} for k, (l, d, u) in ROLES.items()}},
+json.dump({**TOKENS, "role": {k: {"css": v, "use": u} for k, (v, u) in ROLES.items()}},
           open(os.path.join(KIT, "tokens.json"), "w"), indent=2)
 
 # ------------------------------------------------ icons (standalone SVGs)
@@ -449,23 +404,23 @@ LOOP = ('<svg class="sk-loop" viewBox="0 0 1000 70" aria-hidden="true"><path d="
 def panel(color, n, label, icon, text, dashed=False, wash=False):
     return (f'<div class="sk-panel sk-{color}{" sk-dashed" if dashed else ""}{" sk-wash" if wash else ""}">\n'
             f'  <div class="sk-step"><span class="sk-num">{n}</span><span class="sk-label">{label}</span></div>\n'
-            f'  <span class="sk-patch"><img src="icons/{icon}.svg" alt=""></span>\n  <p>{text}</p>\n</div>')
+            f'  <img src="icons/{icon}.svg" alt="">\n  <p>{text}</p>\n</div>')
 
 SNIPPETS = [
     ("Title on highlighter", "Big marker caps on a yellow highlighter swash. Wrap each line's words in <code>.sk-hl</code>; add <code>.sk-burst</code> for the tick marks.",
      '<h1 class="sk-title"><span class="sk-burst"><span class="sk-hl">How to get the agent</span><br><span class="sk-hl">to teach you anything</span></span></h1>'),
     ("Section heading", "Label caps in deep teal with a rule either side.",
      '<h2 class="sk-section">The learning loop</h2>'),
-    ("Step panel", "A numbered step in one of the five main colours. Add <code>.sk-dashed</code> for a dotted outline, to highlight the step you're talking about. Use <code>.sk-em</code> for accent text. The icon sits in a <code>.sk-patch</code> so it reads in dark mode.",
+    ("Step panel", "A numbered step in one of the five main colours. Add <code>.sk-dashed</code> for a dotted outline, to highlight the step you're talking about. Use <code>.sk-em</code> for accent text.",
      '<div class="sk-row">\n' + panel("teal", 2, "Filter + focus", "magnifier", 'use a lens: <span class="sk-em">“what do I care about?”</span>') + '\n'
      + panel("forest", 3, "Create new source", "page-pencil", "pull out just the parts that matter", dashed=True) + '\n</div>'),
     ("Speech bubble", "Something a person says or asks. Add <code>.sk-tail-right</code> to move the tail to the right.",
      '<div class="sk-bubble">“I want to learn <span class="sk-em">Chapter 1 of Shape Up</span>, while I’m driving.”</div>'),
     ("Ribbon banner", "An insight or takeaway. The kicker word goes in <code>.sk-kicker</code>, and an icon is optional.",
      '<div class="sk-ribbon"><img src="icons/car.svg" alt=""><span class="sk-kicker">Insight:</span> “I want to learn a book while driving.”</div>'),
-    ("Arrows", "A short slate connector between steps, and the blue loop-back arrow that sits under a row of panels. Their colours come from the CSS, so they follow dark mode.",
+    ("Arrows", "A short slate connector between steps, and the blue loop-back arrow that sits under a row of panels. Their colours come from the CSS.",
      ARROW + '\n' + LOOP),
-    ("Panel wash", "Add <code>.sk-wash</code> to a panel for a pale wash of its accent colour mixed with the page: about 9% in light mode, 10% in dark. Use it to set a card apart from the page.",
+    ("Panel wash", "Add <code>.sk-wash</code> to a panel for a pale wash of its accent colour mixed with the page, about 9%. Use it to set a card apart from the page.",
      '<div class="sk-row">\n' + panel("mustard", 1, "Add sources", "books", "books, manuals, transcripts, code", wash=True) + '\n'
      + panel("teal", 2, "Filter + focus", "magnifier", 'use a lens: <span class="sk-em">“what do I care about?”</span>', wash=True) + '\n</div>'),
     ("Highlighter anywhere", "<code>.sk-hl</code> works outside a title too: on a phrase, or on a whole row to mark the one you're on. Add <code>.sk-sweep</code> to sweep it in once, for a moment worth marking; it stays still for people who ask for less motion.",
@@ -474,17 +429,13 @@ SNIPPETS = [
     ("Tick", "A hand-drawn tick for something done or passing. It takes the size of the text around it, and the forest text colour; set <code>color</code> to change it. Give it a label when it stands alone.",
      '<p style="font-size:1.4em;margin:0"><span class="sk-tick" role="img" aria-label="done"></span> Three Examples hold.</p>\n'
      '<p style="font-size:2.6em;margin:0"><span class="sk-tick" role="img" aria-label="passing"></span></p>'),
-    ("Buttons", "<code>.sk-btn</code> is the one main action on a screen: deep teal with paper lettering (the lighter teal with ink in dark mode). Add <code>.sk-secondary</code> for the others: an ink outline.",
+    ("Buttons", "<code>.sk-btn</code> is the one main action on a screen: deep teal with paper lettering. Add <code>.sk-secondary</code> for the others: an ink outline.",
      '<button class="sk-btn" type="button">Start the course →</button>\n<button class="sk-btn sk-secondary" type="button">Use a different project</button>'),
     ("Progress meter", "A wobbly bar. Set <code>--sk-value</code> from 0% to 100%; the fill takes the accent, so a colour modifier changes it. Put the count in words next to it.",
      '<div style="display:flex;align-items:center;gap:.8em;font-size:1.3em">\n'
      '  <div class="sk-meter" role="progressbar" aria-label="Examples that hold" aria-valuemin="0" aria-valuemax="10" aria-valuenow="3" style="--sk-value:30%;width:10em"></div>\n'
      '  <span>3 of 10 Examples hold</span>\n</div>\n'
      '<div class="sk-meter sk-mustard" role="progressbar" aria-label="Lessons done" aria-valuemin="0" aria-valuemax="9" aria-valuenow="6" style="--sk-value:66%;width:10em;margin-top:1em"></div>'),
-    ("Paper patch", "Wrap an icon or character in <code>.sk-patch</code>. In dark mode it sits on a small wobbly patch of cream paper so its ink outlines read; in light mode the patch is invisible. The drawing itself never changes. See it with <a href=\"?dark\">?dark</a>.",
-     '<span class="sk-patch"><img src="icons/robot.svg" alt="" style="width:90px"></span>\n'
-     '<span class="sk-patch"><img src="icons/chat.svg" alt="" style="width:60px"></span>\n'
-     '<span class="sk-patch"><img src="characters/waver.svg" alt="" style="height:150px"></span>'),
 ]
 
 EXAMPLE = f'''<div class="sk-slide sk-paper"><div class="sk-slide-body">
@@ -504,17 +455,17 @@ EXAMPLE = f'''<div class="sk-slide sk-paper"><div class="sk-slide-body">
   <div style="margin:0 7% 0 7%">{LOOP}</div>
   <div style="display:flex;align-items:center;justify-content:center;gap:1.5em;margin-top:-.6em">
     <div class="sk-ribbon" style="font-size:1.3em"><img src="icons/car.svg" alt=""><span class="sk-kicker">Insight:</span> “I want to learn a book while driving.”</div>
-    <span class="sk-patch" style="margin-top:.6em"><img src="characters/learner.svg" alt="" style="height:6.2em"></span>
+    <img src="characters/learner.svg" alt="" style="height:6.2em;margin-top:.6em">
   </div>
 </div></div>'''
 
 def swatch(k, v):
     return f'<div class="sw"><i style="background:{v}"></i><b>--sk-{k}</b><span>{v}</span><em>{html.escape(COLOUR_ABOUT[k])}</em></div>'
-def role_swatch(k, light, dark, use):
+def role_swatch(k, value, use):
     return (f'<div class="sw"><i style="background:var(--sk-{k})"></i><b>--sk-{k}</b>'
-            f'<span>light: {html.escape(light)}<br>dark: {html.escape(dark)}</span><em>{html.escape(use)}</em></div>')
+            f'<span>{html.escape(value)}</span><em>{html.escape(use)}</em></div>')
 def figure(path, about, cls=""):
-    return f'<figure{cls}><span class="sk-patch"><img src="{path}" alt=""></span><figcaption>{html.escape(about)}<code>{path}</code></figcaption></figure>'
+    return f'<figure{cls}><img src="{path}" alt=""><figcaption>{html.escape(about)}<code>{path}</code></figcaption></figure>'
 
 cards = "\n".join(
     f'<section class="chunk"><h3>{html.escape(t)}</h3><p class="desc">{d}</p>'
@@ -531,24 +482,13 @@ gallery = f'''<!doctype html>
 <title>Sketchbook Kit</title>
 <link rel="stylesheet" href="sketchbook.css">
 <script src="sketchbook.js" defer></script>
-<script>
-  // ?dark shows every piece in dark mode (.sk-dark on the page); ?light forces light.
-  (function () {{
-    var q = location.search, r = document.documentElement;
-    if (/[?&]dark\\b/.test(q)) {{ r.classList.add("sk-dark"); r.dataset.theme = "dark"; }}
-    else if (/[?&]light\\b/.test(q)) r.dataset.theme = "light";
-  }})();
-</script>
 <style>
   :root {{ --g-bg:#efeae0; --g-fg:#2a2a2a; --g-muted:#6b665c; --g-card:#fff; --g-line:#d9d2c3; }}
-  @media (prefers-color-scheme: dark) {{ :root:not([data-theme="light"]) {{ --g-bg:#1c1b19; --g-fg:#ece7dc; --g-muted:#a39d90; --g-card:#262521; --g-line:#3a3833; }} }}
-  :root[data-theme="dark"] {{ --g-bg:#1c1b19; --g-fg:#ece7dc; --g-muted:#a39d90; --g-card:#262521; --g-line:#3a3833; }}
   * {{ box-sizing: border-box; }}
   body {{ margin:0; background:var(--g-bg); color:var(--g-fg); font:15px/1.5 system-ui,sans-serif; padding:24px 16px 60px; }}
   .wrap {{ max-width:1120px; margin:0 auto; }}
   header h1 {{ font-family:var(--sk-font-title); font-weight:400; font-size:44px; margin:0; color:var(--sk-title-text); display:inline-block;
                background:var(--sk-swash); padding:6px 16px 0; border-radius:4px 14px 6px 12px; }}
-  .modes {{ font-size:13.5px; color:var(--g-muted); }} .modes a, .desc a {{ color:inherit; }} .modes b {{ color:var(--g-fg); }}
   header p {{ color:var(--g-muted); max-width:760px; }}
   h2.g {{ font:700 13px/1 system-ui; letter-spacing:.08em; text-transform:uppercase; color:var(--g-muted); margin:36px 0 12px; }}
   .chunks {{ display:grid; grid-template-columns:repeat(2,1fr); gap:16px; }}
@@ -562,7 +502,6 @@ gallery = f'''<!doctype html>
   pre {{ background:#1f1e1c; color:#ece7dc; padding:10px 12px; border-radius:6px; overflow:auto; font-size:12px; white-space:pre-wrap; word-break:break-word; }}
   .row {{ display:grid; grid-template-columns:repeat(auto-fill,minmax(150px,1fr)); gap:12px; }}
   figure {{ margin:0; background:var(--sk-page); border-radius:8px; padding:14px 12px 12px; text-align:center; }}
-  figure .sk-patch {{ max-width:84%; margin:4px 0 8px; }}
   figure img {{ width:80px; height:80px; }} figure.char img {{ width:auto; height:200px; max-width:100%; object-fit:contain; }}
   figcaption {{ font:12.5px/1.35 system-ui,sans-serif; color:var(--sk-text); margin-top:8px; text-align:left; }}
   figcaption code, .fonts code {{ display:block; font:11px ui-monospace,monospace; color:color-mix(in oklab, var(--sk-text) 75%, var(--sk-page)); margin-top:4px; overflow-wrap:anywhere; }}
@@ -576,8 +515,7 @@ gallery = f'''<!doctype html>
 <body><div class="wrap">
 <header><h1>SKETCHBOOK KIT</h1>
 <p>Reusable pieces for slides and static web content in the style of the “learn anything” lightning-lesson slides. Every piece is plain HTML, CSS or SVG.
-Add <code>sketchbook.css</code> and <code>sketchbook.js</code> to a page, then paste in any chunk. Drop the icons and characters in as images anywhere.</p>
-<p class="modes">Dark mode: put <code>.dark</code> or <code>.sk-dark</code> on the page. View the kit <a href="?light">in light</a> or <a href="?dark">in dark</a>.</p></header>
+Add <code>sketchbook.css</code> and <code>sketchbook.js</code> to a page, then paste in any chunk. Drop the icons and characters in as images anywhere.</p></header>
 
 <h2 class="g">Example: a whole slide built only from kit pieces</h2>
 {EXAMPLE}
@@ -596,9 +534,9 @@ Add <code>sketchbook.css</code> and <code>sketchbook.js</code> to a page, then p
 <h2 class="g">Tokens: colours (CSS variables in sketchbook.css; also tokens.json)</h2>
 <div class="row">{"".join(swatch(k, v) for k, v in C.items())}</div>
 
-<h2 class="g">Tokens: roles (what the pieces paint with; they switch in dark mode)</h2>
-<p class="desc">Use these rather than the palette when you build something new, and it follows dark mode for free. The swatches show the mode you're viewing.</p>
-<div class="row roles">{"".join(role_swatch(k, *v) for k, v in ROLES.items() if not k.endswith("amount"))}</div>
+<h2 class="g">Tokens: roles (what the pieces paint with)</h2>
+<p class="desc">Use these rather than the palette when you build something new.</p>
+<div class="row roles">{"".join(role_swatch(k, *v) for k, v in ROLES.items())}</div>
 
 <h2 class="g">Tokens: type</h2>
 <div class="fonts">{fonts}</div>
@@ -623,7 +561,7 @@ index = (
     + [{"kind": "piece", "name": t, "about": plain(d), "html": hosted(snip)} for t, d, snip in SNIPPETS]
     + [{"kind": "piece", "name": "Whole slide", "about": "A complete 16:9 slide built only from kit pieces. Start from this.", "html": hosted(EXAMPLE)}]
     + [{"kind": "colour", "name": k, "hex": v, "css": f"var(--sk-{k})", "about": COLOUR_ABOUT[k]} for k, v in C.items()]
-    + [{"kind": "role", "name": k, "css": f"var(--sk-{k})", "light": l, "dark": d, "about": u} for k, (l, d, u) in ROLES.items()]
+    + [{"kind": "role", "name": k, "css": f"var(--sk-{k})", "value": v, "about": u} for k, (v, u) in ROLES.items()]
     + [{"kind": "font", "name": name, "css": f"var(--sk-font-{k})", "about": use} for k, (name, use) in FONT_ABOUT.items()]
 )
 missing = set(CHAR_BOXES) - set(CHAR_ABOUT)
