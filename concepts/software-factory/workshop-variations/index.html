@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Open workshop · Three variations</title>
+  <link rel="stylesheet" href="../../../kit/sketchbook.css">
+  <script src="../../../kit/sketchbook.js" defer></script>
+  <style>
+    @font-face { font-family:'Luckiest Guy'; src:url('../fonts/luckiest-guy.ttf') format('truetype'); font-display:swap; }
+    @font-face { font-family:'Patrick Hand'; src:url('../fonts/patrick-hand.ttf') format('truetype'); font-display:swap; }
+    @font-face { font-family:'Patrick Hand SC'; src:url('../fonts/patrick-hand-sc.ttf') format('truetype'); font-display:swap; }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body { margin:0; }
+    a { color:var(--sk-deep-teal); text-underline-offset:4px; }
+    a:hover { color:var(--sk-rust); }
+    a:focus-visible,button:focus-visible { outline:3px solid var(--sk-blue); outline-offset:5px; }
+    .wrap { width:min(1440px,94%); margin:auto; }
+    header { padding:36px 0 20px; }
+    .back { font-size:19px; }
+    .eyebrow { margin:24px 0 14px; font:20px var(--sk-font-label); letter-spacing:.06em; color:var(--sk-deep-teal); }
+    h1.sk-title { text-align:left; font-size:clamp(29px,4vw,52px); }
+    .intro { font-size:23px; line-height:1.4; max-width:900px; }
+    .overview { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:24px; margin:8px 0 42px; }
+    .overview a { text-decoration:none; }
+    .overview img { display:block; width:100%; height:auto; border-bottom:2px solid var(--sk-teal); }
+    .overview span { display:block; font:26px var(--sk-font-label); margin-top:10px; }
+    .toolbar { display:flex; justify-content:space-between; align-items:center; gap:16px; flex-wrap:wrap; margin-bottom:24px; font-size:20px; }
+    .toolbar p { margin:0; }
+    .modes { display:flex; gap:8px; }
+    button { font:19px var(--sk-font-label); padding:8px 17px; border:2px solid var(--sk-deep-teal); border-radius:5px 8px 6px 9px; color:var(--sk-deep-teal); background:var(--sk-paper); cursor:pointer; }
+    button[aria-pressed="true"] { background:var(--sk-deep-teal); color:var(--sk-paper); }
+    article { border-top:2px solid var(--sk-deep-teal); padding:24px 0 42px; scroll-margin-top:16px; }
+    .heading { display:flex; gap:16px; align-items:baseline; }
+    .number { font:32px var(--sk-font-label); color:var(--sk-teal); }
+    h2 { font:36px var(--sk-font-label); color:var(--sk-deep-teal); margin:0; }
+    .heading p { font-size:21px; margin:0 0 0 auto; }
+    .hero { display:grid; grid-template-columns:.78fr 1.5fr; align-items:center; padding:20px 0 12px; }
+    .copy { padding:0 0 0 14px; }
+    .copy .eyebrow { font-size:17px; }
+    .copy h3 { text-align:left; font-size:clamp(28px,3.25vw,46px); margin-bottom:20px; }
+    .copy h3 .sk-hl { padding:.09em .15em 0; }
+    .copy p { font-size:23px; line-height:1.35; max-width:310px; }
+    .sample-cta { display:inline-block; padding:11px 22px; background:var(--sk-deep-teal); color:var(--sk-paper); border-radius:6px 9px 5px 8px; font:22px var(--sk-font-label); }
+    .art { display:block; min-width:0; }
+    .art img { display:block; width:100%; height:auto; }
+    .notes { display:grid; grid-template-columns:1.2fr 1fr auto; gap:32px; align-items:start; font-size:21px; line-height:1.35; }
+    .notes p { margin:0; }
+    .notes strong { font:24px var(--sk-font-label); color:var(--sk-deep-teal); }
+    .downloads { display:flex; gap:18px; white-space:nowrap; font-family:var(--sk-font-label); }
+    body[data-view="art"] .hero { display:block; }
+    body[data-view="art"] .copy { display:none; }
+    body[data-view="art"] .art { max-width:1000px; margin:auto; }
+    footer { padding:24px 0 44px; border-top:2px solid var(--sk-deep-teal); font-size:19px; line-height:1.4; }
+    @media (max-width:760px) {
+      header { padding-top:24px; }
+      .overview { gap:12px; }
+      .overview span { font-size:19px; }
+      .heading { flex-wrap:wrap; gap:6px 12px; }
+      .heading p { flex-basis:100%; margin-left:0; }
+      h2 { font-size:30px; }
+      .hero { grid-template-columns:1fr; }
+      .copy { padding:10px; }
+      .copy h3 { font-size:34px; }
+      .copy h3 br { display:none; }
+      .copy p { max-width:100%; }
+      .notes { grid-template-columns:1fr; gap:14px; }
+      .intro { font-size:21px; }
+    }
+    @media (prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } }
+  </style>
+</head>
+<body class="sk-paper" data-view="art">
+<main class="wrap">
+  <header>
+    <a class="back" href="../index.html">← The original three directions</a>
+    <p class="eyebrow">ROUND TWO / THE OPEN WORKSHOP</p>
+    <h1 class="sk-title"><span class="sk-burst"><span class="sk-hl">One workshop. Three ways.</span></span></h1>
+    <p class="intro">Keep the open doors, the sawtooth roof and the people in charge.<br>Try more breathing room, a control loft, or a little architectural depth.</p>
+  </header>
+  <nav class="overview" aria-label="Choose a variation">
+    <a href="#airy"><img src="01-airy-workshop.svg" width="1000" height="700" alt="Preview of the airy workshop"><span>01 / The airy workshop</span></a>
+    <a href="#loft"><img src="02-control-loft.svg" width="1000" height="700" alt="Preview of the control loft"><span>02 / The control loft</span></a>
+    <a href="#corner"><img src="03-corner-workshop.svg" width="1000" height="700" alt="Preview of the corner workshop"><span>03 / The corner workshop</span></a>
+  </nav>
+  <div class="toolbar"><p>Three compositions. Same make–check–feedback story.</p><div class="modes" role="group" aria-label="Preview mode"><button type="button" data-view="homepage" aria-pressed="false">In a homepage</button><button type="button" data-view="art" aria-pressed="true">Just the drawings</button></div></div>
+  <article id="airy">
+    <div class="heading"><span class="number">01</span><h2>The airy workshop</h2><p>Less diagram. More breathing room.</p></div>
+    <div class="hero">
+      <div class="copy"><p class="eyebrow">LEAN SOFTWARE PRODUCTION</p><h3 class="sk-title">Build software.<br> <span class="sk-hl">Stay in charge.</span></h3><p>Build a software factory that makes, checks and improves its work—with you at the controls.</p><span class="sample-cta">Learn to build your factory →</span></div>
+      <a class="art" href="01-airy-workshop.svg" aria-label="Open the airy workshop at full size"><img src="01-airy-workshop.svg" width="1000" height="700" alt="An open, single-storey software workshop with two broad sawtooth skylights. Maker and checker robots work along a conveyor, connected to a small orchestration panel. A human stands at the controls; a blue feedback arrow returns work for improvement."></a>
+    </div>
+    <div class="notes"><p>Two generous roof bays, a warm task light and fewer labels. The same make–check–feedback story, with more space around each part.</p><p><strong>Closest to the original.</strong><br>My pick for a homepage: the factory reads quickly and leaves the headline to do the explaining.</p><div class="downloads"><a href="01-airy-workshop.svg" download>SVG ↓</a><a href="01-airy-workshop.png" download>PNG ↓</a></div></div>
+  </article>
+  <article id="loft">
+    <div class="heading"><span class="number">02</span><h2>The control loft</h2><p>People direct. Agents get on with it.</p></div>
+    <div class="hero">
+      <div class="copy"><p class="eyebrow">LEAN SOFTWARE PRODUCTION</p><h3 class="sk-title">Build software.<br> <span class="sk-hl">Stay in charge.</span></h3><p>Build a software factory that makes, checks and improves its work—with you at the controls.</p><span class="sample-cta">Learn to build your factory →</span></div>
+      <a class="art" href="02-control-loft.svg" aria-label="Open the control loft at full size"><img src="02-control-loft.svg" width="1000" height="700" alt="A two-storey, sawtooth-roof software factory with an external stair. A human with a mug operates a console in the open loft. Below, maker and checker robots work on a conveyor with a blue feedback loop."></a>
+    </div>
+    <div class="notes"><p>A two-storey cutaway. Upstairs, a person sets direction at the controls. Downstairs, the agents make and check software, with feedback returning for another pass.</p><p><strong>Human agency, front and centre.</strong><br>A taller, compact silhouette with a little architectural character.</p><div class="downloads"><a href="02-control-loft.svg" download>SVG ↓</a><a href="02-control-loft.png" download>PNG ↓</a></div></div>
+  </article>
+  <article id="corner">
+    <div class="heading"><span class="number">03</span><h2>The corner workshop</h2><p>The same workshop, with another dimension.</p></div>
+    <div class="hero">
+      <div class="copy"><p class="eyebrow">LEAN SOFTWARE PRODUCTION</p><h3 class="sk-title">Build software.<br> <span class="sk-hl">Stay in charge.</span></h3><p>Build a software factory that makes, checks and improves its work—with you at the controls.</p><span class="sample-cta">Learn to build your factory →</span></div>
+      <a class="art" href="03-corner-workshop.svg" aria-label="Open the corner workshop at full size"><img src="03-corner-workshop.svg" width="1000" height="700" alt="A three-quarter view of an open software workshop with a teal sawtooth roof, a warm side wall and a window. A human controls a visible make-and-check line; a blue feedback arrow loops back beneath the conveyor."></a>
+    </div>
+    <div class="notes"><p>A three-quarter cutaway with a receding roof, a sunlit side wall and an open front. The production line stays simple and visible.</p><p><strong>A little more sense of place.</strong><br>The most architectural direction, without turning the factory into a mysterious black box.</p><div class="downloads"><a href="03-corner-workshop.svg" download>SVG ↓</a><a href="03-corner-workshop.png" download>PNG ↓</a></div></div>
+  </article>
+  <footer><p>Variations on the selected <a href="../01-open-workshop.svg">open workshop</a>, not three new metaphors. Same Sketchbook palette, fonts, characters and ink treatment.</p><p>SVGs are self-contained; PNGs are 2000 × 1400. The optional homepage headline and button are sample copy, unchanged from round one.</p></footer>
+</main>
+<script>
+  document.querySelectorAll('button[data-view]').forEach(button => {
+    button.addEventListener('click', () => {
+      document.body.dataset.view = button.dataset.view;
+      document.querySelectorAll('button[data-view]').forEach(other => other.setAttribute('aria-pressed', String(other === button)));
+    });
+  });
+</script>
+</body>
+</html>

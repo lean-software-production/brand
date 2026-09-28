@@ -2,6 +2,8 @@
 
 Open [the comparison page](index.html). Switch between “In a homepage” and “Just the drawings”, or open an individual SVG. The homepage copy is illustrative, not a proposed website change.
 
+Matt selected the open workshop. [Round two](workshop-variations/index.html) explores three variations on that direction; the first-round assets below are preserved.
+
 1. **The open workshop** — a recognisable cutaway factory. The most literal and immediately legible direction.
 2. **The quality carousel** — a circular production cell. The feedback loop becomes the main visual idea.
 3. **The factory in your hands** — a miniature factory inside a laptop. Emphasises software engineering and human control.

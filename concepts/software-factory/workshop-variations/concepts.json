@@ -1,0 +1,29 @@
+[
+  {
+    "slug": "01-airy-workshop",
+    "number": "01",
+    "name": "The airy workshop",
+    "kicker": "Less diagram. More breathing room.",
+    "description": "Two generous roof bays, a warm task light and fewer labels. The same make\u2013check\u2013feedback story, with more space around each part.",
+    "fit": "Closest to the original. My pick for a homepage: the factory reads quickly and leaves the headline to do the explaining.",
+    "alt": "An open, single-storey software workshop with two broad sawtooth skylights. Maker and checker robots work along a conveyor, connected to a small orchestration panel. A human stands at the controls; a blue feedback arrow returns work for improvement."
+  },
+  {
+    "slug": "02-control-loft",
+    "number": "02",
+    "name": "The control loft",
+    "kicker": "People direct. Agents get on with it.",
+    "description": "A two-storey cutaway. Upstairs, a person sets direction at the controls. Downstairs, the agents make and check software, with feedback returning for another pass.",
+    "fit": "The strongest picture of human agency. A taller, compact silhouette with a little architectural character.",
+    "alt": "A two-storey, sawtooth-roof software factory with an external stair. A human with a mug operates a console in the open loft. Below, maker and checker robots work on a conveyor with a blue feedback loop."
+  },
+  {
+    "slug": "03-corner-workshop",
+    "number": "03",
+    "name": "The corner workshop",
+    "kicker": "The same workshop, with another dimension.",
+    "description": "A three-quarter cutaway with a receding roof, a sunlit side wall and an open front. The production line stays simple and visible.",
+    "fit": "The most architectural direction. More sense of place, without turning the factory into a mysterious black box.",
+    "alt": "A three-quarter view of an open software workshop with a teal sawtooth roof, a warm side wall and a window. A human controls a visible make-and-check line; a blue feedback arrow loops back beneath the conveyor."
+  }
+]

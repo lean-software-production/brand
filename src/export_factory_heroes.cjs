@@ -6,7 +6,7 @@ const fs = require('node:fs');
 const path = require('node:path');
 const { pathToFileURL } = require('node:url');
 
-const directory = path.resolve(__dirname, '../concepts/software-factory');
+const directory = path.resolve(__dirname, '..', process.argv[2] || 'concepts/software-factory');
 const url = file => pathToFileURL(path.join(directory, file)).href;
 
 (async () => {

@@ -15,7 +15,7 @@ Keep drawings easy to read at small sizes. Objects can overlap, but the object i
 - [Brand guidelines deck](index.html): open in a browser and use the arrow keys. Published to GitHub Pages on every push to `main`.
 - [Sketchbook kit](kit/): reusable CSS, icons and characters. [Browse the gallery](kit/index.html) or [read how to use it](kit/README.md).
 - [bb theme](bb-theme/sketchbook/theme.css): the brand's paper, ink, teal and handwriting for the bb app. Copy `bb-theme/sketchbook/` into the folder `bb theme dir` prints, then run `bb theme set sketchbook`.
-- [Software factory hero concepts](concepts/software-factory/index.html): three homepage illustration directions, with SVG and PNG downloads.
+- [Software factory hero concepts](concepts/software-factory/index.html): three homepage illustration directions, with SVG and PNG downloads. The selected open workshop has [three further variations](concepts/software-factory/workshop-variations/index.html).
 - [Decisions still to make](TODO.md).
 - [Contributor guide](CONTRIBUTING.md): how to change the kit.
 
