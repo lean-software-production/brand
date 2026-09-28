@@ -1,0 +1,29 @@
+[
+  {
+    "slug": "01-open-workshop",
+    "number": "01",
+    "name": "The open workshop",
+    "kicker": "A factory you can see into",
+    "description": "A light-filled cutaway. One agent makes, another checks, and unfinished work loops back. You set the direction from the control desk.",
+    "fit": "The clearest first impression. A recognisable factory, without smokestacks or a black box.",
+    "alt": "A cutaway software factory with maker and checker robots, an orchestrator, a blue feedback rail and a human at the controls. An idea enters on the left; checked software leaves on the right."
+  },
+  {
+    "slug": "02-quality-carousel",
+    "number": "02",
+    "name": "The quality carousel",
+    "kicker": "Better with every lap",
+    "description": "A small circular production cell. Code travels between maker and checker; feedback comes round again, while checked software takes the exit.",
+    "fit": "The most playful direction. The loop is the picture, rather than an arrow added as an afterthought.",
+    "alt": "A circular software-factory conveyor with maker and validator robots, a central orchestration console and a human beside a stop lever. A marked code card returns for another pass; approved software takes a separate exit."
+  },
+  {
+    "slug": "03-factory-in-your-hands",
+    "number": "03",
+    "name": "The factory in your hands",
+    "kicker": "A power tool, not a replacement",
+    "description": "An entire little factory inside an open laptop. Agents make and check the work; the controls stay on your side of the screen.",
+    "fit": "The most direct link to software engineering. Compact, approachable and easy to place beside a homepage headline.",
+    "alt": "An open laptop containing a miniature sawtooth-roof factory. Two agents make and check software in a feedback loop. A person stands beside the laptop, whose keyboard includes visible factory controls."
+  }
+]
