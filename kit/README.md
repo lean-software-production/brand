@@ -20,14 +20,28 @@ Without `sketchbook.js`, outlines, badges and bubbles lose their wobble (Chrome)
 | 16:9 slide on paper | `<div class="sk-slide sk-paper"><div class="sk-slide-body">…</div></div>`. Everything inside the body scales with the slide width. `sk-paper` alone gives any block the paper background. |
 | Title on highlighter | `<h1 class="sk-title"><span class="sk-burst"><span class="sk-hl">Line one</span><br><span class="sk-hl">Line two</span></span></h1>`. `sk-burst` (the tick marks) is optional. |
 | Section heading | `<h2 class="sk-section">The learning loop</h2>` |
-| Step panel | `<div class="sk-panel sk-teal">` + `<div class="sk-step"><span class="sk-num">2</span><span class="sk-label">Filter + focus</span></div>` + `<img src="icons/magnifier.svg" alt="">` + `<p>…</p>`. Add `sk-dashed` for a dotted outline, to highlight one step. |
+| Step panel | `<div class="sk-panel sk-teal">` + `<div class="sk-step"><span class="sk-num">2</span><span class="sk-label">Filter + focus</span></div>` + `<span class="sk-patch"><img src="icons/magnifier.svg" alt=""></span>` + `<p>…</p>`. Add `sk-dashed` for a dotted outline, to highlight one step. |
 | Step row | `<div class="sk-row">` panels with `<svg class="sk-arrow">` between them (copy from `index.html`). Panels share the width equally. |
 | Loop-back arrow | `<svg class="sk-loop">` (copy from `index.html`). Put it under a step row. |
 | Speech bubble | `<div class="sk-bubble">“…”</div>`. Add `sk-tail-right` to move the tail. |
 | Ribbon banner | `<div class="sk-ribbon"><img src="icons/car.svg" alt=""><span class="sk-kicker">Insight:</span> …</div>` |
 | Accent text | `<span class="sk-em">…</span>` inside a panel (step colour) or bubble (rust). |
+| Panel wash | Add `sk-wash` to a panel: `<div class="sk-panel sk-teal sk-wash">`. A pale wash of the accent mixed with the page, about 9% in light mode and 10% in dark. |
+| Highlighter anywhere | `<span class="sk-hl">…</span>` on a phrase, or `<div class="sk-hl">…</div>` on a whole row. Add `sk-sweep` to sweep it in once. The sweep is off for people who ask for less motion. |
+| Tick | `<span class="sk-tick" role="img" aria-label="done"></span>`. A hand-drawn tick, the size of the text around it, in forest. Set `color` to change it. |
+| Buttons | `<button class="sk-btn">Start →</button>` for the one main action. `<button class="sk-btn sk-secondary">…</button>` for the others. |
+| Progress meter | `<div class="sk-meter" role="progressbar" aria-valuenow="3" aria-valuemax="10" style="--sk-value:30%"></div>`. The fill takes the accent. Always put the count in words next to it. |
+| Paper patch | `<span class="sk-patch"><img src="characters/waver.svg" alt=""></span>`. Nothing in light mode. In dark mode, a wobbly patch of cream paper behind the drawing. |
 
-**Colour modifiers:** `sk-mustard`, `sk-teal`, `sk-forest`, `sk-coral`, `sk-blue`, `sk-rust`, `sk-deep-teal`. For numbered steps we usually go mustard → teal → forest → coral → blue. That keeps a series consistent, but it’s a habit, not a rule.
+**Colour modifiers:** `sk-mustard`, `sk-teal`, `sk-forest`, `sk-coral`, `sk-blue`, `sk-rust`, `sk-deep-teal`. For numbered steps we usually go mustard → teal → forest → coral → blue. That keeps a series consistent, but it’s a habit, not a rule. Each modifier sets the accent, a version of it that reads as text, and the badge numeral: white on forest, blue and deep teal, ink on the others.
+
+## Dark mode
+
+Put `dark` (bb's class) or `sk-dark` on `<html>` or on any block. Every piece follows: an ink page, paper text, a lighter teal, and a pale-teal tint in place of the yellow highlighter. Open `index.html?dark` to see it.
+
+- Wrap every icon and character in `sk-patch`. Their ink outlines vanish on an ink page. The patch puts cream paper behind them in dark mode and does nothing in light mode.
+- The ribbon stays a cream paper banner in both modes.
+- Deep teal is not readable on ink, so `sk-deep-teal` turns into the lighter teal in dark mode.
 
 ## Images (use anywhere: slides, web, Google Slides, docs)
 
@@ -38,12 +52,16 @@ Each SVG is self-contained, with its own effects, so it works as a plain `<img>`
 
 ## Tokens
 
-CSS variables in `sketchbook.css` (`var(--sk-mustard)`, `var(--sk-font-title)` and so on), also in `tokens.json`. What each colour and font is for is shown in `index.html` and listed in `index.json`.
+The palette and fonts are CSS variables in `sketchbook.css` (`var(--sk-mustard)`, `var(--sk-font-title)` and so on), also in `tokens.json`. They never change between modes.
+
+On top of them sit **roles**: what the pieces paint with, such as `--sk-page`, `--sk-text`, `--sk-heading`, `--sk-line`, `--sk-patch` and `--sk-teal-text`. Each role has a light value and a dark value. Build new things from roles, not from the palette, and they follow dark mode for free. `tokens.json` lists both values under `role`.
+
+What each colour, role and font is for is shown in `index.html` and listed in `index.json`.
 
 ## Rules of thumb
 
 - One idea per slide: a title, then at most one row of panels or one bubble and one ribbon.
 - Characters are supporting cast. Keep them small and at the edge, doing something, never the centrepiece.
 - Pictures of things (books, headphones) beat pictures of people for explaining a step.
-- Don't invent new colours.
+- Don't invent new colours. A `color-mix` of two palette colours is fine.
 - Every outline wobbles, but only a little. Don't turn the wobble up.
