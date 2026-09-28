@@ -23,7 +23,8 @@ A list of every element in the kit. Choose by reading each `about`.
 
 - `icon`, `character`: images, for anything (slides, docs, posts, web pages). Use them as whole files; never edit, recolour or redraw them. `aspect` is width ÷ height.
 - `colour`, `font`: the palette and type. Don't use other colours or fonts.
-- `piece`: ready-made HTML (titles, headings, step panels, bubbles, ribbons, arrows, a whole slide), for HTML pages and slides only.
+- `role`: what the pieces paint with (page, text, heading, the `-text` colours). Use roles for anything you style yourself.
+- `piece`: ready-made HTML (titles, headings, step panels, bubbles, ribbons, arrows, buttons, ticks, meters, a whole slide), for HTML pages and slides only.
 
 To see how everything looks, open https://lean-software-production.github.io/brand/kit/index.html.
 

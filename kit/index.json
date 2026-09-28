@@ -288,14 +288,44 @@
   {
     "kind": "piece",
     "name": "Arrows",
-    "about": "A short slate connector between steps, and the blue loop-back arrow that sits under a row of panels.",
-    "html": "<svg class=\"sk-arrow\" viewBox=\"0 0 40 20\" aria-hidden=\"true\"><line x1=\"4\" y1=\"10\" x2=\"30\" y2=\"10\" stroke=\"#36545C\" stroke-width=\"4\" stroke-linecap=\"round\" marker-end=\"url(#sk-head)\" filter=\"url(#sk-wobble-line)\"/></svg>\n<svg class=\"sk-loop\" viewBox=\"0 0 1000 70\" aria-hidden=\"true\"><path d=\"M960 6 C 950 50, 820 54, 500 54 C 180 54, 50 50, 40 8\" fill=\"none\" stroke=\"#1F78A8\" stroke-width=\"5\" stroke-linecap=\"round\" marker-end=\"url(#sk-head)\" filter=\"url(#sk-wobble-soft)\"/></svg>"
+    "about": "A short slate connector between steps, and the blue loop-back arrow that sits under a row of panels. Their colours come from the CSS.",
+    "html": "<svg class=\"sk-arrow\" viewBox=\"0 0 40 20\" aria-hidden=\"true\"><line x1=\"4\" y1=\"10\" x2=\"30\" y2=\"10\" stroke-width=\"4\" stroke-linecap=\"round\" marker-end=\"url(#sk-head)\" filter=\"url(#sk-wobble-line)\"/></svg>\n<svg class=\"sk-loop\" viewBox=\"0 0 1000 70\" aria-hidden=\"true\"><path d=\"M960 6 C 950 50, 820 54, 500 54 C 180 54, 50 50, 40 8\" fill=\"none\" stroke-width=\"5\" stroke-linecap=\"round\" marker-end=\"url(#sk-head)\" filter=\"url(#sk-wobble-soft)\"/></svg>"
+  },
+  {
+    "kind": "piece",
+    "name": "Panel wash",
+    "about": "Add .sk-wash to a panel for a pale wash of its accent colour mixed with the page, about 9%. Use it to set a card apart from the page.",
+    "html": "<div class=\"sk-row\">\n<div class=\"sk-panel sk-mustard sk-wash\">\n  <div class=\"sk-step\"><span class=\"sk-num\">1</span><span class=\"sk-label\">Add sources</span></div>\n  <img src=\"https://lean-software-production.github.io/brand/kit/icons/books.svg\" alt=\"\">\n  <p>books, manuals, transcripts, code</p>\n</div>\n<div class=\"sk-panel sk-teal sk-wash\">\n  <div class=\"sk-step\"><span class=\"sk-num\">2</span><span class=\"sk-label\">Filter + focus</span></div>\n  <img src=\"https://lean-software-production.github.io/brand/kit/icons/magnifier.svg\" alt=\"\">\n  <p>use a lens: <span class=\"sk-em\">“what do I care about?”</span></p>\n</div>\n</div>"
+  },
+  {
+    "kind": "piece",
+    "name": "Highlighter anywhere",
+    "about": ".sk-hl works outside a title too: on a phrase, or on a whole row to mark the one you're on. Add .sk-sweep to sweep it in once, for a moment worth marking; it stays still for people who ask for less motion.",
+    "html": "<p style=\"font-size:1.4em;margin:0 0 .6em\">Next is <span class=\"sk-hl\">the lesson leads your coach thread</span>.</p>\n<div style=\"font-size:1.4em\">\n  <div>The course outline shows where you are</div>\n  <div class=\"sk-hl sk-sweep\">You can ask your coach anything</div>\n  <div>A side question goes in a side chat</div>\n</div>"
+  },
+  {
+    "kind": "piece",
+    "name": "Tick",
+    "about": "A hand-drawn tick for something done or passing. It takes the size of the text around it, and the forest text colour; set color to change it. Give it a label when it stands alone.",
+    "html": "<p style=\"font-size:1.4em;margin:0\"><span class=\"sk-tick\" role=\"img\" aria-label=\"done\"></span> Three Examples hold.</p>\n<p style=\"font-size:2.6em;margin:0\"><span class=\"sk-tick\" role=\"img\" aria-label=\"passing\"></span></p>"
+  },
+  {
+    "kind": "piece",
+    "name": "Buttons",
+    "about": ".sk-btn is the one main action on a screen: deep teal with paper lettering. Add .sk-secondary for the others: an ink outline.",
+    "html": "<button class=\"sk-btn\" type=\"button\">Start the course →</button>\n<button class=\"sk-btn sk-secondary\" type=\"button\">Use a different project</button>"
+  },
+  {
+    "kind": "piece",
+    "name": "Progress meter",
+    "about": "A wobbly bar. Set --sk-value from 0% to 100%; the fill takes the accent, so a colour modifier changes it. Put the count in words next to it.",
+    "html": "<div style=\"display:flex;align-items:center;gap:.8em;font-size:1.3em\">\n  <div class=\"sk-meter\" role=\"progressbar\" aria-label=\"Examples that hold\" aria-valuemin=\"0\" aria-valuemax=\"10\" aria-valuenow=\"3\" style=\"--sk-value:30%;width:10em\"></div>\n  <span>3 of 10 Examples hold</span>\n</div>\n<div class=\"sk-meter sk-mustard\" role=\"progressbar\" aria-label=\"Lessons done\" aria-valuemin=\"0\" aria-valuemax=\"9\" aria-valuenow=\"6\" style=\"--sk-value:66%;width:10em;margin-top:1em\"></div>"
   },
   {
     "kind": "piece",
     "name": "Whole slide",
     "about": "A complete 16:9 slide built only from kit pieces. Start from this.",
-    "html": "<div class=\"sk-slide sk-paper\"><div class=\"sk-slide-body\">\n  <h1 class=\"sk-title\" style=\"font-size:2.7em\"><span class=\"sk-burst\"><span class=\"sk-hl\">How to get the agent</span><br><span class=\"sk-hl\">to teach you anything</span></span></h1>\n  <h2 class=\"sk-section\" style=\"font-size:1.7em;margin:.4em 0 .5em\">The learning loop</h2>\n  <div class=\"sk-row\" style=\"font-size:.78em\">\n    <div class=\"sk-panel sk-mustard\">\n  <div class=\"sk-step\"><span class=\"sk-num\">1</span><span class=\"sk-label\">Add sources</span></div>\n  <img src=\"https://lean-software-production.github.io/brand/kit/icons/books.svg\" alt=\"\">\n  <p>books, manuals, transcripts, code</p>\n</div>\n    <svg class=\"sk-arrow\" viewBox=\"0 0 40 20\" aria-hidden=\"true\"><line x1=\"4\" y1=\"10\" x2=\"30\" y2=\"10\" stroke=\"#36545C\" stroke-width=\"4\" stroke-linecap=\"round\" marker-end=\"url(#sk-head)\" filter=\"url(#sk-wobble-line)\"/></svg>\n    <div class=\"sk-panel sk-teal\">\n  <div class=\"sk-step\"><span class=\"sk-num\">2</span><span class=\"sk-label\">Filter + focus</span></div>\n  <img src=\"https://lean-software-production.github.io/brand/kit/icons/magnifier.svg\" alt=\"\">\n  <p>use a lens: <span class=\"sk-em\">“what do I care about?”</span></p>\n</div>\n    <svg class=\"sk-arrow\" viewBox=\"0 0 40 20\" aria-hidden=\"true\"><line x1=\"4\" y1=\"10\" x2=\"30\" y2=\"10\" stroke=\"#36545C\" stroke-width=\"4\" stroke-linecap=\"round\" marker-end=\"url(#sk-head)\" filter=\"url(#sk-wobble-line)\"/></svg>\n    <div class=\"sk-panel sk-forest sk-dashed\">\n  <div class=\"sk-step\"><span class=\"sk-num\">3</span><span class=\"sk-label\">Create new source</span></div>\n  <img src=\"https://lean-software-production.github.io/brand/kit/icons/page-pencil.svg\" alt=\"\">\n  <p>pull out just the parts that matter</p>\n</div>\n    <svg class=\"sk-arrow\" viewBox=\"0 0 40 20\" aria-hidden=\"true\"><line x1=\"4\" y1=\"10\" x2=\"30\" y2=\"10\" stroke=\"#36545C\" stroke-width=\"4\" stroke-linecap=\"round\" marker-end=\"url(#sk-head)\" filter=\"url(#sk-wobble-line)\"/></svg>\n    <div class=\"sk-panel sk-coral\">\n  <div class=\"sk-step\"><span class=\"sk-num\">4</span><span class=\"sk-label\">Create a projection</span></div>\n  <img src=\"https://lean-software-production.github.io/brand/kit/icons/headphones.svg\" alt=\"\">\n  <p>audio summary, infographic, quiz</p>\n</div>\n    <svg class=\"sk-arrow\" viewBox=\"0 0 40 20\" aria-hidden=\"true\"><line x1=\"4\" y1=\"10\" x2=\"30\" y2=\"10\" stroke=\"#36545C\" stroke-width=\"4\" stroke-linecap=\"round\" marker-end=\"url(#sk-head)\" filter=\"url(#sk-wobble-line)\"/></svg>\n    <div class=\"sk-panel sk-blue\">\n  <div class=\"sk-step\"><span class=\"sk-num\">5</span><span class=\"sk-label\">Validate + iterate</span></div>\n  <img src=\"https://lean-software-production.github.io/brand/kit/icons/checklist.svg\" alt=\"\">\n  <p>teach back, quiz me, spaced repetition</p>\n</div>\n  </div>\n  <div style=\"margin:0 7% 0 7%\"><svg class=\"sk-loop\" viewBox=\"0 0 1000 70\" aria-hidden=\"true\"><path d=\"M960 6 C 950 50, 820 54, 500 54 C 180 54, 50 50, 40 8\" fill=\"none\" stroke=\"#1F78A8\" stroke-width=\"5\" stroke-linecap=\"round\" marker-end=\"url(#sk-head)\" filter=\"url(#sk-wobble-soft)\"/></svg></div>\n  <div style=\"display:flex;align-items:center;justify-content:center;gap:1.5em;margin-top:-.6em\">\n    <div class=\"sk-ribbon\" style=\"font-size:1.3em\"><img src=\"https://lean-software-production.github.io/brand/kit/icons/car.svg\" alt=\"\"><span class=\"sk-kicker\">Insight:</span> “I want to learn a book while driving.”</div>\n    <img src=\"https://lean-software-production.github.io/brand/kit/characters/learner.svg\" alt=\"\" style=\"height:6.2em;margin-top:-1.5em\">\n  </div>\n</div></div>"
+    "html": "<div class=\"sk-slide sk-paper\"><div class=\"sk-slide-body\">\n  <h1 class=\"sk-title\" style=\"font-size:2.7em\"><span class=\"sk-burst\"><span class=\"sk-hl\">How to get the agent</span><br><span class=\"sk-hl\">to teach you anything</span></span></h1>\n  <h2 class=\"sk-section\" style=\"font-size:1.7em;margin:.4em 0 .5em\">The learning loop</h2>\n  <div class=\"sk-row\" style=\"font-size:.78em\">\n    <div class=\"sk-panel sk-mustard\">\n  <div class=\"sk-step\"><span class=\"sk-num\">1</span><span class=\"sk-label\">Add sources</span></div>\n  <img src=\"https://lean-software-production.github.io/brand/kit/icons/books.svg\" alt=\"\">\n  <p>books, manuals, transcripts, code</p>\n</div>\n    <svg class=\"sk-arrow\" viewBox=\"0 0 40 20\" aria-hidden=\"true\"><line x1=\"4\" y1=\"10\" x2=\"30\" y2=\"10\" stroke-width=\"4\" stroke-linecap=\"round\" marker-end=\"url(#sk-head)\" filter=\"url(#sk-wobble-line)\"/></svg>\n    <div class=\"sk-panel sk-teal\">\n  <div class=\"sk-step\"><span class=\"sk-num\">2</span><span class=\"sk-label\">Filter + focus</span></div>\n  <img src=\"https://lean-software-production.github.io/brand/kit/icons/magnifier.svg\" alt=\"\">\n  <p>use a lens: <span class=\"sk-em\">“what do I care about?”</span></p>\n</div>\n    <svg class=\"sk-arrow\" viewBox=\"0 0 40 20\" aria-hidden=\"true\"><line x1=\"4\" y1=\"10\" x2=\"30\" y2=\"10\" stroke-width=\"4\" stroke-linecap=\"round\" marker-end=\"url(#sk-head)\" filter=\"url(#sk-wobble-line)\"/></svg>\n    <div class=\"sk-panel sk-forest sk-dashed\">\n  <div class=\"sk-step\"><span class=\"sk-num\">3</span><span class=\"sk-label\">Create new source</span></div>\n  <img src=\"https://lean-software-production.github.io/brand/kit/icons/page-pencil.svg\" alt=\"\">\n  <p>pull out just the parts that matter</p>\n</div>\n    <svg class=\"sk-arrow\" viewBox=\"0 0 40 20\" aria-hidden=\"true\"><line x1=\"4\" y1=\"10\" x2=\"30\" y2=\"10\" stroke-width=\"4\" stroke-linecap=\"round\" marker-end=\"url(#sk-head)\" filter=\"url(#sk-wobble-line)\"/></svg>\n    <div class=\"sk-panel sk-coral\">\n  <div class=\"sk-step\"><span class=\"sk-num\">4</span><span class=\"sk-label\">Create a projection</span></div>\n  <img src=\"https://lean-software-production.github.io/brand/kit/icons/headphones.svg\" alt=\"\">\n  <p>audio summary, infographic, quiz</p>\n</div>\n    <svg class=\"sk-arrow\" viewBox=\"0 0 40 20\" aria-hidden=\"true\"><line x1=\"4\" y1=\"10\" x2=\"30\" y2=\"10\" stroke-width=\"4\" stroke-linecap=\"round\" marker-end=\"url(#sk-head)\" filter=\"url(#sk-wobble-line)\"/></svg>\n    <div class=\"sk-panel sk-blue\">\n  <div class=\"sk-step\"><span class=\"sk-num\">5</span><span class=\"sk-label\">Validate + iterate</span></div>\n  <img src=\"https://lean-software-production.github.io/brand/kit/icons/checklist.svg\" alt=\"\">\n  <p>teach back, quiz me, spaced repetition</p>\n</div>\n  </div>\n  <div style=\"margin:0 7% 0 7%\"><svg class=\"sk-loop\" viewBox=\"0 0 1000 70\" aria-hidden=\"true\"><path d=\"M960 6 C 950 50, 820 54, 500 54 C 180 54, 50 50, 40 8\" fill=\"none\" stroke-width=\"5\" stroke-linecap=\"round\" marker-end=\"url(#sk-head)\" filter=\"url(#sk-wobble-soft)\"/></svg></div>\n  <div style=\"display:flex;align-items:center;justify-content:center;gap:1.5em;margin-top:-.6em\">\n    <div class=\"sk-ribbon\" style=\"font-size:1.3em\"><img src=\"https://lean-software-production.github.io/brand/kit/icons/car.svg\" alt=\"\"><span class=\"sk-kicker\">Insight:</span> “I want to learn a book while driving.”</div>\n    <img src=\"https://lean-software-production.github.io/brand/kit/characters/learner.svg\" alt=\"\" style=\"height:6.2em;margin-top:.6em\">\n  </div>\n</div></div>"
   },
   {
     "kind": "colour",
@@ -401,6 +431,132 @@
     "hex": "#3A3631",
     "css": "var(--sk-body-text)",
     "about": "Sentences and captions."
+  },
+  {
+    "kind": "role",
+    "name": "page",
+    "css": "var(--sk-page)",
+    "value": "var(--sk-paper)",
+    "about": "The page behind everything."
+  },
+  {
+    "kind": "role",
+    "name": "text",
+    "css": "var(--sk-text)",
+    "value": "var(--sk-body-text)",
+    "about": "Sentences and captions."
+  },
+  {
+    "kind": "role",
+    "name": "title-text",
+    "css": "var(--sk-title-text)",
+    "value": "var(--sk-ink-title)",
+    "about": "Big title lettering and its burst ticks."
+  },
+  {
+    "kind": "role",
+    "name": "line",
+    "css": "var(--sk-line)",
+    "value": "var(--sk-ink)",
+    "about": "Outlines of bubbles and secondary buttons."
+  },
+  {
+    "kind": "role",
+    "name": "heading",
+    "css": "var(--sk-heading)",
+    "value": "var(--sk-deep-teal)",
+    "about": "Section headings and their rules, primary buttons."
+  },
+  {
+    "kind": "role",
+    "name": "on-heading",
+    "css": "var(--sk-on-heading)",
+    "value": "var(--sk-paper)",
+    "about": "Text on a primary button."
+  },
+  {
+    "kind": "role",
+    "name": "connector",
+    "css": "var(--sk-connector)",
+    "value": "var(--sk-slate)",
+    "about": "Connector arrows between steps."
+  },
+  {
+    "kind": "role",
+    "name": "loop",
+    "css": "var(--sk-loop)",
+    "value": "var(--sk-blue)",
+    "about": "The loop-back arrow."
+  },
+  {
+    "kind": "role",
+    "name": "bubble-fill",
+    "css": "var(--sk-bubble-fill)",
+    "value": "var(--sk-bubble)",
+    "about": "Speech bubble fill."
+  },
+  {
+    "kind": "role",
+    "name": "swash",
+    "css": "var(--sk-swash)",
+    "value": "var(--sk-highlighter)",
+    "about": "What the highlighter swash reads as: a solid colour for tints and contrast checks."
+  },
+  {
+    "kind": "role",
+    "name": "track",
+    "css": "var(--sk-track)",
+    "value": "color-mix(in oklab, var(--sk-ink) 12%, var(--sk-paper))",
+    "about": "The empty part of a progress meter."
+  },
+  {
+    "kind": "role",
+    "name": "mustard-text",
+    "css": "var(--sk-mustard-text)",
+    "value": "color-mix(in oklch, var(--sk-mustard) 55%, var(--sk-ink))",
+    "about": "Mustard that reads as text."
+  },
+  {
+    "kind": "role",
+    "name": "teal-text",
+    "css": "var(--sk-teal-text)",
+    "value": "color-mix(in oklch, var(--sk-teal) 70%, var(--sk-ink))",
+    "about": "Teal that reads as text."
+  },
+  {
+    "kind": "role",
+    "name": "forest-text",
+    "css": "var(--sk-forest-text)",
+    "value": "color-mix(in oklch, var(--sk-forest) 85%, var(--sk-ink))",
+    "about": "Forest that reads as text. Ticks."
+  },
+  {
+    "kind": "role",
+    "name": "coral-text",
+    "css": "var(--sk-coral-text)",
+    "value": "color-mix(in oklch, var(--sk-coral) 55%, var(--sk-ink))",
+    "about": "Coral that reads as text."
+  },
+  {
+    "kind": "role",
+    "name": "blue-text",
+    "css": "var(--sk-blue-text)",
+    "value": "color-mix(in oklch, var(--sk-blue) 85%, var(--sk-ink))",
+    "about": "Blue that reads as text."
+  },
+  {
+    "kind": "role",
+    "name": "rust-text",
+    "css": "var(--sk-rust-text)",
+    "value": "color-mix(in oklch, var(--sk-rust) 70%, var(--sk-ink))",
+    "about": "Rust that reads as text: bubble accents, ribbon kickers."
+  },
+  {
+    "kind": "role",
+    "name": "deep-teal-text",
+    "css": "var(--sk-deep-teal-text)",
+    "value": "var(--sk-deep-teal)",
+    "about": "Deep teal that reads as text."
   },
   {
     "kind": "font",

@@ -63,4 +63,4 @@ If a slide needs something specific that the kit won't reuse, you can still draw
 
 ## A new layout piece (CSS)
 
-Layout pieces are the building blocks like panels, bubbles and ribbons, and they live in the `sketchbook.css` section of `src/build_kit.py`. Class names start with `sk-`. Take colours and fonts from the tokens, and never add new colours. Add it to `SNIPPETS` in the same file, which puts it in both the gallery and `kit/index.json`, and to the table in `kit/README.md`.
+Layout pieces are the building blocks like panels, bubbles and ribbons, and they live in the `sketchbook.css` section of `src/build_kit.py`. Class names start with `sk-`. Take colours from the role tokens (`--sk-page`, `--sk-text`, `--sk-heading`, the `-text` colours and so on), and never add new colours. A new role goes in `ROLES`. A colour inside a data-URI can't follow a token, so use the SVG as a `mask` and paint it with `background-color`. Add it to `SNIPPETS` in the same file, which puts it in both the gallery and `kit/index.json`, and to the table in `kit/README.md`.
