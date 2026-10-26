@@ -40,6 +40,7 @@ We sound like a friendly, experienced colleague sitting next to you.
 - [Sketchbook kit](kit/): reusable CSS, icons and characters. [Browse the gallery](kit/index.html) or [read how to use it](kit/README.md).
 - [bb theme](bb-theme/sketchbook/theme.css): the brand's paper, ink, teal and handwriting for the bb app. Copy `bb-theme/sketchbook/` into the folder `bb theme dir` prints, then run `bb theme set sketchbook`.
 - [Software factory hero concepts](concepts/software-factory/index.html): three homepage illustration directions, with SVG and PNG downloads. The selected open workshop has [three further variations](concepts/software-factory/workshop-variations/index.html).
+- [Zoom waiting-room welcome](formats/zoom-waiting-room/welcome.jpg): a generic welcome with the recording warning, 1600 × 800. Upload the JPG; Zoom rejected the PNG. Edit [welcome.html](formats/zoom-waiting-room/welcome.html) and export it again at 2× to change it.
 - [Decisions still to make](TODO.md).
 - [Contributor guide](CONTRIBUTING.md): how to change the kit.
 

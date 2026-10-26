@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Zoom waiting room: Welcome</title>
+<!-- Source for welcome.png. Laid out at 800 × 400 CSS px; export at 2× for a 1600 × 800 image. -->
+<link rel="stylesheet" href="../../kit/sketchbook.css">
+<script src="../../kit/sketchbook.js" defer></script>
+<style>
+  @font-face { font-family: 'Luckiest Guy'; src: url("../../concepts/software-factory/fonts/luckiest-guy.ttf"); }
+  @font-face { font-family: 'Patrick Hand'; src: url("../../concepts/software-factory/fonts/patrick-hand.ttf"); }
+  @font-face { font-family: 'Patrick Hand SC'; src: url("../../concepts/software-factory/fonts/patrick-hand-sc.ttf"); }
+
+  html, body { margin: 0; }
+  .card {
+    position: relative; width: 800px; height: 400px; overflow: hidden; box-sizing: border-box;
+  }
+  .main {
+    position: absolute; left: 12px; top: 0; bottom: 0; width: 504px;
+    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 72px;
+  }
+  .sk-title { font-size: 58px; line-height: 1.1; }
+  .say { position: relative; }
+  .sk-bubble {
+    margin: 0; padding: 14px 20px 16px; font-size: 29px; line-height: 1.12; text-align: left;
+  }
+  .sk-bubble .sk-em { font-weight: 400; }
+  /* tail on the right side, pointing at the person waving */
+  .sk-bubble.sk-tail-side::after { left: auto; right: -.62em; bottom: auto; top: 46%; transform: rotate(-45deg) skew(8deg, 8deg); }
+  /* the owl perches on the bubble's top edge */
+  .owl { position: absolute; right: 30px; bottom: calc(100% - 8px); height: 74px; }
+  .waver { position: absolute; right: 104px; bottom: 34px; height: 290px; }
+  .dog { position: absolute; right: 6px; bottom: 32px; height: 132px; }
+</style>
+</head>
+<body>
+<div class="card sk-paper">
+  <div class="main">
+    <h1 class="sk-title"><span class="sk-burst"><span class="sk-hl">Welcome</span></span></h1>
+    <div class="say">
+      <img class="owl" src="../../kit/icons/owl.svg" alt="">
+      <div class="sk-bubble sk-tail-side"><span class="sk-em">This is recorded</span> and may be posted publicly.<br>Keep your camera off, or use chat,<br>if you'd rather not appear.</div>
+    </div>
+  </div>
+  <img class="waver" src="../../kit/characters/waver.svg" alt="">
+  <img class="dog" src="../../kit/characters/dog.svg" alt="">
+</div>
+</body>
+</html>
