@@ -62,6 +62,11 @@ ICONS = {
         ("coral", "M16 80 L38 80 L38 124 L16 124 C 10 124, 8 118, 8 112 L8 92 C 8 86, 10 80, 16 80 Z M102 80 L124 80 C 130 80, 132 86, 132 92 L132 112 C 132 118, 130 124, 124 124 L102 124 Z"),
         (None, "M58 88 L58 110 M70 78 L70 120 M82 92 L82 106"),
     ],
+    "clock": [
+        ("teal", "M70 15 C 101 13, 124 37, 125 68 C 127 99, 103 125, 72 126 C 40 128, 15 103, 15 72 C 14 40, 38 16, 70 15 Z"),
+        (None, "M70 28 L70 36 M111 70 L103 70 M71 112 L71 104 M28 71 L36 71 M70 70 L70 43 M70 70 L92 84"),
+        ("solid", "M66 70 a4 4 0 1 0 8 0 a4 4 0 1 0 -8 0 Z"),
+    ],
     "magnifier": [
         (None, "M12 30 L90 30 M12 50 L70 50 M12 70 L60 70 M12 90 L50 90 M12 110 L74 110"),
         ("teal", "M44 64 a34 34 0 1 0 68 0 a34 34 0 1 0 -68 0 Z"),
@@ -154,6 +159,7 @@ ABOUT = {
     "lightbulb": "A lightbulb. An idea, an insight, a moment of understanding.",
     "checklist": "A checklist with ticks. Steps done, validation, testing, a plan.",
     "headphones": "Headphones. Listening, audio, podcasts, learning on the go.",
+    "clock": "A round clock with hands. Time, waiting, duration, or extra time needed for a step.",
     "chat": "Two speech bubbles. Conversation, feedback, asking questions.",
     "puzzle": "Two puzzle pieces fitting together. Collaboration, integration, parts of a solution.",
     "sticky-note": "A sticky note. Ideas on a wall, workshops, capturing a thought.",
@@ -169,7 +175,7 @@ ABOUT = {
 
 GROUPS = {
     "Brand words": ["mug", "kite", "owl"],
-    "Learning": ["books", "page-pencil", "magnifier", "lightbulb", "checklist", "headphones"],
+    "Learning": ["books", "page-pencil", "magnifier", "lightbulb", "checklist", "headphones", "clock"],
     "Working together": ["chat", "puzzle", "sticky-note", "compass"],
     "Tech & systems": ["laptop", "robot", "robot-scan", "robot-report", "gear", "sprout", "car"],
 }

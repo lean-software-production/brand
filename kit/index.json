@@ -81,6 +81,16 @@
   },
   {
     "kind": "icon",
+    "name": "clock",
+    "about": "A round clock with hands. Time, waiting, duration, or extra time needed for a step.",
+    "tags": [
+      "Learning"
+    ],
+    "aspect": 1.0,
+    "url": "https://lean-software-production.github.io/brand/kit/icons/clock.svg"
+  },
+  {
+    "kind": "icon",
     "name": "magnifier",
     "about": "A magnifying glass. Looking closely, searching, focusing, filtering.",
     "tags": [
